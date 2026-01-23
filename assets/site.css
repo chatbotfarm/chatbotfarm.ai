@@ -1,193 +1,315 @@
-:root {
-  color-scheme: light;
-  --color-text: #1b1b1b;
-  --color-muted: #5f6368;
-  --color-surface: #f6f7f9;
-  --color-border: #e3e5e8;
-  --color-accent: #1f6feb;
-  --color-accent-dark: #1a5bcc;
-  --radius: 999px;
-  --max-width: 1100px;
+/* ChatbotFarm.ai – Global Styles (static, framework-free) */
+
+:root{
+  --ink:#0a0a0a;
+  --muted:#4b5563;         /* slate-600 */
+  --bg:#ffffff;
+  --panel:#f8fafc;         /* slate-50 */
+  --line: rgba(10,10,10,.12);
+
+  /* complementary accents (subtle) */
+  --blue:#1f4e79;
+  --green:#2f6b3f;
+  --orange:#f2a140;
+
+  --radius:16px;
+  --radius-lg:22px;
+  --shadow: 0 18px 50px rgba(0,0,0,.08);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+/* Base reset */
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height:1.5;
 }
 
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  margin: 0;
-  color: var(--color-text);
+/* IMPORTANT: no global main padding (per your requirement) */
+main{ padding:0; }
+
+/* Reasonable defaults */
+img{ max-width:100%; height:auto; display:block; }
+a{ color:inherit; text-decoration:none; }
+a:hover{ text-decoration:underline; }
+
+/* Type scale */
+h1,h2,h3{ line-height:1.15; margin:0 0 .5rem; letter-spacing:-0.02em; }
+h1{ font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 900; }
+h2{ font-size: clamp(1.5rem, 2.2vw, 2.1rem); font-weight: 800; }
+p{ margin:.5rem 0 1rem; color: var(--muted); }
+ul{ margin:.5rem 0 1rem; padding-left: 1.25rem; color: var(--muted); }
+li{ margin:.35rem 0; }
+
+/* ---------------------------------------------
+   HEADER / NAV
+--------------------------------------------- */
+.site-header{
+  width:100%;
   background: #fff;
-  line-height: 1.6;
+  border-bottom: 1px solid var(--line);
+  padding: 14px 16px;
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
-main {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 2.5rem 1.5rem 3rem;
+.nav-brand{
+  font-weight: 900;
+  letter-spacing:-0.02em;
+  font-size: 1.1rem;
+  color: var(--ink);
+  white-space: nowrap;
 }
 
-main > section + section {
-  margin-top: 2.5rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid var(--color-border);
+/* Mobile toggle */
+.mobile-toggle{
+  margin-left:auto;
+  border:1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor:pointer;
 }
 
-h1,
-h2,
-h3 {
-  line-height: 1.2;
-  margin: 0 0 0.75rem;
-  font-weight: 600;
+/* Desktop nav container */
+.site-header nav{
+  margin-left:auto;
 }
 
-h1 {
-  font-size: clamp(2rem, 3vw, 2.75rem);
+/* Primary menu */
+.nav-menu{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  align-items:center;
+  gap: 14px;
 }
 
-h2 {
-  font-size: clamp(1.5rem, 2.4vw, 2rem);
+/* Links */
+.nav-menu > li > a,
+.nav-menu > li > span{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  color: var(--ink);
+  border:1px solid transparent;
 }
 
-p {
-  margin: 0 0 1rem;
-  color: var(--color-muted);
+/* CTA */
+.nav-menu > li:last-child > a{
+  background: var(--ink);
+  color:#fff;
+  border-color: rgba(0,0,0,.12);
+  text-decoration:none;
 }
 
-ul {
-  margin: 0.75rem 0 0;
-  padding-left: 1.25rem;
+/* Hover */
+.nav-menu > li > a:hover,
+.nav-menu > li > span:hover{
+  background: var(--panel);
+  border-color: var(--line);
+  text-decoration:none;
 }
 
-li + li {
-  margin-top: 0.35rem;
+/* Dropdown positioning */
+.nav-menu > li{
+  position:relative;
 }
 
-a {
-  color: var(--color-accent);
-  text-decoration: none;
+/* Dropdown hidden by default */
+.dropdown-menu{
+  display:none;
+  position:absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 260px;
+  list-style:none;
+  margin:0;
+  padding: 8px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  z-index: 1000;
 }
 
-a:hover,
-a:focus-visible {
-  color: var(--color-accent-dark);
-  text-decoration: underline;
+/* Show dropdown on hover (desktop) */
+.nav-menu > li:hover > .dropdown-menu{
+  display:block;
 }
 
-.hero-actions a,
-.pricing a,
-.site-footer nav a,
-.site-header .nav-menu > li:last-child > a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.55rem 1.4rem;
-  border-radius: var(--radius);
-  background: var(--color-accent);
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
+/* Dropdown items */
+.dropdown-menu li{ margin:0; }
+.dropdown-menu a{
+  display:block;
+  padding: 10px 10px;
+  border-radius: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration:none;
+}
+.dropdown-menu a:hover{
+  background: var(--panel);
 }
 
-.hero-actions a:hover,
-.pricing a:hover,
-.site-footer nav a:hover,
-.site-header .nav-menu > li:last-child > a:hover {
-  background: var(--color-accent-dark);
-  color: #fff;
-  text-decoration: none;
-}
-
-.site-header,
-.site-footer {
-  padding: 1.5rem 1.5rem;
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.site-footer {
-  border-top: 1px solid var(--color-border);
-  border-bottom: none;
-}
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 5;
-}
-
-.nav-menu {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  margin: 0.75rem 0 0;
-  padding: 0;
-  flex-wrap: wrap;
-}
-
-.nav-menu .dropdown-menu {
-  list-style: none;
-  padding: 0.5rem 0 0.75rem;
-  margin: 0.5rem 0 0;
-}
-
-.nav-menu .dropdown-menu a {
-  color: var(--color-muted);
-}
-
-.nav-brand {
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.mobile-toggle {
-  display: none;
-}
-
-.site-footer nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-.site-footer nav a {
-  background: transparent;
-  color: var(--color-accent);
-  border: 1px solid var(--color-accent);
-}
-
-.site-footer nav a:hover {
-  background: var(--color-accent);
-  color: #fff;
-}
-
-@media (max-width: 768px) {
-  main {
-    padding: 2rem 1.25rem 2.5rem;
+/* ---------------------------------------------
+   MOBILE NAV BEHAVIOR
+--------------------------------------------- */
+/* On mobile, hide the nav list by default; JS toggles "hidden" class */
+@media (max-width: 900px){
+  .site-header{
+    flex-wrap: wrap;
   }
-
-  .nav-menu {
-    display: none;
+  .site-header nav{
+    width:100%;
+    margin-left:0;
+  }
+  .nav-menu{
     flex-direction: column;
-    gap: 0.75rem;
+    align-items: stretch;
+    gap: 8px;
+    padding-top: 10px;
+  }
+  .nav-menu > li > a,
+  .nav-menu > li > span{
+    justify-content: space-between;
+    width:100%;
+    border:1px solid var(--line);
+    background:#fff;
   }
 
-  .nav-menu.is-open {
-    display: flex;
+  /* Disable hover dropdown on mobile; keep dropdown visible inside the flow */
+  .dropdown-menu{
+    position: static;
+    display:block;
+    box-shadow:none;
+    border:none;
+    padding: 6px 6px 0 6px;
+    background: transparent;
+    min-width: 0;
+  }
+  .dropdown-menu a{
+    border: 1px solid var(--line);
+    background: var(--panel);
+    margin-top: 6px;
   }
 
-  .mobile-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.4rem 0.9rem;
-    border-radius: var(--radius);
-    border: 1px solid var(--color-border);
-    background: #fff;
-    margin-top: 0.75rem;
+  /* On mobile, CTA remains bold and full width */
+  .nav-menu > li:last-child > a{
+    background: var(--ink);
+    color:#fff;
+    border-color: rgba(0,0,0,.12);
   }
+}
+
+/* Utility "hidden" (used by site.js toggleMenu) */
+.hidden{ display:none !important; }
+
+/* ---------------------------------------------
+   MAIN SECTIONS (full width, minimal spacing)
+   You can refine per page later. This keeps
+   the content readable without wasting width.
+--------------------------------------------- */
+main > section{
+  padding: 26px 16px;  /* safe edge spacing, not stacked containers */
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+@media (min-width: 900px){
+  main > section{
+    padding: 34px 24px;
+  }
+}
+
+/* Make the first section feel like a hero without heavy design */
+.hero{
+  background: #fff;
+}
+.hero .hero-actions{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* Default button style for simple <a> CTAs inside content */
+.hero .hero-actions a,
+.pricing a[href="#book"],
+.booking a[href="#book"]{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 12px 16px;
+  border-radius: 999px;
+  font-weight: 900;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  text-decoration:none;
+}
+.hero .hero-actions a:first-child{
+  background: var(--ink);
+  color:#fff;
+  border-color: rgba(0,0,0,.12);
+}
+.hero .hero-actions a:hover{
+  filter: brightness(0.98);
+}
+
+/* Booking iframe: full width */
+.booking iframe{
+  width:100%;
+  border:0;
+  border-radius: 12px;
+  overflow:hidden;
+  background:#fff;
+}
+
+/* ---------------------------------------------
+   FOOTER
+--------------------------------------------- */
+.site-footer{
+  border-top: 1px solid var(--line);
+  background:#fff;
+  padding: 22px 16px;
+}
+
+.footer-brand{
+  font-weight: 900;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.site-footer nav{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 10px 0 14px;
+}
+
+.site-footer nav a{
+  font-weight: 800;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border:1px solid transparent;
+}
+.site-footer nav a:hover{
+  background: var(--panel);
+  border-color: var(--line);
+  text-decoration:none;
+}
+
+.site-footer p{
+  margin: 8px 0;
+  color: var(--muted);
 }

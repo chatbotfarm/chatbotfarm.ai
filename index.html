@@ -1,89 +1,148 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chatbot Farm</title>
-    <link rel="stylesheet" href="/assets/site.css" />
-  </head>
-  <body>
-    <div data-include="/partials/header.html"></div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>ChatbotFarm.ai · Connecting Business To The Grid®</title>
+  <meta name="description" content="ChatbotFarm builds Digital Offices: Voice + Chat + CRM + Workflows. Privacy-first. We do not sell your data." />
 
-    <main>
-      <section class="hero">
-        <h1>Chatbot Farm</h1>
-        <p>Automated customer engagement for growing brands.</p>
-        <div class="hero-actions">
-          <a href="#book">Book a Demo</a>
-        </div>
-      </section>
+  <!-- Shared site styles (keep global; header/footer injected) -->
+  <link rel="stylesheet" href="/assets/site.css" />
 
-      <section class="industry-routing">
-        <h2>Industries</h2>
-        <p>Solutions tailored to the way each industry works.</p>
-        <ul>
-          <li><a href="/industries/construction.html">Construction</a></li>
-          <li><a href="/industries/property-management.html">Property Management</a></li>
-          <li><a href="/industries/entertainment.html">Entertainment</a></li>
-          <li><a href="/industries/medspa.html">MedSpa</a></li>
-          <li><a href="/industries/ghost-kitchen.html">Ghost Kitchen</a></li>
-        </ul>
-      </section>
+  <!-- Optional: if your site.css doesn’t include basic resets, Tailwind can still be used via partials or pages -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
 
-      <section class="brand-lease">
-        <h2>Brand Lease</h2>
-        <p>Launch proven brand experiences with built-in automation.</p>
-        <ul>
-          <li><a href="/brand-lease/amp-flow.html">Amp-Flow</a></li>
-          <li><a href="/brand-lease/car-care.html">Car-Care</a></li>
-          <li><a href="/brand-lease/cpa-crew.html">CPA-Crew</a></li>
-          <li><a href="/brand-lease/u-move-me.html">U-Move-Me</a></li>
-          <li><a href="/brand-lease/vip-wrap.html">VIP-Wrap</a></li>
-          <li><a href="/brand-lease/tax-crew.html">Tax-Crew</a></li>
-          <li><a href="/brand-lease/law-crew.html">Law-Crew</a></li>
-          <li><a href="/brand-lease/dent-guy.html">Dent-Guy</a></li>
-          <li><a href="/brand-lease/hvac-guy.html">HVAC-Guy</a></li>
-        </ul>
-      </section>
+<body>
+  <!-- Shared header partial (single source of truth) -->
+  <div data-include="/partials/header.html"></div>
 
-      <section class="proof">
-        <h2>Proof</h2>
-        <p>Outcomes and automation metrics go here.</p>
-      </section>
-
-      <section class="faq">
-        <h2>FAQ</h2>
-        <details>
-          <summary>How does Chatbot Farm work?</summary>
-          <p>We automate inbound and outbound conversations with tailored workflows.</p>
-        </details>
-        <details>
-          <summary>How quickly can we launch?</summary>
-          <p>Most implementations are live in days, not weeks.</p>
-        </details>
-      </section>
-
-      <section class="pricing">
-        <h2>Pricing</h2>
-        <p>Flexible pricing options for teams of every size.</p>
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <h1>ChatbotFarm.ai</h1>
+      <p>
+        Digital Offices: Voice · Chat · CRM · Workflows.
+        We build the systems that answer, route, and follow up—so your team can focus on billable operations.
+      </p>
+      <div class="hero-actions">
         <a href="#book">Book a Demo</a>
-      </section>
+        <a href="/industries/">Choose Your Industry</a>
+        <a href="/brand-lease/">Brand Lease</a>
+      </div>
+      <p>
+        Privacy-first: we do not sell your data.
+      </p>
+    </section>
 
-      <section class="booking" id="book">
-        <h2>Book a Demo</h2>
-        <p>Schedule a walkthrough with our team.</p>
-        <iframe
-          title="Book a Demo"
-          src="https://example.com/booking"
-          width="100%"
-          height="500"
-          loading="lazy"
-        ></iframe>
-      </section>
-    </main>
+    <!-- INDUSTRY ROUTING -->
+    <section class="industry-routing" id="industries">
+      <h2>Industries</h2>
+      <p>Pick your lane to see a tailored workflow and demo.</p>
+      <ul>
+        <li><a href="/industries/construction.html">Construction</a></li>
+        <li><a href="/industries/property-management.html">Property Management</a></li>
+        <li><a href="/industries/entertainment.html">Entertainment</a></li>
+        <li><a href="/industries/medspa.html">MedSpa</a></li>
+        <li><a href="/industries/ghost-kitchen.html">Ghost Kitchen</a></li>
+      </ul>
+      <p><a href="/industries/">View all industries →</a></p>
+    </section>
 
-    <div data-include="/partials/footer.html"></div>
+    <!-- BRAND LEASE -->
+    <section class="brand-lease" id="brand-lease">
+      <h2>Brand Lease</h2>
+      <p>
+        Fully packaged brand + vanity number + website + social handles + Digital Office infrastructure.
+      </p>
+      <ul>
+        <li><a href="/brand-lease/amp-flow.html">Amp-Flow</a></li>
+        <li><a href="/brand-lease/car-care.html">Car-Care</a></li>
+        <li><a href="/brand-lease/cpa-crew.html">CPA-Crew</a></li>
+        <li><a href="/brand-lease/u-move-me.html">U-Move-Me</a></li>
+        <li><a href="/brand-lease/vip-wrap.html">VIP-Wrap</a></li>
+        <li><a href="/brand-lease/tax-crew.html">Tax-Crew</a></li>
+        <li><a href="/brand-lease/law-crew.html">Law-Crew</a></li>
+        <li><a href="/brand-lease/dent-guy.html">Dent-Guy</a></li>
+        <li><a href="/brand-lease/hvac-guy.html">HVAC-Guy</a></li>
+      </ul>
+      <p><a href="/brand-lease/">View all Brand Lease options →</a></p>
+    </section>
 
-    <script src="/assets/site.js"></script>
-  </body>
+    <!-- PROOF -->
+    <section class="proof" id="proof">
+      <h2>Proof</h2>
+      <ul>
+        <li><strong>Construction — (857) For-Hire</strong>: structured intake, routing, and follow-ups.</li>
+        <li><strong>Property Management — CFRIHOA.com</strong>: organized inquiries, showings, and application flows.</li>
+      </ul>
+      <p>We do not sell your data. Your business owns accounts, records, and workflows.</p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+      <h2>FAQ</h2>
+
+      <details>
+        <summary>Do you replace my staff?</summary>
+        <p>
+          We observe your current business operation and map it onto CRM.
+          Repetitive tasks are replaced with workflows, so staff can concentrate on billable operations and reduce overhead.
+        </p>
+      </details>
+
+      <details>
+        <summary>What happens when AI is unsure?</summary>
+        <p>
+          It escalates cleanly: the system sends a memo to your assigned team member with the conversation context
+          and a clear request to clarify next steps.
+        </p>
+      </details>
+
+      <details>
+        <summary>Do you sit between me and my customers?</summary>
+        <p>
+          No. We build on tools in your name and your business owns the relationship, the records, and the workflows.
+          We don’t sell your data and we don’t take a “platform tax” on your customer relationships.
+        </p>
+      </details>
+
+      <details>
+        <summary>How quickly can we launch?</summary>
+        <p>Most implementations are live in days, not weeks, depending on workflow complexity.</p>
+      </details>
+    </section>
+
+    <!-- PRICING PHILOSOPHY -->
+    <section class="pricing" id="pricing">
+      <h2>Pricing philosophy</h2>
+      <p>
+        Transparent pricing: tools in your name + a clear service margin for engineering, maintenance, and tuning.
+        No black-box platform lock-in.
+      </p>
+      <p><a href="#book">Book a Demo</a></p>
+    </section>
+
+    <!-- BOOKING (anchor must match all CTAs) -->
+    <section class="booking" id="book">
+      <h2>Book a Demo</h2>
+      <p>Schedule a walkthrough with 484Operator.</p>
+
+      <iframe
+        title="Book a Demo"
+        src="https://api.leadconnectorhq.com/widget/booking/qJbe25XqIsy6rIZ9wNUu"
+        style="width:100%; height:900px; border:0; overflow:hidden;"
+        scrolling="no"
+        loading="lazy"
+        id="qJbe25XqIsy6rIZ9wNUu_1763575016225"
+      ></iframe>
+    </section>
+  </main>
+
+  <!-- Shared footer partial (single source of truth) -->
+  <div data-include="/partials/footer.html"></div>
+
+  <!-- Shared include loader + menu toggle + footer year -->
+  <script src="/assets/site.js"></script>
+</body>
 </html>
