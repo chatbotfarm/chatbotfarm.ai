@@ -2,43 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>ChatbotFarm.ai · Connecting Business To The Grid®</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="description" content="ChatbotFarm builds Digital Offices: Voice + Chat + CRM + Workflows. Privacy-first. We do not sell your data." />
+  <link rel="icon" href="favicon.ico" />
 
-  <!-- Shared site styles (keep global; header/footer injected) -->
+  <!-- Global styles + partial loader -->
   <link rel="stylesheet" href="/assets/site.css" />
-
-  <!-- Optional: if your site.css doesn’t include basic resets, Tailwind can still be used via partials or pages -->
-  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
-  <!-- Shared header partial (single source of truth) -->
+  <!-- Shared header -->
   <div data-include="/partials/header.html"></div>
 
   <main>
     <!-- HERO -->
-    <section class="hero" id="top">
-      <h1>ChatbotFarm.ai</h1>
+    <section class="hero">
+      <h1>Digital Offices that turn inbound conversations into organized work.</h1>
+
       <p>
-        Digital Offices: Voice · Chat · CRM · Workflows.
-        We build the systems that answer, route, and follow up—so your team can focus on billable operations.
+        <strong>You manage the business. We code.</strong>
+        ChatbotFarm designs and maintains the system behind your phone, web chat, and SMS:
+        intake → qualification → scheduling → routing → follow-up → audit trail.
+        You approve the rules. We build the infrastructure.
       </p>
+
       <div class="hero-actions">
         <a href="#book">Book a Demo</a>
         <a href="/industries/">Choose Your Industry</a>
         <a href="/brand-lease/">Brand Lease</a>
       </div>
+
       <p>
-        Privacy-first: we do not sell your data.
+        <strong>Privacy-first:</strong> we do not sell your data.
+        Your business owns accounts, records, and workflows.
+      </p>
+
+      <p>
+        <strong>Fast path:</strong>
+        If you already know your industry, go straight to the industry page for a tailored walkthrough.
+        If you want a recommendation, book a demo and we’ll map your intake flow.
       </p>
     </section>
 
     <!-- INDUSTRY ROUTING -->
     <section class="industry-routing" id="industries">
-      <h2>Industries</h2>
-      <p>Pick your lane to see a tailored workflow and demo.</p>
+      <h2>Pick your industry. See your workflow.</h2>
+      <p>
+        Each industry page is designed like a calm demo walkthrough: what it does, how it works,
+        and what comes with the dedicated tech team.
+      </p>
+
       <ul>
         <li><a href="/industries/construction.html">Construction</a></li>
         <li><a href="/industries/property-management.html">Property Management</a></li>
@@ -46,7 +60,9 @@
         <li><a href="/industries/medspa.html">MedSpa</a></li>
         <li><a href="/industries/ghost-kitchen.html">Ghost Kitchen</a></li>
       </ul>
+
       <p><a href="/industries/">View all industries →</a></p>
+      <p><a href="#book">Book a Demo →</a></p>
     </section>
 
     <!-- BRAND LEASE -->
@@ -55,6 +71,7 @@
       <p>
         Fully packaged brand + vanity number + website + social handles + Digital Office infrastructure.
       </p>
+
       <ul>
         <li><a href="/brand-lease/amp-flow.html">Amp-Flow</a></li>
         <li><a href="/brand-lease/car-care.html">Car-Care</a></li>
@@ -66,7 +83,9 @@
         <li><a href="/brand-lease/dent-guy.html">Dent-Guy</a></li>
         <li><a href="/brand-lease/hvac-guy.html">HVAC-Guy</a></li>
       </ul>
+
       <p><a href="/brand-lease/">View all Brand Lease options →</a></p>
+      <p><a href="#book">Book a Demo →</a></p>
     </section>
 
     <!-- PROOF -->
@@ -76,7 +95,10 @@
         <li><strong>Construction — (857) For-Hire</strong>: structured intake, routing, and follow-ups.</li>
         <li><strong>Property Management — CFRIHOA.com</strong>: organized inquiries, showings, and application flows.</li>
       </ul>
-      <p>We do not sell your data. Your business owns accounts, records, and workflows.</p>
+      <p>
+        <strong>Privacy and ownership are non-negotiable:</strong>
+        we do not sell your data. Your business owns customer relationships and records.
+      </p>
     </section>
 
     <!-- FAQ -->
@@ -108,8 +130,11 @@
       </details>
 
       <details>
-        <summary>How quickly can we launch?</summary>
-        <p>Most implementations are live in days, not weeks, depending on workflow complexity.</p>
+        <summary>Can this work with what I already use?</summary>
+        <p>
+          Usually, yes. On the demo call we identify what you want to keep, what should be connected,
+          and what should be replaced with automation. The goal is fewer moving parts, not more.
+        </p>
       </details>
     </section>
 
@@ -120,16 +145,16 @@
         Transparent pricing: tools in your name + a clear service margin for engineering, maintenance, and tuning.
         No black-box platform lock-in.
       </p>
-      <p><a href="#book">Book a Demo</a></p>
+      <p><a href="#book">Book a Demo →</a></p>
     </section>
 
-    <!-- BOOKING (anchor must match all CTAs) -->
+    <!-- BOOKING -->
     <section class="booking" id="book">
-      <h2>Book a Demo</h2>
-      <p>Schedule a walkthrough with 484Operator.</p>
+      <h2>Book a Time With 484Operator</h2>
+      <p>Choose a time. You’ll get a clean intake map and next steps.</p>
 
       <iframe
-        title="Book a Demo"
+        title="Book a Time With 484Operator"
         src="https://api.leadconnectorhq.com/widget/booking/qJbe25XqIsy6rIZ9wNUu"
         style="width:100%; height:900px; border:0; overflow:hidden;"
         scrolling="no"
@@ -139,10 +164,10 @@
     </section>
   </main>
 
-  <!-- Shared footer partial (single source of truth) -->
+  <!-- Shared footer -->
   <div data-include="/partials/footer.html"></div>
 
-  <!-- Shared include loader + menu toggle + footer year -->
+  <!-- Global JS loader (partials + mobile menu + year) -->
   <script src="/assets/site.js"></script>
 </body>
 </html>
