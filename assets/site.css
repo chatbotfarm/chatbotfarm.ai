@@ -19,7 +19,9 @@
 
   --radius:16px;
   --radius-lg:22px;
-  --shadow: 0 18px 50px rgba(0,0,0,.08);
+  --shadow: 0 18px 50px rgba(0,0,0,.10);
+
+  --max: 1120px;
 }
 
 /* -------------------------
@@ -96,24 +98,35 @@ li{ margin:.35rem 0; }
 ------------------------- */
 .hidden{ display:none !important; }
 
-/* -------------------------
-   HEADER / NAV
-------------------------- */
+/* =========================================================
+   HEADER / NAV (partials)
+========================================================= */
 .site-header{
   width:100%;
   background:#fff;
   border-bottom:1px solid var(--line);
-  padding:14px 16px;
+  padding:14px 16px 12px;
+  display:flex;
+  flex-direction: column;      /* so tagline + underline sit under nav */
+  align-items: stretch;
+  gap:10px;
+}
+
+/* Inner row inside header.html */
+.header-inner{
+  max-width: var(--max);
+  width:100%;
+  margin:0 auto;
   display:flex;
   align-items:center;
   gap:14px;
 }
 
+/* Brand */
 .nav-brand{
   display:flex;
   align-items:center;
 }
-
 .nav-logo{
   height:56px;
   width:auto;
@@ -129,11 +142,12 @@ li{ margin:.35rem 0; }
   .nav-logo{ height:90px; }
 }
 
+/* Desktop nav container */
 .site-header nav{
   margin-left:auto;
 }
 
-/* Primary nav */
+/* Primary nav list */
 .nav-menu{
   list-style:none;
   margin:0;
@@ -142,7 +156,6 @@ li{ margin:.35rem 0; }
   align-items:center;
   gap:14px;
 }
-
 .nav-menu > li{
   position:relative;
 }
@@ -159,11 +172,15 @@ li{ margin:.35rem 0; }
   border:1px solid transparent;
 }
 
-/* CTA */
+/* CTA (Book a Demo) */
 .nav-menu > li:last-child > a{
   background:var(--ink);
   color:#fff;
   border-color:rgba(0,0,0,.12);
+}
+.nav-menu > li:last-child > a:hover{
+  background:#111;
+  text-decoration:none;
 }
 
 /* Hover */
@@ -188,19 +205,21 @@ li{ margin:.35rem 0; }
   box-shadow:var(--shadow);
   z-index:1000;
 }
-
 .nav-menu > li:hover > .dropdown-menu{
   display:block;
 }
 
+.dropdown-menu li{ margin:0; }
 .dropdown-menu a{
   display:block;
   padding:10px 12px;
   border-radius:12px;
   font-weight:700;
+  color:var(--ink);
 }
 .dropdown-menu a:hover{
   background:var(--panel);
+  text-decoration:none;
 }
 
 /* Mobile toggle */
@@ -214,10 +233,33 @@ li{ margin:.35rem 0; }
   cursor:pointer;
 }
 
-/* Mobile nav */
+/* Tagline (centered) */
+.header-tagline{
+  max-width: var(--max);
+  width:100%;
+  margin:0 auto;
+  text-align:center;
+  font-weight:700;
+  font-size:0.95rem;
+  color:var(--muted);
+  letter-spacing:0.02em;
+  padding: 0 12px;
+}
+
+/* Brand underline */
+.brand-underline{
+  max-width: var(--max);
+  width:100%;
+  margin:6px auto 0;
+  height:3px;
+  background: linear-gradient(90deg, var(--blue), var(--green), var(--orange));
+  border-radius:999px;
+}
+
+/* Mobile nav behavior */
 @media (max-width:900px){
-  .site-header{
-    flex-wrap:wrap;
+  .header-inner{
+    flex-wrap: wrap;
   }
 
   .site-header nav{
@@ -240,6 +282,7 @@ li{ margin:.35rem 0; }
     background:#fff;
   }
 
+  /* Show dropdown items inline on mobile */
   .dropdown-menu{
     position:static;
     display:block;
@@ -247,6 +290,7 @@ li{ margin:.35rem 0; }
     border:none;
     padding:6px 0 0;
     background:transparent;
+    min-width:0;
   }
 
   .dropdown-menu a{
@@ -256,27 +300,43 @@ li{ margin:.35rem 0; }
   }
 }
 
-/* -------------------------
-   SECTION LAYOUT
-------------------------- */
+/* =========================================================
+   SECTION LAYOUT (draft-like rhythm)
+========================================================= */
 main > section{
-  padding:30px 16px;
-  border-bottom:1px solid rgba(0,0,0,.06);
+  padding:44px 16px;
+}
+main > section + section{
+  border-top:1px solid rgba(0,0,0,.05);
 }
 
 @media (min-width:900px){
   main > section{
-    padding:44px 24px;
+    padding:64px 24px;
   }
 }
 
-/* -------------------------
-   HERO
-------------------------- */
-.hero{
-  background:#fff;
+/* Center content inside sections without HTML wrappers */
+main > section > *{
+  max-width: var(--max);
+  margin-left:auto;
+  margin-right:auto;
 }
 
+/* =========================================================
+   HERO (stronger hierarchy)
+========================================================= */
+.hero{
+  background:#fff;
+  padding-top:64px;
+  padding-bottom:64px;
+}
+.hero h1{
+  max-width: 20ch;
+}
+.hero p{
+  font-size:1.1rem;
+}
 .hero .hero-actions{
   display:flex;
   flex-wrap:wrap;
@@ -284,10 +344,21 @@ main > section{
   margin-top:14px;
 }
 
-/* Buttons */
+@media (min-width:900px){
+  .hero{
+    padding-top:96px;
+    padding-bottom:96px;
+  }
+  .hero p{
+    font-size:1.15rem;
+  }
+}
+
+/* Buttons in hero-actions + book CTA links */
 .hero .hero-actions a,
 .pricing a[href="#book"],
-.booking a[href="#book"]{
+.booking a[href="#book"],
+section a[href="/#book"]{
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -296,27 +367,49 @@ main > section{
   font-weight:900;
   border:1px solid var(--line);
   background:var(--panel);
+  color:var(--ink);
+  text-decoration:none;
 }
-
+.hero .hero-actions a:hover,
+.pricing a[href="#book"]:hover,
+.booking a[href="#book"]:hover,
+section a[href="/#book"]:hover{
+  filter: brightness(0.98);
+  text-decoration:none;
+}
 .hero .hero-actions a:first-child{
   background:var(--ink);
   color:#fff;
   border-color:rgba(0,0,0,.12);
 }
+.hero .hero-actions a:first-child:hover{
+  background:#111;
+}
 
-/* -------------------------
-   PANELS / CARDS
-------------------------- */
+/* =========================================================
+   Panels (optional)
+========================================================= */
 .panel{
   background:#fff;
   border:1px solid var(--line);
   border-radius:var(--radius-lg);
   box-shadow:var(--shadow);
+  padding:28px;
 }
 
-/* -------------------------
-   BOOKING
-------------------------- */
+/* Full-bleed feel for panels on mobile */
+@media (max-width:899px){
+  .panel{
+    border-radius:0;
+    border-left:none;
+    border-right:none;
+    padding:24px 16px;
+  }
+}
+
+/* =========================================================
+   Booking iframe
+========================================================= */
 .booking iframe{
   width:100%;
   border:0;
@@ -324,18 +417,25 @@ main > section{
   background:#fff;
 }
 
-/* -------------------------
-   FOOTER
-------------------------- */
+/* =========================================================
+   FOOTER (partials)
+========================================================= */
 .site-footer{
   border-top:1px solid var(--line);
   background:#fff;
-  padding:26px 16px;
+  padding:28px 16px;
+}
+
+.site-footer > *{
+  max-width: var(--max);
+  margin-left:auto;
+  margin-right:auto;
 }
 
 .footer-brand{
   font-weight:900;
   margin-bottom:6px;
+  color: var(--ink);
 }
 
 .site-footer nav{
@@ -349,9 +449,11 @@ main > section{
   font-weight:800;
   padding:8px 12px;
   border-radius:999px;
+  border:1px solid transparent;
 }
 .site-footer nav a:hover{
   background:var(--panel);
+  border-color:var(--line);
   text-decoration:none;
 }
 
