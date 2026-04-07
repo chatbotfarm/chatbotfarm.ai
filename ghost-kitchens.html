@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChatbotFarm.ai — Digital Office for Ghost Kitchen Operators</title>
+  <meta name="description" content="Third-party platforms take your margin and own your customers. The Digital Office keeps orders in-house, captures repeat buyers, and automates the full customer journey.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <style>
+    /* ── PAGE-SPECIFIC: GHOST KITCHEN ── */
+
+    /* margin bleed stat strip */
+    .margin-strip {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 52px;
+    }
+    .margin-cell {
+      background: var(--card);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .margin-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px,5vw,56px);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .margin-label {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* channel comparison */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .compare-card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 28px 24px;
+    }
+    .compare-card.bad  { border: 1px solid rgba(255,80,60,.2); }
+    .compare-card.good { border: 2px solid rgba(26,143,255,.3); background: linear-gradient(148deg,rgba(26,143,255,.04) 0%,var(--card) 60%); }
+    .compare-head {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .compare-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .compare-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .compare-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* order flow */
+    .order-flow {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .order-step {
+      padding: 24px 20px;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .order-step:last-child { border-right: none; }
+    .order-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      line-height: 1;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+    .order-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .order-body {
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .order-arrow {
+      position: absolute;
+      right: -10px; top: 50%;
+      transform: translateY(-50%);
+      width: 20px; height: 20px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--blue);
+      z-index: 2;
+    }
+    .order-step:last-child .order-arrow { display: none; }
+
+    /* pipeline stages */
+    .pipeline {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .pipe-stage {
+      flex: 1;
+      padding: 20px 16px;
+      border-right: 1px solid var(--border);
+      text-align: center;
+      transition: background .2s;
+    }
+    .pipe-stage:last-child { border-right: none; }
+    .pipe-stage:hover { background: rgba(26,143,255,.04); }
+    .pipe-ico { font-size: 22px; margin-bottom: 8px; }
+    .pipe-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      color: var(--text);
+      letter-spacing: .04em;
+      margin-bottom: 4px;
+    }
+    .pipe-sub { font-size: 16px; color: var(--muted); line-height: 1.4; }
+
+    /* two paths */
+    .paths-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .path-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+    }
+    .path-card.primary {
+      border: 2px solid rgba(26,143,255,.35);
+      background: linear-gradient(148deg,rgba(26,143,255,.05) 0%,var(--card) 60%);
+    }
+    .path-eyebrow {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .path-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(24px,3vw,36px);
+      color: #fff;
+      line-height: .95;
+      margin-bottom: 14px;
+    }
+    .path-desc {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+    .path-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .path-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    /* vanity numbers */
+    .vnum-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 14px;
+    }
+    .vnum-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 20px;
+      transition: border-color .2s, transform .2s;
+      text-decoration: none;
+      display: block;
+    }
+    .vnum-card:hover {
+      border-color: rgba(26,143,255,.4);
+      transform: translateY(-3px);
+    }
+    .vnum-card.featured {
+      border: 2px solid rgba(26,143,255,.4);
+      background: linear-gradient(135deg,rgba(26,143,255,.06) 0%,var(--card) 60%);
+    }
+    .vnum-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(18px,2.5vw,26px);
+      color: var(--blue);
+      letter-spacing: .04em;
+      margin-bottom: 6px;
+    }
+    .vnum-badge {
+      display: inline-block;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: rgba(26,143,255,.08);
+      border: 1px solid rgba(26,143,255,.22);
+      border-radius: 4px;
+      padding: 3px 10px;
+      margin-bottom: 10px;
+    }
+    .vnum-desc {
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* responsive */
+    @media (max-width:860px) {
+      .margin-strip  { grid-template-columns:1fr; }
+      .compare-grid  { grid-template-columns:1fr; }
+      .order-flow    { grid-template-columns:1fr 1fr; }
+      .pipeline      { flex-wrap:wrap; }
+      .pipe-stage    { flex:0 0 50%; border-right:none; border-bottom:1px solid var(--border); }
+      .pipe-stage:nth-child(odd) { border-right:1px solid var(--border); }
+      .pipe-stage:last-child { border-bottom:none; }
+      .paths-grid    { grid-template-columns:1fr; }
+      .vnum-grid     { grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width:600px) {
+      .order-flow  { grid-template-columns:1fr; }
+      .order-arrow { display:none; }
+      .vnum-grid   { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════════════ -->
+<div id="nav-placeholder"></div>
+
+
+<!-- ══ HERO ══════════════════════════════════════════════ -->
+<section class="hero pcb">
+  <svg class="hero-svg" viewBox="0 0 1200 620" preserveAspectRatio="none">
+    <path class="trace trace-1" d="M0,100 L220,100 L220,260 L520,260 L520,140 L820,140 L820,300 L1200,300"/>
+    <path class="trace trace-2" d="M0,420 L310,420 L310,240 L610,240 L610,380 L920,380 L920,210 L1200,210"/>
+    <path class="trace trace-3" d="M0,60  L160,60  L160,190 L440,190 L440,70  L720,70  L720,290 L1200,290"/>
+  </svg>
+
+  <div class="hero-inner reveal">
+    <div>
+      <div class="eyebrow"><div class="eyebrow-dot"></div>👨‍🍳 Digital Office for Ghost Kitchen Operators</div>
+      <h1 class="hero-hed">
+        You cook.<br>
+        <span class="acc">We own the<br>customer relationship.</span>
+      </h1>
+      <p class="hero-sub">
+        DoorDash and UberEats take 30% and keep your customers. The Digital Office brings orders in-house, captures repeat buyers, and runs the full customer journey — under your brand.
+      </p>
+      <div class="trust-row">
+        <div class="trust-chip">Orders captured in-house</div>
+        <div class="trust-chip">Zero platform commission</div>
+        <div class="trust-chip">Repeat buyer automation</div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <a href="https://app.chatbotfarm.ai/260-dd-pizza" class="btn-p" style="font-size:18px;padding:13px 28px;text-decoration:none">
+          Get Your Vanity Number →
+        </a>
+        <a href="tel:+12542683276" class="btn-s" style="font-size:16px;padding:11px 22px">
+          📞 (254) BOT-FARM
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div style="background:var(--card);border:1px solid rgba(26,143,255,.2);border-radius:20px;padding:28px 24px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--blue);letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px">Platform vs. in-house — the real difference</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <span style="font-size:22px;flex-shrink:0">❌</span>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:17px;color:rgba(255,100,80,.9);margin-bottom:3px">DoorDash takes 30% per order</div>
+              <div style="font-size:16px;color:var(--text)">Every order costs you margin. Permanently. No way out.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <span style="font-size:22px;flex-shrink:0">❌</span>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:17px;color:rgba(255,100,80,.9);margin-bottom:3px">They own your customer data</div>
+              <div style="font-size:16px;color:var(--text)">You never see who ordered. You can't remarket. They do.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <span style="font-size:22px;flex-shrink:0">✅</span>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:17px;color:var(--green);margin-bottom:3px">Direct orders — zero commission</div>
+              <div style="font-size:16px;color:var(--text)">Customers call or text your vanity number. Order goes direct.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <span style="font-size:22px;flex-shrink:0">✅</span>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:17px;color:var(--green);margin-bottom:3px">You own every customer</div>
+              <div style="font-size:16px;color:var(--text)">Name, number, order history — in your pipeline forever.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ TAGLINE ════════════════════════════════════════════ -->
+<div style="background:var(--ink);border-bottom:1px solid var(--border)">
+  <div style="max-width:1140px;margin:0 auto;padding:40px 24px 52px;text-align:center">
+    <p style="font-size:16px;color:var(--muted);margin-bottom:14px;letter-spacing:.01em">
+      Every order through a platform is a customer you'll never own.
+    </p>
+    <div class="disp" style="font-size:clamp(36px,5.5vw,72px);color:var(--blue);letter-spacing:.03em">
+      You cook. We own the customer.
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ THE PLATFORM PROBLEM ══════════════════════════════ -->
+<section style="background:var(--panel)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div style="text-align:center;margin-bottom:44px">
+      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
+        <div class="eyebrow-dot"></div>What the platforms actually cost you
+      </div>
+      <h2 class="disp" style="font-size:clamp(30px,4.5vw,58px);color:#fff;line-height:.92;margin-bottom:12px">
+        You're running a kitchen<br><span style="color:var(--blue)">for someone else's business.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);max-width:500px;margin:0 auto">
+        Third-party platforms give you volume. They take your margin, your data, and your customer relationship. There's a better structure.
+      </p>
+    </div>
+
+    <div class="margin-strip">
+      <div class="margin-cell">
+        <div class="margin-num" style="color:rgba(255,80,60,.9)">30%</div>
+        <div class="margin-label">Average DoorDash<br>commission per order</div>
+      </div>
+      <div class="margin-cell">
+        <div class="margin-num" style="color:rgba(255,80,60,.9)">0</div>
+        <div class="margin-label">Customer records you<br>own from platform orders</div>
+      </div>
+      <div class="margin-cell">
+        <div class="margin-num" style="color:var(--blue)">100%</div>
+        <div class="margin-label">Revenue kept on<br>direct in-house orders</div>
+      </div>
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-card bad">
+        <div class="compare-head" style="color:rgba(255,100,80,.8)">
+          <span class="compare-dot" style="background:rgba(255,80,60,.6)"></span>
+          Through the platform
+        </div>
+        <div class="compare-list">
+          <div class="compare-item" style="color:var(--muted)"><span>❌</span><span>30% commission on every order — forever</span></div>
+          <div class="compare-item" style="color:var(--muted)"><span>❌</span><span>You never see who ordered — they do</span></div>
+          <div class="compare-item" style="color:var(--muted)"><span>❌</span><span>No repeat buyer marketing — their algorithm decides</span></div>
+          <div class="compare-item" style="color:var(--muted)"><span>❌</span><span>Price competition with every other kitchen on the app</span></div>
+          <div class="compare-item" style="color:var(--muted)"><span>❌</span><span>Platform can delist you, change fees, or fold</span></div>
+        </div>
+      </div>
+      <div class="compare-card good">
+        <div class="compare-head" style="color:var(--blue)">
+          <span class="compare-dot" style="background:var(--blue);box-shadow:0 0 6px var(--blue)"></span>
+          Through your Digital Office
+        </div>
+        <div class="compare-list">
+          <div class="compare-item" style="color:var(--text)"><span>✅</span><span>Zero commission — you keep 100% of revenue</span></div>
+          <div class="compare-item" style="color:var(--text)"><span>✅</span><span>Every customer captured — name, number, order history</span></div>
+          <div class="compare-item" style="color:var(--text)"><span>✅</span><span>Automated repeat buyer sequences — you own the relationship</span></div>
+          <div class="compare-item" style="color:var(--text)"><span>✅</span><span>Your brand, your positioning, your price point</span></div>
+          <div class="compare-item" style="color:var(--text)"><span>✅</span><span>Your system — no dependency on third-party platforms</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ HOW THE ORDER FLOW WORKS ═══════════════════════════ -->
+<div class="divider">How direct orders flow through the system</div>
+<section style="background:var(--ink)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div style="text-align:center;margin-bottom:44px">
+      <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:12px">
+        Customer calls your number.<br><span style="color:var(--blue)">System handles the rest.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto">
+        Every channel — call, SMS, web order form — routes into one pipeline. No platform. No commission.
+      </p>
+    </div>
+
+    <div class="order-flow">
+      <div class="order-step" style="background:rgba(26,143,255,.03)">
+        <div class="order-arrow">→</div>
+        <div class="order-num">01</div>
+        <div class="order-title">📞 Customer orders direct</div>
+        <p class="order-body">Calls your vanity number or texts. No app. No platform. Direct to your system.</p>
+      </div>
+      <div class="order-step" style="background:rgba(255,122,0,.03)">
+        <div class="order-arrow">→</div>
+        <div class="order-num">02</div>
+        <div class="order-title">🤖 AI takes the order</div>
+        <p class="order-body">Collects order details, confirms pickup or delivery, captures customer info — structured intake.</p>
+      </div>
+      <div class="order-step" style="background:rgba(255,170,0,.03)">
+        <div class="order-arrow">→</div>
+        <div class="order-num">03</div>
+        <div class="order-title">⚡ Kitchen notified</div>
+        <p class="order-body">Order hits your pipeline. Confirmation sent to customer. You prep the food.</p>
+      </div>
+      <div class="order-step" style="background:rgba(0,232,122,.03)">
+        <div class="order-num">04</div>
+        <div class="order-title">🔄 Repeat buyer sequence</div>
+        <p class="order-body">Post-order follow-up triggered. Review request sent. Re-order sequence scheduled. Customer owned.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ CUSTOMER PIPELINE ══════════════════════════════════ -->
+<section style="background:var(--panel)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div style="text-align:center;margin-bottom:44px">
+      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
+        <div class="eyebrow-dot"></div>Your customer pipeline
+      </div>
+      <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:12px">
+        First order to loyal repeat buyer.<br><span style="color:var(--blue)">Every stage automated.</span>
+      </h2>
+    </div>
+
+    <div class="pipeline">
+      <div class="pipe-stage">
+        <div class="pipe-ico">📲</div>
+        <div class="pipe-label">New Order</div>
+        <div class="pipe-sub">Direct — no platform</div>
+      </div>
+      <div class="pipe-stage">
+        <div class="pipe-ico">✅</div>
+        <div class="pipe-label">Confirmed</div>
+        <div class="pipe-sub">Auto-confirmation sent</div>
+      </div>
+      <div class="pipe-stage">
+        <div class="pipe-ico">🍳</div>
+        <div class="pipe-label">In Prep</div>
+        <div class="pipe-sub">Kitchen notified</div>
+      </div>
+      <div class="pipe-stage">
+        <div class="pipe-ico">📦</div>
+        <div class="pipe-label">Out for Delivery</div>
+        <div class="pipe-sub">Customer updated</div>
+      </div>
+      <div class="pipe-stage">
+        <div class="pipe-ico">⭐</div>
+        <div class="pipe-label">Review Request</div>
+        <div class="pipe-sub">Auto-triggered post-order</div>
+      </div>
+      <div class="pipe-stage" style="background:rgba(26,143,255,.04)">
+        <div class="pipe-ico">🔄</div>
+        <div class="pipe-label" style="color:var(--blue)">Repeat Order</div>
+        <div class="pipe-sub">Re-order sequence fires</div>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:16px;color:var(--muted);margin-top:20px">
+      Every customer who orders direct enters your pipeline permanently — available for promotions, loyalty campaigns, and re-engagement.
+    </p>
+  </div>
+</section>
+
+
+<!-- ══ TWO PATHS ══════════════════════════════════════════ -->
+<div class="divider">Two ways to work with us</div>
+<section style="background:var(--ink)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div style="text-align:center;margin-bottom:44px">
+      <h2 class="disp" style="font-size:clamp(30px,4.5vw,58px);color:#fff;line-height:.92;margin-bottom:10px">
+        Your brand or ours.<br><span style="color:var(--blue)">Same system either way.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto">
+        The Digital Office runs identically either way. The difference is how you go to market.
+      </p>
+    </div>
+
+    <div class="paths-grid">
+      <div class="path-card primary">
+        <div class="path-eyebrow" style="color:var(--blue)">Path 1 — Your brand</div>
+        <div class="path-title">We build on<br>your kitchen</div>
+        <p class="path-desc">Your existing operation gets a Direct Order system. We become your invisible IT and CRM department — running under your brand.</p>
+        <div class="path-list">
+          <div class="path-item"><span>👨‍🍳</span><span>Your kitchen name, your number, your brand</span></div>
+          <div class="path-item"><span>⚙️</span><span>We configure order flows for your menu and operation</span></div>
+          <div class="path-item"><span>📊</span><span>Full customer pipeline — every order, every buyer</span></div>
+          <div class="path-item"><span>🔒</span><span>All customer data stays with you — not the platform</span></div>
+        </div>
+        <a href="/#book" class="vcta solid" style="text-decoration:none;display:block;background:linear-gradient(135deg,var(--blue),#0070dd)">Build on my brand →</a>
+      </div>
+
+      <div class="path-card">
+        <div class="path-eyebrow" style="color:var(--amber)">Path 2 — Our brand</div>
+        <div class="path-title">You operate under<br>DD-Pizza or Pho-King</div>
+        <p class="path-desc">Get a vanity number, brand license, and fully configured Digital Office. A ready-to-run direct order operation — from day one.</p>
+        <div class="path-list">
+          <div class="path-item"><span>📞</span><span>Vanity number like 260-DD-Pizza included</span></div>
+          <div class="path-item"><span>🏷️</span><span>Brand license — operate under an established identity</span></div>
+          <div class="path-item"><span>🚀</span><span>Full Digital Office configured for direct ordering</span></div>
+          <div class="path-item"><span>💰</span><span>Zero commission — you keep 100% of every order</span></div>
+        </div>
+        <a href="#vanity" class="vcta out" style="text-decoration:none;display:block">See available numbers →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ VANITY NUMBERS ═════════════════════════════════════ -->
+<div class="divider" id="vanity">Available vanity numbers — Ghost Kitchen Operators</div>
+<section style="background:var(--panel)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div style="text-align:center;margin-bottom:44px">
+      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
+        <div class="eyebrow-dot"></div>Numbers customers remember and call
+      </div>
+      <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:12px">
+        A number that replaces<br><span style="color:var(--blue)">the app icon on their phone.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto">
+        Every number below comes with a fully configured Digital Office for direct ordering. Zero platform dependency.
+      </p>
+    </div>
+
+    <div class="vnum-grid">
+      <a href="https://app.chatbotfarm.ai/260-dd-pizza" class="vnum-card featured">
+        <div class="vnum-badge">Featured</div>
+        <div class="vnum-number">260-DD-PIZZA</div>
+        <p class="vnum-desc">Indiana / Fort Wayne market · Direct pizza ordering · High recall · No platform fee</p>
+      </a>
+      <a href="https://app.chatbotfarm.ai/262-pho-king" class="vnum-card">
+        <div class="vnum-number">262-PHO-KING</div>
+        <p class="vnum-desc">Wisconsin market · Vietnamese / Asian cuisine · Memorable positioning</p>
+      </a>
+      <a href="https://app.chatbotfarm.ai/775-bbq-spot" class="vnum-card">
+        <div class="vnum-number">775-BBQ-SPOT</div>
+        <p class="vnum-desc">Nevada / Reno market · BBQ & smoked meats · Direct order system</p>
+      </a>
+    </div>
+
+    <div style="text-align:center;margin-top:28px">
+      <p style="font-size:16px;color:var(--muted);margin-bottom:16px">Operating a different cuisine or market? We have more numbers available.</p>
+      <a href="/#book" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:rgba(26,143,255,.08);border:1px solid rgba(26,143,255,.28);border-radius:50px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.07em;color:var(--blue);text-decoration:none">
+        Request a number for your cuisine →
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FINAL CTA ═══════════════════════════════════════════ -->
+<div class="divider">Stop paying platform commission</div>
+<section class="cta-s pcb" id="book">
+  <div class="cta-inner reveal">
+    <h2 class="cta-hed">You run the kitchen.<br><em>We bring the customers<br>directly to you.</em></h2>
+    <p class="cta-body">
+      15 minutes. We map your order flow, show you how direct ordering works for your operation, and configure your Digital Office.
+    </p>
+    <div style="margin-bottom:24px;padding:14px 20px;border:1px solid rgba(26,143,255,.2);border-radius:10px;background:rgba(26,143,255,.04);text-align:center">
+      <p style="font-size:16px;color:var(--muted);line-height:1.6">
+        Zero platform commission. Every customer captured.<br>
+        <strong style="color:var(--text)">You cook. We run the customer relationship.</strong>
+      </p>
+    </div>
+    <div class="ss">
+      <div class="ss-item"><span style="color:var(--orange);margin-right:5px">1</span>Pick your number</div>
+      <div class="ss-arr">→</div>
+      <div class="ss-item"><span style="color:var(--orange);margin-right:5px">2</span>Book 15-min call</div>
+      <div class="ss-arr">→</div>
+      <div class="ss-item last"><span style="color:var(--green);margin-right:5px">3</span>We build your system</div>
+    </div>
+    <div class="cta-btns">
+      <button class="btn-p" onclick="document.querySelector('.cal-wrap').scrollIntoView({behavior:'smooth'})">
+        Plan Your System →
+      </button>
+      <a href="tel:+12542683276" class="btn-s">📞 (254) BOT-FARM</a>
+    </div>
+    <div class="assure">
+      <span>✓</span> No pitch. Just the plan. &nbsp;·&nbsp;
+      <span>✓</span> No build until architecture approved &nbsp;·&nbsp;
+      <span>✓</span> You own all customer data
+    </div>
+  </div>
+
+  <div class="cal-wrap">
+    <div class="cal-top">
+      <div class="disp">Schedule your planning session</div>
+      <p>Choose a time below. This is where system design begins.</p>
+    </div>
+    <iframe src="https://link.msgsndr.com/widget/booking/qJbe25XqIsy6rIZ9wNUu"
+      style="width:100%;height:900px;border:1px solid var(--border);border-top:none;border-radius:0 0 18px 18px;overflow:hidden;display:block;"
+      scrolling="no"></iframe>
+    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ════════════════════════════════════════════ -->
+<div id="footer-placeholder"></div>
+
+<script src="/assets/components.js"></script>
+<script>
+  /* responsive problem grid */
+  const pg = document.querySelector('.problem-grid');
+  if (pg) {
+    const mq = window.matchMedia('(max-width:860px)');
+    const fix = e => pg.style.gridTemplateColumns = e.matches ? '1fr' : '1fr 1fr 1fr';
+    mq.addEventListener('change', fix); fix(mq);
+  }
+</script>
+
+</body>
+</html>
