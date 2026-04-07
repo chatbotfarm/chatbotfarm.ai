@@ -127,7 +127,7 @@ p:last-child { margin-bottom: 0; }
   cursor:pointer; white-space:nowrap;
   box-shadow:0 0 14px rgba(255,122,0,.25);
   transition:box-shadow .2s, transform .15s;
-  animation: glow-o 3s ease-in-out infinite;
+  animation: none;
   text-decoration:none; display:inline-block;
 }
 .nav-cta:hover { box-shadow:0 0 28px rgba(255,170,0,.4); transform:translateY(-1px); }
@@ -308,7 +308,7 @@ p:last-child { margin-bottom: 0; }
 .plbl { font-size:16px; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; font-family:'Bebas Neue',sans-serif; }
 .ppill {
   padding:8px 18px; border:1px solid var(--border);
-  border-radius:50px; font-size:15px; color:var(--text);
+  border-radius:50px; font-size:16px; color:var(--text);
   background:var(--card);
   display:flex; align-items:center; gap:8px;
 }
@@ -375,7 +375,7 @@ p:last-child { margin-bottom: 0; }
 .phil-hed em { color:var(--orange); font-style:normal; }
 .phil-body { font-size:18px; color:var(--muted); line-height:1.75; max-width:530px; margin:0 auto 28px; }
 .pill-row { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
-.ppb { padding:9px 18px; border-radius:50px; font-size:15px; border:1px solid; }
+.ppb { padding:9px 18px; border-radius:50px; font-size:16px; border:1px solid; }
 .ppb.no  { border-color:rgba(255,80,60,.28); color:rgba(255,140,120,.9); background:rgba(255,60,40,.05); }
 .ppb.yes { border-color:rgba(0,232,122,.26); color:var(--green); background:rgba(0,232,122,.05); }
 
@@ -537,8 +537,8 @@ footer { background:var(--ink); border-top:1px solid var(--border); }
 }
 .fb .disp { font-size:22px; color:#fff; }
 .fb .disp em { color:var(--orange); font-style:normal; }
-.fb p { font-size:14px; color:var(--muted); letter-spacing:.02em; margin-top:4px; }
-.fr { font-size:13px; color:var(--muted); text-align:right; }
+.fb p { font-size:16px; color:var(--muted); letter-spacing:.02em; margin-top:4px; }
+.fr { font-size:16px; color:var(--muted); text-align:right; }
 .foot-badge { max-width:1140px; margin:0 auto; padding:24px 24px 48px; display:flex; justify-content:center; }
 .foot-badge img { height:170px; width:auto; filter:drop-shadow(0 0 14px rgba(255,200,0,.24)); }
 
