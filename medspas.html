@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChatbotFarm.ai — Digital Office for MedSpas & Aesthetics</title>
+  <meta name="description" content="Every missed call is a $500–$2,000 consultation lost. The Digital Office books appointments, qualifies inquiries, and follows up automatically. HIPAA compliant.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <style>
+    /* ── PAGE-SPECIFIC: MEDSPA ── */
+
+    /* HIPAA badge */
+    .hipaa-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(0,160,255,.08);
+      border: 1px solid rgba(0,160,255,.3);
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #6ab8ff;
+      letter-spacing: .02em;
+      margin-bottom: 20px;
+    }
+
+    /* revenue stat strip */
+    .rev-strip {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 52px;
+    }
+    .rev-cell {
+      background: var(--card);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .rev-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px,5vw,56px);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .rev-label {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* service cards */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 14px;
+    }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 20px;
+      transition: border-color .2s, transform .2s;
+    }
+    .service-card:hover {
+      border-color: rgba(0,232,122,.3);
+      transform: translateY(-3px);
+    }
+    .service-ico { font-size: 28px; margin-bottom: 12px; }
+    .service-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .service-body { font-size: 16px; color: var(--muted); line-height: 1.6; }
+
+    /* intake flow */
+    .intake-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .intake-step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--border);
+      transition: background .2s;
+    }
+    .intake-step:last-child { border-bottom: none; }
+    .intake-step:hover { background: rgba(255,255,255,.02); }
+    .intake-ico {
+      font-size: 24px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .intake-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .intake-body { font-size: 16px; color: var(--muted); line-height: 1.6; }
+
+    /* two paths */
+    .paths-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .path-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+    }
+    .path-card.primary {
+      border: 2px solid rgba(0,232,122,.3);
+      background: linear-gradient(148deg,rgba(0,232,122,.04) 0%,var(--card) 60%);
+    }
+    .path-eyebrow {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .path-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(24px,3vw,36px);
+      color: #fff;
+      line-height: .95;
+      margin-bottom: 14px;
+    }
+    .path-desc {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+    .path-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .path-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    /* vanity numbers */
+    .vnum-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 14px;
+    }
+    .vnum-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 20px;
+      transition: border-color .2s, transform .2s;
+      text-decoration: none;
+      display: block;
+    }
+    .vnum-card:hover {
+      border-color: rgba(0,232,122,.4);
+      transform: translateY(-3px);
+    }
+    .vnum-card.featured {
+      border: 2px solid rgba(0,232,122,.35);
+      background: linear-gradient(135deg,rgba(0,232,122,.05) 0%,var(--card) 60%);
+    }
+    .vnum-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(20px,2.8vw,30px);
+      color: var(--green);
+      letter-spacing: .04em;
+      margin-bottom: 6px;
+    }
+    .vnum-badge {
+      display: inline-block;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--green);
+      background: rgba(0,232,122,.08);
+      border: 1px solid rgba(0,232,122,.22);
+      border-radius: 4px;
+      padding: 3px 10px;
+      margin-bottom: 10px;
+    }
+    .vnum-desc {
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* HIPAA compliance section */
+    .hipaa-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 14px;
+    }
+    .hipaa-card {
+      background: var(--card);
+      border: 1px solid rgba(0,160,255,.15);
+      border-radius: 16px;
+      padding: 24px 20px;
+    }
+    .hipaa-ico { font-size: 28px; margin-bottom: 12px; }
+    .hipaa-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .hipaa-body { font-size: 16px; color: var(--muted); line-height: 1.6; }
+
+    /* responsive */
+    @media (max-width:860px) {
+      .rev-strip     { grid-template-columns:1fr; }
+      .service-grid  { grid-template-columns:1fr 1fr; }
+      .paths-grid    { grid-template-columns:1fr; }
+      .vnum-grid     { grid-template-columns:1fr 1fr; }
+      .hipaa-grid    { grid-template-columns:1fr; }
+    }
+    @media (max-width:600px) {
+      .service-grid  { grid-template-columns:1fr; }
+      .vnum-grid     { grid-template-columns:1fr; }
+      .rev-strip     { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════════════ -->
+<div id="nav-placeholder"></div>
+
+
+<!-- ══ HERO ══════════════════════════════════════════════ -->
+<section class="hero pcb">
+  <svg class="hero-svg" viewBox="0 0 1200 620" preserveAspectRatio="none">
+    <path class="trace trace-1" d="M0,100 L220,100 L220,260 L520,260 L520,140 L820,140 L820,300 L1200,300"/>
+    <path class="trace trace-2" d="M0,420 L310,420 L310,240 L610,240 L610,380 L920,380 L920,210 L1200,210"/>
+    <path class="trace trace-3" d="M0,60  L160,60  L160,190 L440,190 L440,70  L720,70  L720,290 L1200,290"/>
+  </svg>
+
+  <div class="hero-inner reveal">
+    <div>
+      <div class="hipaa-badge">🔒 HIPAA Compliant System</div>
+      <div class="eyebrow" style="margin-bottom:16px"><div class="eyebrow-dot"></div>👩‍⚕️ Digital Office for MedSpas & Aesthetics</div>
+      <h1 class="hero-hed">
+        You treat.<br>
+        <span class="acc">We book, follow up,<br>and fill your chair.</span>
+      </h1>
+      <p class="hero-sub">
+        Every missed call is a $500–$2,000 consultation walking out the door. The Digital Office captures every inquiry, qualifies intent, and books appointments automatically.
+      </p>
+      <div class="trust-row">
+        <div class="trust-chip">Every inquiry captured</div>
+        <div class="trust-chip">Appointments booked automatically</div>
+        <div class="trust-chip">HIPAA compliant intake</div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <a href="https://app.chatbotfarm.ai/239-botox-it" class="btn-p" style="font-size:18px;padding:13px 28px;text-decoration:none">
+          Get Your Botox-It Number →
+        </a>
+        <a href="tel:+12542683276" class="btn-s" style="font-size:16px;padding:11px 22px">
+          📞 (254) BOT-FARM
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div style="background:var(--card);border:1px solid rgba(0,160,255,.2);border-radius:20px;padding:28px 24px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--green);letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px">What happens when a patient inquires</div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,232,122,.1);border:1px solid rgba(0,232,122,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--green)">1</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:17px;color:#fff;margin-bottom:3px">📞 Inquiry comes in</div>
+              <div style="font-size:16px;color:var(--text)">Call, SMS, web form, DM — all captured instantly, 24/7</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,232,122,.1);border:1px solid rgba(0,232,122,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--green)">2</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:17px;color:#fff;margin-bottom:3px">🤖 AI qualifies intent</div>
+              <div style="font-size:16px;color:var(--text)">Service interest, budget range, timeline — structured intake, HIPAA safe</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,232,122,.1);border:1px solid rgba(0,232,122,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--green)">3</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:17px;color:#fff;margin-bottom:3px">📅 Appointment booked</div>
+              <div style="font-size:16px;color:var(--text)">Booking link sent, confirmation automated, reminders triggered</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,232,122,.1);border:1px solid rgba(0,232,122,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--green)">4</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:17px;color:#fff;margin-bottom:3px">💰 You treat, revenue collected</div>
+              <div style="font-size:16px;color:var(--text)">Patient arrives prepared. You focus on the treatment.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ TAGLINE ════════════════════════════════════════════ -->
+<div style="background:var(--ink);border-bottom:1px solid var(--border)">
+  <div style="max-width:1140px;margin:0 auto;padding:40px 24px 52px;text-align:center">
+    <p style="font-size:16px;color:var(--muted);margin-bottom:14px;letter-spacing:.01em">
+      Every unanswered inquiry is a high-ticket consultation going to the next provider.
+    </p>
+    <div class="disp" style="font-size:clamp(36px,5.5vw,72px);color:var(--green);letter-spacing:.03em">
+      You treat. We fill the chair.
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ REVENUE REALITY ═══════════════════════════════════ -->
+<section style="background:var(--panel)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div style="text-align:center;margin-bottom:44px">
+      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
+        <div class="eyebrow-dot"></div>What every missed call costs you
+      </div>
+      <h2 class="disp" style="font-size:clamp(30px,4.5vw,58px);color:#fff;line-height:.92;margin-bottom:12px">
+        You're not missing calls.<br><span style="color:var(--green)">You're missing revenue.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);max-width:500px;margin:0 auto">
+        MedSpa and aesthetics are high-ticket. Every unanswered inquiry has a real dollar value attached to it.
+      </p>
+    </div>
+
+    <div class="rev-strip">
+      <div class="rev-cell">
+        <div class="rev-num" style="color:var(--green)">$500</div>
+        <div class="rev-label">Average Botox<br>consultation value</div>
+      </div>
+      <div class="rev-cell">
+        <div class="rev-num" style="color:var(--amber)">$1,500</div>
+        <div class="rev-label">Average filler<br>treatment value</div>
+      </div>
+      <div class="rev-cell">
+        <div class="rev-num" style="color:var(--orange)">$2,000+</div>
+        <div class="rev-label">Body contouring<br>& laser packages</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px" class="problem-grid">
+      <div style="background:var(--card);border:1px solid rgba(255,80,60,.15);border-radius:18px;padding:28px 24px">
+        <div style="font-size:32px;margin-bottom:14px">📵</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:8px">After-hours inquiries</div>
+        <p style="font-size:16px;color:var(--muted);line-height:1.65">Most patients research and inquire at night or on weekends. Your front desk isn't there. The Digital Office is.</p>
+      </div>
+      <div style="background:var(--card);border:1px solid rgba(255,80,60,.15);border-radius:18px;padding:28px 24px">
+        <div style="font-size:32px;margin-bottom:14px">🧊</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:8px">Cold leads</div>
+        <p style="font-size:16px;color:var(--muted);line-height:1.65">Aesthetics patients are impulse-sensitive. If they don't hear back within minutes, they book somewhere else. Automated follow-up fixes this.</p>
+      </div>
+      <div style="background:var(--card);border:1px solid rgba(255,80,60,.15);border-radius:18px;padding:28px 24px">
+        <div style="font-size:32px;margin-bottom:14px">🔄</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:8px">No re-engagement</div>
+        <p style="font-size:16px;color:var(--muted);line-height:1.65">Past patients are your highest-value leads. Without automation, they drift away. The system brings them back automatically.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ WHAT THE SYSTEM HANDLES ════════════════════════════ -->
+<div class="divider">What the Digital Office handles for your practice</div>
+<section style="background:var(--ink)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div style="text-align:center;margin-bottom:44px">
+      <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:12px">
+        Every service. Every inquiry.<br><span style="color:var(--green)">Handled automatically.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto">
+        The system is configured for aesthetics intake — not generic CRM logic.
+      </p>
+    </div>
+
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-ico">💉</div>
+        <div class="service-title">Botox & Fillers</div>
+        <p class="service-body">Qualifies treatment interest, collects medical history flags, books consultation. No front desk needed for first contact.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-ico">✨</div>
+        <div class="service-title">Laser & Skin</div>
+        <p class="service-body">Skin type intake, treatment history, contraindication screening — all automated before the patient walks in.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-ico">🏋️</div>
+        <div class="service-title">Body Contouring</div>
+        <p class="service-body">High-ticket package inquiries qualified by budget and timeline. Only serious prospects reach your calendar.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-ico">💆</div>
+        <div class="service-title">Wellness & IV</div>
+        <p class="service-body">Membership upsells, recurring booking automation, loyalty sequences — all built into the system.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-ico">📅</div>
+        <div class="service-title">Appointment Management</div>
+        <p class="service-body">Confirmation, reminders, rescheduling requests — all automated. No-show rates drop significantly.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-ico">🔄</div>
+        <div class="service-title">Re-engagement</div>
+        <p class="service-body">Dormant patients reactivated automatically. Seasonal promotions, follow-up sequences, review requests.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ INTAKE FLOW ════════════════════════════════════════ -->
+<div class="divider">How the intake runs — HIPAA compliant</div>
+<section style="background:var(--panel)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start">
+
+      <div>
+        <div class="eyebrow" style="margin-bottom:18px">
+          <div class="eyebrow-dot"></div>Patient intake flow
+        </div>
+        <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:16px">
+          From first contact<br><span style="color:var(--green)">to booked appointment.</span>
+        </h2>
+        <p style="font-size:17px;color:var(--muted);line-height:1.7;margin-bottom:28px">
+          The system handles every step between a patient's first inquiry and their appointment confirmation — without your staff touching it.
+        </p>
+        <div style="padding:20px 22px;background:rgba(0,160,255,.06);border:1px solid rgba(0,160,255,.2);border-radius:12px">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:17px;color:#6ab8ff;margin-bottom:8px">🔒 HIPAA Compliance Built In</div>
+          <p style="font-size:16px;color:var(--muted);line-height:1.65">All intake data is handled through HIPAA-compliant channels. No PHI stored in non-compliant systems. Business Associate Agreement available.</p>
+        </div>
+      </div>
+
+      <div class="intake-flow">
+        <div class="intake-step">
+          <div class="intake-ico">📲</div>
+          <div>
+            <div class="intake-title">Patient inquires</div>
+            <div class="intake-body">Any channel — call, SMS, web, Instagram DM. All routed to the same intake system instantly.</div>
+          </div>
+        </div>
+        <div class="intake-step">
+          <div class="intake-ico">🤖</div>
+          <div>
+            <div class="intake-title">AI collects structured intake</div>
+            <div class="intake-body">Service interest, previous treatments, budget, timeline. Structured — not a free-form conversation.</div>
+          </div>
+        </div>
+        <div class="intake-step">
+          <div class="intake-ico">🔍</div>
+          <div>
+            <div class="intake-title">Intent qualified</div>
+            <div class="intake-body">High-intent leads get immediate booking link. Low-intent leads enter nurture sequence. You only see booked appointments.</div>
+          </div>
+        </div>
+        <div class="intake-step">
+          <div class="intake-ico">📅</div>
+          <div>
+            <div class="intake-title">Appointment confirmed</div>
+            <div class="intake-body">Auto-confirmation sent. Reminder sequence triggered at 48hr, 24hr, and 2hr before appointment.</div>
+          </div>
+        </div>
+        <div class="intake-step" style="background:rgba(0,232,122,.03)">
+          <div class="intake-ico">💰</div>
+          <div>
+            <div class="intake-title" style="color:var(--green)">Patient arrives. Revenue collected.</div>
+            <div class="intake-body">Post-treatment follow-up, review request, and re-booking sequence triggered automatically.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ HIPAA COMPLIANCE ═══════════════════════════════════ -->
+<div class="divider">HIPAA compliance — what it means for your practice</div>
+<section style="background:var(--ink)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div style="text-align:center;margin-bottom:44px">
+      <div style="display:inline-flex;align-items:center;gap:10px;padding:10px 22px;background:rgba(0,160,255,.08);border:1px solid rgba(0,160,255,.25);border-radius:50px;margin-bottom:20px">
+        <span style="font-size:20px">🔒</span>
+        <span style="font-size:17px;font-weight:600;color:#6ab8ff">HIPAA Compliant Infrastructure</span>
+      </div>
+      <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:12px">
+        Patient data handled<br><span style="color:#6ab8ff">the right way.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto">
+        MedSpa intake involves protected health information. Every part of our system is built to handle it correctly.
+      </p>
+    </div>
+
+    <div class="hipaa-grid">
+      <div class="hipaa-card">
+        <div class="hipaa-ico">🔐</div>
+        <div class="hipaa-title">Encrypted data handling</div>
+        <p class="hipaa-body">All patient intake data transmitted and stored through HIPAA-compliant encrypted channels. No PHI in non-compliant storage.</p>
+      </div>
+      <div class="hipaa-card">
+        <div class="hipaa-ico">📋</div>
+        <div class="hipaa-title">BAA available</div>
+        <p class="hipaa-body">Business Associate Agreement available for all MedSpa clients. Covers your practice's compliance obligations for the intake system.</p>
+      </div>
+      <div class="hipaa-card">
+        <div class="hipaa-ico">🏥</div>
+        <div class="hipaa-title">Built for aesthetics</div>
+        <p class="hipaa-body">Intake flows designed specifically for aesthetic practices — not generic CRM. Medical history flags, contraindication screening, consent capture.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ TWO PATHS ══════════════════════════════════════════ -->
+<div class="divider">Two ways to work with us</div>
+<section style="background:var(--panel)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div style="text-align:center;margin-bottom:44px">
+      <h2 class="disp" style="font-size:clamp(30px,4.5vw,58px);color:#fff;line-height:.92;margin-bottom:10px">
+        Your brand or ours.<br><span style="color:var(--green)">Same system either way.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto">
+        The Digital Office runs identically either way. The difference is how you go to market.
+      </p>
+    </div>
+
+    <div class="paths-grid">
+      <div class="path-card primary">
+        <div class="path-eyebrow" style="color:var(--green)">Path 1 — Your brand</div>
+        <div class="path-title">We build on<br>your practice</div>
+        <p class="path-desc">Your existing MedSpa gets a Digital Office. We become your invisible intake and CRM department — running under your brand name.</p>
+        <div class="path-list">
+          <div class="path-item"><span>👩‍⚕️</span><span>Your practice name, your number, your brand</span></div>
+          <div class="path-item"><span>⚙️</span><span>We configure intake flows for your specific services</span></div>
+          <div class="path-item"><span>🔒</span><span>HIPAA-compliant intake built in from day one</span></div>
+          <div class="path-item"><span>📊</span><span>Full pipeline visibility — every lead, every stage</span></div>
+        </div>
+        <a href="/#book" class="vcta solid" style="text-decoration:none;display:block">Build on my practice →</a>
+      </div>
+
+      <div class="path-card">
+        <div class="path-eyebrow" style="color:var(--blue)">Path 2 — Our brand</div>
+        <div class="path-title">You operate under<br>Botox-It</div>
+        <p class="path-desc">Get a vanity number, brand license, and fully configured Digital Office for aesthetics. A ready-to-run operation with intake, booking, and follow-up built in.</p>
+        <div class="path-list">
+          <div class="path-item"><span>📞</span><span>Vanity number like 239-Botox-It included</span></div>
+          <div class="path-item"><span>🏷️</span><span>Brand license — operate under the Botox-It identity</span></div>
+          <div class="path-item"><span>🚀</span><span>Full Digital Office configured for aesthetics intake</span></div>
+          <div class="path-item"><span>🔒</span><span>HIPAA-compliant infrastructure included</span></div>
+        </div>
+        <a href="#vanity" class="vcta out" style="text-decoration:none;display:block">See available numbers →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ VANITY NUMBERS ═════════════════════════════════════ -->
+<div class="divider" id="vanity">Available vanity numbers — MedSpas & Aesthetics</div>
+<section style="background:var(--ink)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div style="text-align:center;margin-bottom:44px">
+      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
+        <div class="eyebrow-dot"></div>Numbers that position your practice
+      </div>
+      <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:12px">
+        A number that communicates<br><span style="color:var(--green)">before the call is answered.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto">
+        Every number below comes with a fully configured Digital Office for aesthetics. HIPAA-compliant intake included.
+      </p>
+    </div>
+
+    <div class="vnum-grid">
+      <a href="https://app.chatbotfarm.ai/239-botox-it" class="vnum-card featured">
+        <div class="vnum-badge">Most Popular</div>
+        <div class="vnum-number">239-BOTOX-IT</div>
+        <p class="vnum-desc">Southwest Florida market · Botox & fillers · High-recall vanity · Premium positioning</p>
+      </a>
+      <a href="https://app.chatbotfarm.ai/872-botox-it" class="vnum-card">
+        <div class="vnum-number">872-BOTOX-IT</div>
+        <p class="vnum-desc">Illinois / Chicago market · Same Botox-It brand · Different area code</p>
+      </a>
+    </div>
+
+    <div style="text-align:center;margin-top:28px">
+      <p style="font-size:16px;color:var(--muted);margin-bottom:16px">Looking for a different market or specialization? We have more numbers available.</p>
+      <a href="/#book" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:rgba(0,232,122,.08);border:1px solid rgba(0,232,122,.25);border-radius:50px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.07em;color:var(--green);text-decoration:none">
+        Request a number for your market →
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FINAL CTA ═══════════════════════════════════════════ -->
+<div class="divider">Get your Digital Office running</div>
+<section class="cta-s pcb" id="book">
+  <div class="cta-inner reveal">
+    <h2 class="cta-hed">You treat patients.<br><em>We fill your calendar<br>while you do it.</em></h2>
+    <p class="cta-body">
+      15 minutes. We map your intake flow, configure your booking system, and show you exactly what your Digital Office looks like for your practice.
+    </p>
+    <div style="margin-bottom:24px;padding:14px 20px;border:1px solid rgba(0,160,255,.2);border-radius:10px;background:rgba(0,160,255,.04);text-align:center">
+      <p style="font-size:16px;color:var(--muted);line-height:1.6">
+        HIPAA-compliant intake. Automated booking. Re-engagement built in.<br>
+        <strong style="color:var(--text)">You focus on treatments. We run the front office.</strong>
+      </p>
+    </div>
+    <div class="ss">
+      <div class="ss-item"><span style="color:var(--orange);margin-right:5px">1</span>Choose your number</div>
+      <div class="ss-arr">→</div>
+      <div class="ss-item"><span style="color:var(--orange);margin-right:5px">2</span>Book 15-min call</div>
+      <div class="ss-arr">→</div>
+      <div class="ss-item last"><span style="color:var(--green);margin-right:5px">3</span>We build your system</div>
+    </div>
+    <div class="cta-btns">
+      <button class="btn-p" onclick="document.querySelector('.cal-wrap').scrollIntoView({behavior:'smooth'})">
+        Plan Your System →
+      </button>
+      <a href="tel:+12542683276" class="btn-s">📞 (254) BOT-FARM</a>
+    </div>
+    <div class="assure">
+      <span>✓</span> No pitch. Just the plan. &nbsp;·&nbsp;
+      <span>✓</span> HIPAA-compliant by default &nbsp;·&nbsp;
+      <span>✓</span> You own all patient data
+    </div>
+  </div>
+
+  <div class="cal-wrap">
+    <div class="cal-top">
+      <div class="disp">Schedule your planning session</div>
+      <p>Choose a time below. This is where system design begins.</p>
+    </div>
+    <iframe src="https://link.msgsndr.com/widget/booking/qJbe25XqIsy6rIZ9wNUu"
+      style="width:100%;height:900px;border:1px solid var(--border);border-top:none;border-radius:0 0 18px 18px;overflow:hidden;display:block;"
+      scrolling="no"></iframe>
+    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ════════════════════════════════════════════ -->
+<div id="footer-placeholder"></div>
+
+<script src="/assets/components.js"></script>
+<script>
+  /* responsive problem grid */
+  const pg = document.querySelector('.problem-grid');
+  if (pg) {
+    const mq = window.matchMedia('(max-width:860px)');
+    const fix = e => pg.style.gridTemplateColumns = e.matches ? '1fr' : '1fr 1fr 1fr';
+    mq.addEventListener('change', fix); fix(mq);
+  }
+  /* responsive intake flow grid */
+  const ig = document.querySelector('.how-inner-med');
+  if (ig) {
+    const mq2 = window.matchMedia('(max-width:860px)');
+    const fix2 = e => ig.style.gridTemplateColumns = e.matches ? '1fr' : '1fr 1fr';
+    mq2.addEventListener('change', fix2); fix2(mq2);
+  }
+</script>
+
+</body>
+</html>
