@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChatbotFarm.ai — Digital Office for Contractors & Trades</title>
+  <meta name="description" content="You're on the job site. We run the front office. The Digital Office captures every inbound call, qualifies leads, and dispatches jobs automatically.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <style>
+    /* ── PAGE-SPECIFIC STYLES ── */
+
+    /* accent color override for this vertical */
+    .v-accent       { color: var(--orange); }
+    .v-border       { border-color: rgba(255,122,0,.35); }
+
+    /* ── CALL FLOW ── */
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .flow-step {
+      padding: 24px 20px;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .flow-step:last-child { border-right: none; }
+    .flow-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      line-height: 1;
+      color: rgba(255,122,0,.18);
+      margin-bottom: 8px;
+    }
+    .flow-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .flow-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .flow-arrow {
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--orange);
+      z-index: 2;
+    }
+    .flow-step:last-child .flow-arrow { display: none; }
+
+    /* ── PIPELINE STAGES ── */
+    .pipeline {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .pipe-stage {
+      flex: 1;
+      padding: 20px 16px;
+      border-right: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      transition: background .2s;
+    }
+    .pipe-stage:last-child { border-right: none; }
+    .pipe-stage:hover { background: rgba(255,122,0,.04); }
+    .pipe-ico { font-size: 22px; margin-bottom: 8px; }
+    .pipe-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      letter-spacing: .04em;
+      margin-bottom: 4px;
+    }
+    .pipe-sub { font-size: 13px; color: var(--muted); line-height: 1.4; }
+
+    /* ── TWO PATHS ── */
+    .paths-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .path-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+    }
+    .path-card.primary {
+      border: 2px solid rgba(255,122,0,.35);
+      background: linear-gradient(148deg,rgba(255,122,0,.05) 0%,var(--card) 60%);
+    }
+    .path-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .path-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(24px,3vw,36px);
+      color: #fff;
+      line-height: .95;
+      margin-bottom: 14px;
+    }
+    .path-desc {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+    .path-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .path-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 16px;
+      color: var(--text);
+    }
+    .path-item span:first-child { flex-shrink: 0; margin-top: 2px; }
+
+    /* ── VANITY NUMBER GRID ── */
+    .vnum-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 12px;
+    }
+    .vnum-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 18px;
+      transition: border-color .2s, transform .2s;
+      text-decoration: none;
+      display: block;
+    }
+    .vnum-card:hover {
+      border-color: rgba(255,122,0,.4);
+      transform: translateY(-3px);
+    }
+    .vnum-card.featured {
+      border: 2px solid rgba(255,122,0,.4);
+      background: linear-gradient(135deg,rgba(255,122,0,.06) 0%,var(--card) 60%);
+    }
+    .vnum-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(18px,2.5vw,26px);
+      color: var(--orange);
+      letter-spacing: .04em;
+      margin-bottom: 4px;
+    }
+    .vnum-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .vnum-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--orange);
+      background: rgba(255,122,0,.1);
+      border: 1px solid rgba(255,122,0,.25);
+      border-radius: 4px;
+      padding: 2px 8px;
+      margin-bottom: 8px;
+    }
+
+    /* ── CASE STUDY ── */
+    .case-study {
+      background: var(--card);
+      border: 1px solid rgba(0,232,122,.18);
+      border-radius: 20px;
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .case-study::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg,var(--green),var(--blue));
+    }
+    .case-tag {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+    .case-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(28px,4vw,48px);
+      color: #fff;
+      line-height: .92;
+      margin-bottom: 16px;
+    }
+    .case-body {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 600px;
+      margin-bottom: 24px;
+    }
+    .case-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .case-stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 44px;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .case-stat-label {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width:860px) {
+      .flow-grid   { grid-template-columns:1fr 1fr; }
+      .pipeline    { flex-wrap:wrap; }
+      .pipe-stage  { flex:0 0 50%; border-right:none; border-bottom:1px solid var(--border); }
+      .pipe-stage:nth-child(odd) { border-right:1px solid var(--border); }
+      .pipe-stage:last-child { border-bottom:none; }
+      .paths-grid  { grid-template-columns:1fr; }
+      .vnum-grid   { grid-template-columns:1fr 1fr; }
+      .case-stats  { gap:20px; }
+    }
+    @media (max-width:600px) {
+      .flow-grid  { grid-template-columns:1fr; }
+      .flow-arrow { display:none; }
+      .vnum-grid  { grid-template-columns:1fr; }
+      .case-study { padding:24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════════════ -->
+<div id="nav-placeholder"></div>
+
+
+<!-- ══ HERO ══════════════════════════════════════════════ -->
+<section class="hero pcb">
+  <svg class="hero-svg" viewBox="0 0 1200 620" preserveAspectRatio="none">
+    <path class="trace trace-1" d="M0,100 L220,100 L220,260 L520,260 L520,140 L820,140 L820,300 L1200,300"/>
+    <path class="trace trace-2" d="M0,420 L310,420 L310,240 L610,240 L610,380 L920,380 L920,210 L1200,210"/>
+    <path class="trace trace-3" d="M0,60  L160,60  L160,190 L440,190 L440,70  L720,70  L720,290 L1200,290"/>
+  </svg>
+
+  <div class="hero-inner reveal">
+    <div>
+      <div class="eyebrow"><div class="eyebrow-dot"></div>👷 Digital Office for Contractors & Trades</div>
+      <h1 class="hero-hed">
+        You build.<br>
+        <span class="acc">We run the<br>office behind it.</span>
+      </h1>
+      <p class="hero-sub">
+        You're on the job site. Every unanswered call is a job going to the next contractor on the list. The Digital Office captures, qualifies, and routes every inbound — automatically.
+      </p>
+      <div class="trust-row">
+        <div class="trust-chip">Every call answered</div>
+        <div class="trust-chip">Leads routed while you work</div>
+        <div class="trust-chip">Pipeline visible from your phone</div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <a href="https://app.chatbotfarm.ai/857-fix-crew" class="btn-p" style="font-size:18px;padding:13px 28px;text-decoration:none">
+          Get Your Fix-Crew Number →
+        </a>
+        <a href="tel:+12542683276" class="btn-s" style="font-size:16px;padding:11px 22px">
+          📞 (254) BOT-FARM
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px 24px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--orange);letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px">What happens when a lead calls</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,122,0,.1);border:1px solid rgba(255,122,0,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--orange)">1</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:17px;color:#fff;margin-bottom:2px">📞 Call hits your vanity number</div>
+              <div style="font-size:15px;color:var(--muted)">857-Fix-Crew answers 24/7 — you never miss it</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,122,0,.1);border:1px solid rgba(255,122,0,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--orange)">2</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:17px;color:#fff;margin-bottom:2px">🤖 AI Front Desk qualifies</div>
+              <div style="font-size:15px;color:var(--muted)">Collects job type, location, urgency — structures it</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,122,0,.1);border:1px solid rgba(255,122,0,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--orange)">3</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:17px;color:#fff;margin-bottom:2px">⚡ Job enters your pipeline</div>
+              <div style="font-size:15px;color:var(--muted)">Estimate request sent, follow-up scheduled, nothing dropped</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,232,122,.1);border:1px solid rgba(0,232,122,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--green)">4</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:17px;color:#fff;margin-bottom:2px">💰 You close the job</div>
+              <div style="font-size:15px;color:var(--muted)">You stayed on site. The system did the office work.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ TAGLINE ════════════════════════════════════════════ -->
+<div style="background:var(--ink);border-bottom:1px solid var(--border)">
+  <div style="max-width:1140px;margin:0 auto;padding:40px 24px 52px;text-align:center">
+    <p style="font-size:16px;color:var(--muted);margin-bottom:14px;letter-spacing:.01em">
+      Every unanswered call is a job going to the next contractor on the list.
+    </p>
+    <div class="disp" style="font-size:clamp(36px,5.5vw,72px);color:var(--orange);letter-spacing:.03em">
+      You build. We answer.
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ THE PROBLEM ═══════════════════════════════════════ -->
+<section style="background:var(--panel)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div style="max-width:680px;margin:0 auto;text-align:center;margin-bottom:52px">
+      <div class="eyebrow" style="margin:0 auto 20px;display:inline-flex">
+        <div class="eyebrow-dot"></div>The contractor problem
+      </div>
+      <h2 class="disp" style="font-size:clamp(32px,5vw,64px);color:#fff;line-height:.92;margin-bottom:16px">
+        You're losing jobs<br><span style="color:var(--orange)">you never even knew about.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);line-height:1.7">
+        A customer calls while you're under a sink. They leave a voicemail. You see it 4 hours later. By then they've already called three other contractors.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px" class="problem-grid">
+      <div style="background:var(--card);border:1px solid rgba(255,80,60,.15);border-radius:18px;padding:28px 24px">
+        <div style="font-size:32px;margin-bottom:14px">📵</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:8px">Missed calls</div>
+        <p style="font-size:16px;color:var(--muted);line-height:1.65">You're on a job. Phone rings. You can't answer. That caller books the next contractor who picks up.</p>
+      </div>
+      <div style="background:var(--card);border:1px solid rgba(255,80,60,.15);border-radius:18px;padding:28px 24px">
+        <div style="font-size:32px;margin-bottom:14px">🧠</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:8px">Manual follow-up</div>
+        <p style="font-size:16px;color:var(--muted);line-height:1.65">Leads sit in voicemail, texts, emails. You're supposed to remember who to call back and when. You don't always.</p>
+      </div>
+      <div style="background:var(--card);border:1px solid rgba(255,80,60,.15);border-radius:18px;padding:28px 24px">
+        <div style="font-size:32px;margin-bottom:14px">🌫️</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:8px">No pipeline visibility</div>
+        <p style="font-size:16px;color:var(--muted);line-height:1.65">How many leads came in this week? How many became estimates? How many became jobs? You don't actually know.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ HOW THE CALL FLOW WORKS ════════════════════════════ -->
+<div class="divider">What happens when a customer contacts you</div>
+<section style="background:var(--ink)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div style="text-align:center;margin-bottom:44px">
+      <h2 class="disp" style="font-size:clamp(30px,4.5vw,58px);color:#fff;line-height:.92;margin-bottom:10px">
+        The system runs the intake.<br><span style="color:var(--orange)">You run the job.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto">
+        Every channel — call, SMS, web form, DM — flows into one pipeline. Automatically.
+      </p>
+    </div>
+
+    <div class="flow-grid">
+      <div class="flow-step" style="background:rgba(26,143,255,.04)">
+        <div class="flow-arrow">→</div>
+        <div class="flow-num">01</div>
+        <div class="flow-title">📞 Customer contacts</div>
+        <p class="flow-body">Calls your vanity number, texts, fills a web form, or DMs. All channels captured.</p>
+      </div>
+      <div class="flow-step" style="background:rgba(255,122,0,.04)">
+        <div class="flow-arrow">→</div>
+        <div class="flow-num">02</div>
+        <div class="flow-title">🤖 AI Front Desk responds</div>
+        <p class="flow-body">Answers immediately. Collects job type, address, urgency. Structures the intake.</p>
+      </div>
+      <div class="flow-step" style="background:rgba(255,170,0,.04)">
+        <div class="flow-arrow">→</div>
+        <div class="flow-num">03</div>
+        <div class="flow-title">⚡ Pipeline triggered</div>
+        <p class="flow-body">Lead logged, estimate request sent, follow-up sequence started. Zero manual input.</p>
+      </div>
+      <div class="flow-step" style="background:rgba(0,232,122,.04)">
+        <div class="flow-num">04</div>
+        <div class="flow-title">💰 You close the job</div>
+        <p class="flow-body">You get a notification with full job details. Show up, quote, close. System handled the rest.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ PIPELINE STAGES ════════════════════════════════════ -->
+<section style="background:var(--panel)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div style="text-align:center;margin-bottom:44px">
+      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
+        <div class="eyebrow-dot"></div>Your pipeline stages
+      </div>
+      <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:10px">
+        First call to paid invoice.<br><span style="color:var(--orange)">Every stage tracked.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);max-width:440px;margin:0 auto">
+        You see every lead, every stage, every action — from your phone.
+      </p>
+    </div>
+
+    <div class="pipeline">
+      <div class="pipe-stage">
+        <div class="pipe-ico">📥</div>
+        <div class="pipe-label">New Lead</div>
+        <div class="pipe-sub">Captured & logged</div>
+      </div>
+      <div class="pipe-stage">
+        <div class="pipe-ico">🔍</div>
+        <div class="pipe-label">Qualified</div>
+        <div class="pipe-sub">Job type & details collected</div>
+      </div>
+      <div class="pipe-stage">
+        <div class="pipe-ico">📋</div>
+        <div class="pipe-label">Estimate Sent</div>
+        <div class="pipe-sub">Auto-triggered or manual</div>
+      </div>
+      <div class="pipe-stage">
+        <div class="pipe-ico">🤝</div>
+        <div class="pipe-label">Job Booked</div>
+        <div class="pipe-sub">Scheduled & confirmed</div>
+      </div>
+      <div class="pipe-stage">
+        <div class="pipe-ico">🔨</div>
+        <div class="pipe-label">In Progress</div>
+        <div class="pipe-sub">Active job on site</div>
+      </div>
+      <div class="pipe-stage" style="background:rgba(0,232,122,.04);border-color:rgba(0,232,122,.12)">
+        <div class="pipe-ico">💰</div>
+        <div class="pipe-label" style="color:var(--green)">Invoice Paid</div>
+        <div class="pipe-sub">Revenue collected</div>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:16px;color:var(--muted);margin-top:20px">
+      Re-engagement kicks in automatically after job close — review requests, referral prompts, repeat booking sequences.
+    </p>
+  </div>
+</section>
+
+
+<!-- ══ TWO PATHS ══════════════════════════════════════════ -->
+<div class="divider">Two ways to work with us</div>
+<section style="background:var(--ink)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div style="text-align:center;margin-bottom:44px">
+      <h2 class="disp" style="font-size:clamp(30px,4.5vw,58px);color:#fff;line-height:.92;margin-bottom:10px">
+        Your brand or ours.<br><span style="color:var(--orange)">Same system either way.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto">
+        The Digital Office runs identically either way. The difference is how you go to market.
+      </p>
+    </div>
+
+    <div class="paths-grid">
+      <div class="path-card primary">
+        <div class="path-eyebrow" style="color:var(--orange)">Path 1 — Your brand</div>
+        <div class="path-title">We build on<br>your business</div>
+        <p class="path-desc">Your existing company gets a Digital Office. We become your invisible IT and CRM department — running the system under your brand.</p>
+        <div class="path-list">
+          <div class="path-item"><span>👷</span><span>Your business name, your number, your brand</span></div>
+          <div class="path-item"><span>⚙️</span><span>We configure and manage the full system</span></div>
+          <div class="path-item"><span>📊</span><span>You get the pipeline, we manage the stack</span></div>
+          <div class="path-item"><span>🔒</span><span>All customer data stays with you</span></div>
+        </div>
+        <a href="/#book" class="vcta solid" style="text-decoration:none;display:block">Build on my brand →</a>
+      </div>
+
+      <div class="path-card">
+        <div class="path-eyebrow" style="color:var(--blue)">Path 2 — Our brand</div>
+        <div class="path-title">You operate under<br>Fix-Crew</div>
+        <p class="path-desc">Get a vanity number, brand license, and fully configured Digital Office. A ready-to-run operation with a built-in IT department — from day one.</p>
+        <div class="path-list">
+          <div class="path-item"><span>📞</span><span>Vanity number like 857-Fix-Crew included</span></div>
+          <div class="path-item"><span>🏗️</span><span>Brand license — operate under the Fix-Crew identity</span></div>
+          <div class="path-item"><span>🚀</span><span>Full Digital Office configured and ready</span></div>
+          <div class="path-item"><span>🤝</span><span>We run the system — you run the crew</span></div>
+        </div>
+        <a href="#vanity" class="vcta out" style="text-decoration:none;display:block">See available numbers →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ CASE STUDY ═════════════════════════════════════════ -->
+<div class="divider">Live system — 857-For-Hire</div>
+<section style="background:var(--panel)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div class="case-study">
+      <div class="case-tag">✓ Live deployment · Construction & Trades</div>
+      <h2 class="case-title">857-For-Hire<br>Construction Crew</h2>
+      <p class="case-body">
+        A multi-crew construction operation running inbound through a dedicated vanity number. Owner stays on site. Every call is captured, qualified, and routed to the right crew lead. Pipeline visible from a phone. No receptionist. No missed leads.
+      </p>
+      <div class="case-stats">
+        <div>
+          <div class="case-stat-num">100%</div>
+          <div class="case-stat-label">Inbound captured<br>24/7</div>
+        </div>
+        <div>
+          <div class="case-stat-num">0</div>
+          <div class="case-stat-label">Receptionists<br>on payroll</div>
+        </div>
+        <div>
+          <div class="case-stat-num">1</div>
+          <div class="case-stat-label">Pipeline for all<br>leads & jobs</div>
+        </div>
+        <div>
+          <div class="case-stat-num">857</div>
+          <div class="case-stat-label">For-Hire — the number<br>that sells itself</div>
+        </div>
+      </div>
+      <div style="margin-top:28px;padding-top:24px;border-top:1px solid var(--border);display:flex;gap:12px;flex-wrap:wrap">
+        <a href="https://app.chatbotfarm.ai/857-for-hire" class="vcta solid" style="width:auto;padding:13px 28px;text-decoration:none;display:inline-block">
+          See 857-For-Hire live →
+        </a>
+        <a href="tel:+18574367447"
+          style="display:inline-flex;align-items:center;gap:8px;padding:13px 22px;background:rgba(0,232,122,.08);border:1px solid rgba(0,232,122,.25);border-radius:50px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.07em;color:var(--green);text-decoration:none">
+          📞 Call 857-FOR-HIRE
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ VANITY NUMBERS ═════════════════════════════════════ -->
+<div class="divider" id="vanity">Available vanity numbers — Contractors & Trades</div>
+<section style="background:var(--ink)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div style="text-align:center;margin-bottom:44px">
+      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
+        <div class="eyebrow-dot"></div>Phone numbers as business assets
+      </div>
+      <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:12px">
+        A number that sells<br><span style="color:var(--orange)">before the call is answered.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto">
+        Every number below comes with a fully configured Digital Office. Pick the one that fits your market.
+      </p>
+    </div>
+
+    <div class="vnum-grid">
+      <a href="https://app.chatbotfarm.ai/857-fix-crew" class="vnum-card featured">
+        <div class="vnum-badge">Most Popular</div>
+        <div class="vnum-number">857-FIX-CREW</div>
+        <div class="vnum-desc">Boston/New England market · General contractors & trades · High recall</div>
+      </a>
+      <a href="https://app.chatbotfarm.ai/781-fix-crew" class="vnum-card">
+        <div class="vnum-number">781-FIX-CREW</div>
+        <div class="vnum-desc">South Shore MA market · Same Fix-Crew brand · Different area code</div>
+      </a>
+      <a href="https://app.chatbotfarm.ai/862-mb-mason" class="vnum-card">
+        <div class="vnum-number">862-MB-MASON</div>
+        <div class="vnum-desc">New Jersey market · Masonry & stonework · Premium positioning</div>
+      </a>
+      <a href="https://app.chatbotfarm.ai/234-aqua-pro" class="vnum-card">
+        <div class="vnum-number">234-AQUA-PRO</div>
+        <div class="vnum-desc">Ohio market · Plumbing & water systems · Professional positioning</div>
+      </a>
+      <a href="https://app.chatbotfarm.ai/254-amp-flow" class="vnum-card">
+        <div class="vnum-number">254-AMP-FLOW</div>
+        <div class="vnum-desc">Texas market · Electrical contractors · Energy forward</div>
+      </a>
+      <a href="https://app.chatbotfarm.ai/712-hvac-guy" class="vnum-card">
+        <div class="vnum-number">712-HVAC-GUY</div>
+        <div class="vnum-desc">Iowa/Midwest market · HVAC specialists · Friendly & direct</div>
+      </a>
+    </div>
+
+    <div style="text-align:center;margin-top:28px">
+      <p style="font-size:16px;color:var(--muted);margin-bottom:16px">Don't see your market or trade? We have more numbers available.</p>
+      <a href="/#book" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:rgba(255,122,0,.08);border:1px solid rgba(255,122,0,.28);border-radius:50px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.07em;color:var(--orange);text-decoration:none">
+        Request a number for your market →
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FINAL CTA ═══════════════════════════════════════════ -->
+<div class="divider">Get your Digital Office running</div>
+<section class="cta-s pcb" id="book">
+  <div class="cta-inner reveal">
+    <h2 class="cta-hed">You build the jobs.<br><em>We build the system<br>that fills them.</em></h2>
+    <p class="cta-body">
+      15 minutes. We map your intake, design your pipeline, and show you exactly what your Digital Office looks like for your trade.
+    </p>
+    <div style="margin-bottom:24px;padding:14px 20px;border:1px solid var(--border);border-radius:10px;background:rgba(255,255,255,.03);text-align:center">
+      <p style="font-size:16px;color:var(--muted);line-height:1.6">
+        Every number comes with a configured Digital Office.<br>
+        <strong style="color:var(--text)">You pick the number. We run the system.</strong>
+      </p>
+    </div>
+    <div class="ss">
+      <div class="ss-item"><span style="color:var(--orange);margin-right:5px">1</span>Pick your number</div>
+      <div class="ss-arr">→</div>
+      <div class="ss-item"><span style="color:var(--orange);margin-right:5px">2</span>Book 15-min call</div>
+      <div class="ss-arr">→</div>
+      <div class="ss-item last"><span style="color:var(--green);margin-right:5px">3</span>We build your system</div>
+    </div>
+    <div class="cta-btns">
+      <button class="btn-p" onclick="document.querySelector('.cal-wrap').scrollIntoView({behavior:'smooth'})">
+        Plan Your System →
+      </button>
+      <a href="tel:+12542683276" class="btn-s">📞 (254) BOT-FARM</a>
+    </div>
+    <div class="assure">
+      <span>✓</span> No pitch. Just the plan. &nbsp;·&nbsp;
+      <span>✓</span> No build until architecture approved &nbsp;·&nbsp;
+      <span>✓</span> You own all customer data
+    </div>
+  </div>
+
+  <div class="cal-wrap">
+    <div class="cal-top">
+      <div class="disp">Schedule your planning session</div>
+      <p>Choose a time below. This is where system design begins.</p>
+    </div>
+    <iframe src="https://link.msgsndr.com/widget/booking/qJbe25XqIsy6rIZ9wNUu"
+      style="width:100%;height:900px;border:1px solid var(--border);border-top:none;border-radius:0 0 18px 18px;overflow:hidden;display:block;"
+      scrolling="no"></iframe>
+    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ════════════════════════════════════════════ -->
+<div id="footer-placeholder"></div>
+
+<script src="/assets/components.js"></script>
+<script>
+  /* fix 3-col problem grid on mobile */
+  const pg = document.querySelector('.problem-grid');
+  if (pg) {
+    const mq = window.matchMedia('(max-width:860px)');
+    const fix = e => pg.style.gridTemplateColumns = e.matches ? '1fr' : '1fr 1fr 1fr';
+    mq.addEventListener('change', fix); fix(mq);
+  }
+</script>
+
+</body>
+</html>
