@@ -202,7 +202,7 @@ p:last-child { margin-bottom: 0; }
   line-height:.87; color:#fff;
   margin-bottom:22px;
 }
-.hero-hed .acc { color:var(--orange); display:block; text-shadow:0 0 40px rgba(255,122,0,.4); }
+.hero-hed .acc { color:var(--orange); display:block; }
 .hero-sub {
   font-size:18px; color:var(--muted);
   max-width:460px; line-height:1.75; margin-bottom:26px;
