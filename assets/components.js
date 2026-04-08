@@ -1,13 +1,6 @@
 /* ============================================================
    ChatbotFarm.ai — Component Loader
    Injects shared nav and footer into every page.
-
-   Usage — add these two divs to any page:
-     <div id="nav-placeholder"></div>   ← top of <body>
-     <div id="footer-placeholder"></div> ← bottom of <body>, before </body>
-
-   Then load this script:
-     <script src="/assets/components.js"></script>
    ============================================================ */
 
 (function () {
@@ -16,13 +9,41 @@
   const NAV = `
 <nav class="nav">
   <div class="nav-inner">
+
+    <!-- LOGO -->
     <a href="/" style="display:flex;align-items:center;text-decoration:none;flex-shrink:0">
       <img src="https://assets.cdn.filesafe.space/jD3rvaWtP7z9FUt4o7dZ/media/696baae65e05d44fc069c0d9.png"
         alt="ChatbotFarm.ai"
         class="nav-logo"
         onerror="this.remove()">
     </a>
-    <a href="/#book" class="nav-cta">Plan Your System →</a>
+
+    <!-- NAV LINKS -->
+    <div style="display:flex;align-items:center;gap:24px;margin-left:auto;margin-right:20px;flex-wrap:wrap">
+
+      <a href="/" style="color:var(--text);text-decoration:none;font-size:16px">
+        Home
+      </a>
+
+      <a href="/contractors" style="color:var(--text);text-decoration:none;font-size:16px">
+        Contractors
+      </a>
+
+      <a href="/medspas" style="color:var(--text);text-decoration:none;font-size:16px">
+        Med Spas
+      </a>
+
+      <a href="/ghost-kitchens" style="color:var(--text);text-decoration:none;font-size:16px">
+        Ghost Kitchens
+      </a>
+
+    </div>
+
+    <!-- CTA -->
+    <a href="#book" class="nav-cta">
+      Plan Your System →
+    </a>
+
   </div>
 </nav>`;
 
@@ -60,17 +81,18 @@
     inject('nav-placeholder', NAV);
     inject('footer-placeholder', FOOTER);
 
-    /* set current year in all .cbf-year spans */
+    /* set current year */
     document.querySelectorAll('.cbf-year').forEach(function (el) {
       el.textContent = new Date().getFullYear();
     });
 
-    /* scroll reveal — shared across all pages */
+    /* scroll reveal */
     const obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) e.target.classList.add('vis');
       });
     }, { threshold: 0.06 });
+
     document.querySelectorAll('.reveal').forEach(function (el) {
       obs.observe(el);
     });
