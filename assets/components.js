@@ -7,7 +7,7 @@
 
   /* ── NAV ── */
   const NAV = `
-<nav class="nav">
+<nav class="nav" style="position:relative">
   <div class="nav-inner">
 
     <!-- LOGO -->
@@ -18,31 +18,23 @@
         onerror="this.remove()">
     </a>
 
-    <!-- NAV LINKS -->
-    <div style="display:flex;align-items:center;gap:24px;margin-left:auto;margin-right:20px;flex-wrap:wrap">
-
-      <a href="/" style="color:var(--text);text-decoration:none;font-size:16px">
-        Home
-      </a>
-
-      <a href="/contractors" style="color:var(--text);text-decoration:none;font-size:16px">
-        Contractors
-      </a>
-
-      <a href="/medspas" style="color:var(--text);text-decoration:none;font-size:16px">
-        Med Spas
-      </a>
-
-      <a href="/ghost-kitchens" style="color:var(--text);text-decoration:none;font-size:16px">
-        Ghost Kitchens
-      </a>
-
+    <!-- NAV LINKS (desktop) -->
+    <div class="nav-links" id="cbf-nav-menu">
+      <a href="/" style="color:var(--text);text-decoration:none;font-size:16px">Home</a>
+      <a href="/contractors" style="color:var(--text);text-decoration:none;font-size:16px">Contractors</a>
+      <a href="/medspas" style="color:var(--text);text-decoration:none;font-size:16px">Med Spas</a>
+      <a href="/ghost-kitchens" style="color:var(--text);text-decoration:none;font-size:16px">Ghost Kitchens</a>
+      <div class="nav-cta-wrap">
+        <a href="#book" class="nav-cta">Plan Your System →</a>
+      </div>
     </div>
 
-    <!-- CTA -->
-    <a href="#book" class="nav-cta">
-      Plan Your System →
-    </a>
+    <!-- HAMBURGER (mobile) -->
+    <button class="nav-hamburger" id="cbf-nav-toggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
   </div>
 </nav>`;
@@ -86,8 +78,35 @@
       el.textContent = new Date().getFullYear();
     });
 
+    /* hamburger toggle */
+    var toggle = document.getElementById('cbf-nav-toggle');
+    var menu   = document.getElementById('cbf-nav-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', function () {
+        var isOpen = menu.classList.toggle('open');
+        toggle.classList.toggle('open', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen);
+      });
+      /* close menu on link click */
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          menu.classList.remove('open');
+          toggle.classList.remove('open');
+          toggle.setAttribute('aria-expanded', false);
+        });
+      });
+      /* close on outside click */
+      document.addEventListener('click', function (e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('open');
+          toggle.classList.remove('open');
+          toggle.setAttribute('aria-expanded', false);
+        }
+      });
+    }
+
     /* scroll reveal */
-    const obs = new IntersectionObserver(function (entries) {
+    var obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) e.target.classList.add('vis');
       });
