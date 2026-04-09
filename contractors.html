@@ -103,6 +103,15 @@
       padding: 4px 0;
       line-height: 1;
     }
+    /* lifecycle arrows — hidden on desktop */
+    .lifecycle-arrow {
+      display: none;
+      text-align: center;
+      font-size: 28px;
+      color: var(--orange);
+      padding: 4px 0;
+      line-height: 1;
+    }
 
     /* ── VANITY NUMBER GRID ── */
     .vnum-grid {
@@ -196,6 +205,8 @@
       gap: 32px;
       flex-wrap: wrap;
     }
+    .val-name { font-size:16px; color:var(--text); font-weight:600; }
+    .val-price { font-size:16px; color:rgba(255,80,60,.8); text-align:right; }
     .case-stat-num {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 44px;
@@ -214,19 +225,25 @@
       .flow-grid        { grid-template-columns:1fr 1fr; }
       /* pipeline → vertical flow on mobile */
       .pipeline         { flex-direction:column; border-radius:16px; }
-      .pipe-stage       { border-right:none; border-bottom:1px solid var(--border); flex:none; padding:18px 24px; display:flex; align-items:center; gap:16px; text-align:left; }
+      .pipe-stage       { border-right:none; border-bottom:1px solid var(--border); flex:none; padding:22px 24px; display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center; }
       .pipe-stage:last-child { border-bottom:none; }
-      .pipe-ico         { font-size:28px; flex-shrink:0; margin-bottom:0; }
+      .pipe-ico         { font-size:32px; margin-bottom:0; }
       .pipe-arrow-mobile { display:block; }
       .case-stats       { gap:20px; }
-      .offer-grid       { grid-template-columns:1fr; }
-      .lifecycle-grid   { grid-template-columns:1fr; }
+      .offer-grid       { grid-template-columns:1fr !important; }
+      .offer-card-pad   { padding:24px 20px !important; }
+      .lifecycle-grid   { grid-template-columns:1fr !important; }
+      .lifecycle-card   { width:100%; text-align:center; }
+      .lifecycle-card p { text-align:center; }
+      .lifecycle-arrow  { display:block; }
       /* hide hero right card on mobile — flow section covers it */
       .hero-right       { display:none; }
-      /* value table — stack to 2 columns on tablet */
+      /* value table — stack to single column on mobile */
       .val-table-header { display:none; }
-      .val-row          { grid-template-columns:1fr auto !important; }
-      .val-total        { grid-template-columns:1fr !important; gap:6px; }
+      .val-row          { grid-template-columns:1fr !important; padding:14px 20px !important; }
+      .val-price        { color:rgba(255,80,60,.8); font-size:15px; margin-top:4px; }
+      .val-total        { grid-template-columns:1fr !important; gap:6px; padding:16px 20px !important; }
+      .val-total > div:last-child { font-size:20px !important; }
     }
     @media (max-width:600px) {
       .flow-grid    { grid-template-columns:1fr; }
@@ -486,20 +503,22 @@
       </p>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px" class="lifecycle-grid">
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 24px;position:relative">
+    <div class="lifecycle-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px">
+      <div class="lifecycle-card" style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 24px;position:relative">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);border-radius:16px 16px 0 0"></div>
         <div style="font-size:28px;margin-bottom:14px">📥</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:8px">Intake</div>
         <p style="font-size:16px;color:var(--muted);line-height:1.65">Every call, message, and request is captured, qualified, and logged automatically. Nothing enters the system manually.</p>
       </div>
-      <div style="background:var(--card);border:1px solid rgba(255,122,0,.2);border-radius:16px;padding:28px 24px;position:relative">
+      <div class="lifecycle-arrow">↓</div>
+      <div class="lifecycle-card" style="background:var(--card);border:1px solid rgba(255,122,0,.2);border-radius:16px;padding:28px 24px;position:relative">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--orange);border-radius:16px 16px 0 0"></div>
         <div style="font-size:28px;margin-bottom:14px">📋</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:8px">Job Management</div>
         <p style="font-size:16px;color:var(--muted);line-height:1.65">Job details are structured and pushed into scheduling and dispatch — ready for your crew to act. No re-entry, no lost details.</p>
       </div>
-      <div style="background:var(--card);border:1px solid rgba(0,232,122,.15);border-radius:16px;padding:28px 24px;position:relative">
+      <div class="lifecycle-arrow">↓</div>
+      <div class="lifecycle-card" style="background:var(--card);border:1px solid rgba(0,232,122,.15);border-radius:16px;padding:28px 24px;position:relative">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--green);border-radius:16px 16px 0 0"></div>
         <div style="font-size:28px;margin-bottom:14px">💰</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:8px">Completion</div>
@@ -577,64 +596,60 @@
     </div>
 
     <!-- Replacement table -->
-    <div class="val-table" style="border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:44px">
+    <div class="val-table" style="border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:28px">
 
-      <!-- header row — hidden on mobile via CSS -->
-      <div class="val-table-header" style="display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--card);border-bottom:1px solid var(--border);padding:14px 24px">
+      <!-- header row — hidden on mobile -->
+      <div class="val-table-header" style="display:grid;grid-template-columns:1fr 1fr;background:var(--card);border-bottom:1px solid var(--border);padding:14px 24px">
         <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--muted);letter-spacing:.1em">What you'd need</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--muted);letter-spacing:.1em">Monthly cost if hired separately</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--green);letter-spacing:.1em;text-align:right">Included</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--muted);letter-spacing:.1em;text-align:right">Monthly cost if hired separately</div>
       </div>
 
       <!-- rows -->
-      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center">
-        <div style="font-size:16px;color:var(--text);font-weight:600">👤 Front Desk / Receptionist</div>
-        <div style="font-size:16px;color:rgba(255,80,60,.8)">$3,200 – $4,500 / mo</div>
-        <div class="val-check" style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
+      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center">
+        <div class="val-name">👤 Front Desk / Receptionist</div>
+        <div class="val-price">$3,200 – $4,500 / mo</div>
       </div>
-      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center;background:rgba(255,255,255,.02)">
-        <div style="font-size:16px;color:var(--text);font-weight:600">📞 24/7 Answering Service</div>
-        <div style="font-size:16px;color:rgba(255,80,60,.8)">$400 – $1,200 / mo</div>
-        <div class="val-check" style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
+      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center;background:rgba(255,255,255,.02)">
+        <div class="val-name">📞 24/7 Answering Service</div>
+        <div class="val-price">$400 – $1,200 / mo</div>
       </div>
-      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center">
-        <div style="font-size:16px;color:var(--text);font-weight:600">🔄 Follow-Up Coordinator</div>
-        <div style="font-size:16px;color:rgba(255,80,60,.8)">$2,500 – $3,500 / mo</div>
-        <div class="val-check" style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
+      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center">
+        <div class="val-name">🔄 Follow-Up Coordinator</div>
+        <div class="val-price">$2,500 – $3,500 / mo</div>
       </div>
-      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center;background:rgba(255,255,255,.02)">
-        <div style="font-size:16px;color:var(--text);font-weight:600">📋 CRM & Pipeline Software</div>
-        <div style="font-size:16px;color:rgba(255,80,60,.8)">$300 – $800 / mo</div>
-        <div class="val-check" style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
+      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center;background:rgba(255,255,255,.02)">
+        <div class="val-name">📋 CRM & Pipeline Software</div>
+        <div class="val-price">$300 – $800 / mo</div>
       </div>
-      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center">
-        <div style="font-size:16px;color:var(--text);font-weight:600">📲 SMS & Email Automation</div>
-        <div style="font-size:16px;color:rgba(255,80,60,.8)">$200 – $500 / mo</div>
-        <div class="val-check" style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
+      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center">
+        <div class="val-name">📲 SMS & Email Automation</div>
+        <div class="val-price">$200 – $500 / mo</div>
       </div>
-      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center;background:rgba(255,255,255,.02)">
-        <div style="font-size:16px;color:var(--text);font-weight:600">⭐ Reputation Management</div>
-        <div style="font-size:16px;color:rgba(255,80,60,.8)">$150 – $300 / mo</div>
-        <div class="val-check" style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
+      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center;background:rgba(255,255,255,.02)">
+        <div class="val-name">⭐ Reputation Management</div>
+        <div class="val-price">$150 – $300 / mo</div>
       </div>
-      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center">
-        <div style="font-size:16px;color:var(--text);font-weight:600">📊 Call Tracking & Recording</div>
-        <div style="font-size:16px;color:rgba(255,80,60,.8)">$100 – $250 / mo</div>
-        <div class="val-check" style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
+      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center">
+        <div class="val-name">📊 Call Tracking & Recording</div>
+        <div class="val-price">$100 – $250 / mo</div>
       </div>
-      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center;background:rgba(255,255,255,.02)">
-        <div style="font-size:16px;color:var(--text);font-weight:600">🗓️ Booking & Scheduling</div>
-        <div style="font-size:16px;color:rgba(255,80,60,.8)">$100 – $300 / mo</div>
-        <div class="val-check" style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
+      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center;background:rgba(255,255,255,.02)">
+        <div class="val-name">🗓️ Booking & Scheduling</div>
+        <div class="val-price">$100 – $300 / mo</div>
       </div>
 
       <!-- total row -->
-      <div class="val-total" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:20px 24px;background:rgba(255,80,60,.06);border-top:2px solid rgba(255,80,60,.2);align-items:center">
+      <div class="val-total" style="display:grid;grid-template-columns:1fr 1fr;padding:20px 24px;background:rgba(255,80,60,.06);border-top:2px solid rgba(255,80,60,.2);align-items:center">
         <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#fff">If you hired all of this separately</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:rgba(255,80,60,.9)">$6,750 – $11,350 / mo</div>
-        <div class="val-check" style="text-align:right;font-size:14px;color:var(--muted)">+ setup + management</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:rgba(255,80,60,.9);text-align:right">$6,750 – $11,350 / mo</div>
       </div>
 
+    </div>
+
+    <!-- inclusion close line -->
+    <div style="border:1px solid rgba(0,232,122,.25);border-radius:12px;padding:16px 24px;background:rgba(0,232,122,.05);text-align:center;margin-bottom:44px">
+      <span style="color:var(--green);font-size:20px;margin-right:8px">✓</span>
+      <span style="font-size:17px;color:var(--text);font-weight:600">All of the above — included in your Digital Office at no extra cost.</span>
     </div>
 
     <p style="text-align:center;font-size:18px;color:var(--text);font-weight:600;max-width:640px;margin:0 auto;line-height:1.6;padding:28px 0 0">
@@ -663,7 +678,7 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px" class="offer-grid">
 
       <!-- OPTION 1 — CUSTOM DIGITAL OFFICE -->
-      <div style="background:linear-gradient(148deg,rgba(255,122,0,.07) 0%,var(--card) 60%);border:2px solid rgba(255,122,0,.4);border-radius:20px;padding:36px 32px;position:relative;overflow:hidden">
+      <div class="offer-card-pad" style="background:linear-gradient(148deg,rgba(255,122,0,.07) 0%,var(--card) 60%);border:2px solid rgba(255,122,0,.4);border-radius:20px;padding:36px 32px;position:relative;overflow:hidden">
         <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--orange),var(--amber))"></div>
         <div style="display:inline-block;background:linear-gradient(135deg,var(--orange),var(--amber));color:#fff;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.08em;padding:4px 14px;border-radius:4px;margin-bottom:16px">Most Popular</div>
         <div style="font-size:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);margin-bottom:8px">Digital Office — Your Business</div>
@@ -697,7 +712,7 @@
       </div>
 
       <!-- OPTION 2 — BRAND LEASE -->
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px 32px;position:relative;overflow:hidden">
+      <div class="offer-card-pad" style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px 32px;position:relative;overflow:hidden">
         <div style="font-size:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:8px">Brand Lease — Ready to Run</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,44px);color:#fff;line-height:.92;margin-bottom:16px">Pre-built system.<br>Launch faster.</div>
 
