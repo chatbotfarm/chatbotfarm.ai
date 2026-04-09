@@ -192,8 +192,8 @@
               <div style="width:1px;flex:1;background:rgba(255,255,255,.1);margin:5px 0"></div>
             </div>
             <div style="padding-bottom:18px">
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#fff;margin-bottom:3px">Estimate Approved → Job Booked</div>
-              <div style="font-size:14px;color:var(--muted)">You approve the estimate. Booking sequence fires. Crew briefed.</div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#fff;margin-bottom:3px">Internal Workflows Fire</div>
+              <div style="font-size:14px;color:var(--muted)">Estimates, booking, scheduling — system handles it. We map it to your business on the call.</div>
             </div>
           </div>
 
@@ -366,73 +366,7 @@
     </div>
 
 
-    <!-- ══════════════════════════════════════
-         PHASE 2 — WORKFLOWS
-    ══════════════════════════════════════ -->
-    <div class="phase-sep reveal">
-      <div class="phase-sep-line" style="background:rgba(255,122,0,.35)"></div>
-      <div class="phase-sep-label" style="color:var(--orange)">PHASE 2 — WORKFLOWS</div>
-      <div class="phase-sep-line" style="background:rgba(255,122,0,.35)"></div>
-    </div>
-
-    <p class="phase-bridge reveal">
-      Tag determines the workflow. Workflow fires automatically. No one decides manually. You review the estimate — you approve it — it goes to the customer.
-    </p>
-
-    <!-- Stage: Estimate -->
-    <div class="stage-card reveal">
-      <div class="stage-header">
-        <div class="stage-ico">📋</div>
-        <div class="stage-title">Estimate</div>
-      </div>
-      <div class="stage-panel panel-system">
-        <div class="stage-panel-label">System</div>
-        <div class="stage-panel-body">Estimate request prepared and queued. Contractor reviews and approves. Sent to customer on approval — not before.</div>
-      </div>
-      <div class="stage-panel panel-team">
-        <div class="stage-panel-label">Team</div>
-        <div class="stage-panel-body">Pipeline reflects estimate sent. Follow-up sequence starts automatically if customer doesn't respond. No manual chasing.</div>
-      </div>
-      <div class="stage-panel panel-customer">
-        <div class="stage-panel-label">Customer</div>
-        <div class="stage-panel-body">Estimate received. Automated follow-up if no response. Never feels ignored or forgotten.</div>
-      </div>
-      <div class="stage-panel panel-removed">
-        <div class="stage-panel-label">No longer your job</div>
-        <div class="stage-panel-body">Back-and-forth texting · Chasing missing details · Manually sending quotes · Tracking who responded</div>
-      </div>
-    </div>
-
-    <div class="connector reveal">
-      <div class="connector-arrow">↓</div>
-      <div class="connector-text">Pipeline moves to "Booked" → scheduling workflow triggers → crew assigned → calendar updated → team sees job instantly</div>
-    </div>
-
-    <!-- Stage: Job Booked -->
-    <div class="stage-card reveal">
-      <div class="stage-header">
-        <div class="stage-ico">🤝</div>
-        <div class="stage-title">Job Booked</div>
-      </div>
-      <div class="stage-panel panel-system">
-        <div class="stage-panel-label">System</div>
-        <div class="stage-panel-body">Job scheduled. Calendar updated. Crew briefed with full job details. Reminder sequence queued automatically.</div>
-      </div>
-      <div class="stage-panel panel-team">
-        <div class="stage-panel-label">Team</div>
-        <div class="stage-panel-body">Job appears in pipeline as booked. Crew sees assignment without a phone call. Everyone aligned instantly.</div>
-      </div>
-      <div class="stage-panel panel-customer">
-        <div class="stage-panel-label">Customer</div>
-        <div class="stage-panel-body">Booking confirmation sent. Date and time confirmed. Reminder scheduled. No guessing on their end.</div>
-      </div>
-      <div class="stage-panel panel-removed">
-        <div class="stage-panel-label">No longer your job</div>
-        <div class="stage-panel-body">Scheduling calls · Confirming availability manually · Calendar coordination · Sending confirmation texts</div>
-      </div>
-    </div>
-
-    <!-- Owner coordination callout -->
+    <!-- Owner callout — end of Phase 1 -->
     <div style="margin:32px 0 0;padding:20px 24px;background:rgba(255,122,0,.05);border:1px solid rgba(255,122,0,.18);border-radius:12px" class="reveal">
       <p style="font-size:16px;color:var(--text);line-height:1.75;margin:0">
         You are no longer coordinating between customer, estimator, and crew.<br>
@@ -443,11 +377,11 @@
 
 
     <!-- ══════════════════════════════════════
-         PHASE 3 — JOB MANAGEMENT
+         PHASE 2 — JOB MANAGEMENT
     ══════════════════════════════════════ -->
     <div class="phase-sep reveal">
       <div class="phase-sep-line" style="background:rgba(255,170,0,.35)"></div>
-      <div class="phase-sep-label" style="color:var(--amber)">PHASE 3 — JOB MANAGEMENT</div>
+      <div class="phase-sep-label" style="color:var(--amber)">PHASE 2 — JOB MANAGEMENT</div>
       <div class="phase-sep-line" style="background:rgba(255,170,0,.35)"></div>
     </div>
 
@@ -568,11 +502,11 @@
 
 
     <!-- ══════════════════════════════════════
-         PHASE 4 — LONG-TERM NURTURE
+         PHASE 3 — LONG-TERM NURTURE
     ══════════════════════════════════════ -->
     <div class="phase-sep reveal">
       <div class="phase-sep-line" style="background:rgba(26,143,255,.35)"></div>
-      <div class="phase-sep-label" style="color:#6ab8ff">PHASE 4 — LONG-TERM NURTURE</div>
+      <div class="phase-sep-label" style="color:#6ab8ff">PHASE 3 — LONG-TERM NURTURE</div>
       <div class="phase-sep-line" style="background:rgba(26,143,255,.35)"></div>
     </div>
 
@@ -612,6 +546,25 @@
       </p>
     </div>
 
+  </div>
+</section>
+
+
+<!-- ══ WORKFLOW BRIDGE ════════════════════════════════════ -->
+<section style="background:var(--panel)" class="pcb">
+  <div style="max-width:720px;margin:0 auto;padding:48px 24px" class="reveal">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 32px">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--orange);letter-spacing:.18em;margin-bottom:14px">HOW THE SYSTEM WORKS BETWEEN STAGES</div>
+      <p style="font-size:17px;color:var(--text);line-height:1.75;margin:0 0 12px">
+        Between every stage, internal workflows do the heavy lifting — estimates, booking sequences, scheduling, reminders, routing. The system handles it based on your business logic.
+      </p>
+      <p style="font-size:16px;color:var(--muted);line-height:1.7;margin:0 0 12px">
+        Your team sees where every client is in the pipeline. Your customer knows what happens next. Nobody is guessing. Nobody is chasing.
+      </p>
+      <p style="font-size:16px;color:var(--muted);line-height:1.7;margin:0">
+        How we map and configure those workflows for your specific operation — that's what the planning session is for.
+      </p>
+    </div>
   </div>
 </section>
 
