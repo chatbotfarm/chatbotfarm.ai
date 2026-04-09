@@ -67,7 +67,7 @@
     }
     .flow-step:last-child .flow-arrow { display: none; }
 
-    /* ── PIPELINE STAGES ── */
+    /* ── PIPELINE ── */
     .pipeline {
       display: flex;
       gap: 0;
@@ -94,6 +94,15 @@
       margin-bottom: 4px;
     }
     .pipe-sub { font-size: 16px; color: var(--muted); line-height: 1.5; }
+    /* mobile arrow connectors — hidden on desktop */
+    .pipe-arrow-mobile {
+      display: none;
+      text-align: center;
+      font-size: 22px;
+      color: var(--orange);
+      padding: 4px 0;
+      line-height: 1;
+    }
 
     /* ── VANITY NUMBER GRID ── */
     .vnum-grid {
@@ -203,11 +212,12 @@
     /* ── RESPONSIVE ── */
     @media (max-width:860px) {
       .flow-grid        { grid-template-columns:1fr 1fr; }
-      .pipeline         { flex-wrap:wrap; }
-      .pipe-stage       { flex:0 0 50%; border-right:none; border-bottom:1px solid var(--border); }
-      .pipe-stage:nth-child(odd)  { border-right:1px solid var(--border); }
-      .pipe-stage:nth-child(5)    { border-bottom:1px solid var(--border); }
-      .pipe-stage:last-child      { border-bottom:none; }
+      /* pipeline → vertical flow on mobile */
+      .pipeline         { flex-direction:column; border-radius:16px; }
+      .pipe-stage       { border-right:none; border-bottom:1px solid var(--border); flex:none; padding:18px 24px; display:flex; align-items:center; gap:16px; text-align:left; }
+      .pipe-stage:last-child { border-bottom:none; }
+      .pipe-ico         { font-size:28px; flex-shrink:0; margin-bottom:0; }
+      .pipe-arrow-mobile { display:block; }
       .case-stats       { gap:20px; }
       .offer-grid       { grid-template-columns:1fr; }
       .lifecycle-grid   { grid-template-columns:1fr; }
@@ -418,26 +428,31 @@
         <div class="pipe-label">New Lead</div>
         <div class="pipe-sub">Captured & logged</div>
       </div>
+      <div class="pipe-arrow-mobile">↓</div>
       <div class="pipe-stage">
         <div class="pipe-ico">🔍</div>
         <div class="pipe-label">Qualified</div>
         <div class="pipe-sub">Job type & details collected</div>
       </div>
+      <div class="pipe-arrow-mobile">↓</div>
       <div class="pipe-stage">
         <div class="pipe-ico">📋</div>
         <div class="pipe-label">Estimate Sent</div>
         <div class="pipe-sub">Auto-triggered or manual</div>
       </div>
+      <div class="pipe-arrow-mobile">↓</div>
       <div class="pipe-stage">
         <div class="pipe-ico">🤝</div>
         <div class="pipe-label">Job Booked</div>
         <div class="pipe-sub">Scheduled & confirmed</div>
       </div>
+      <div class="pipe-arrow-mobile">↓</div>
       <div class="pipe-stage">
         <div class="pipe-ico">🔨</div>
         <div class="pipe-label">In Progress</div>
         <div class="pipe-sub">Active job on site</div>
       </div>
+      <div class="pipe-arrow-mobile">↓</div>
       <div class="pipe-stage" style="background:rgba(0,232,122,.04);border-color:rgba(0,232,122,.12)">
         <div class="pipe-ico">💰</div>
         <div class="pipe-label" style="color:var(--green)">Invoice Paid</div>
