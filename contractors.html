@@ -202,21 +202,29 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width:860px) {
-      .flow-grid   { grid-template-columns:1fr 1fr; }
-      .pipeline    { flex-wrap:wrap; }
-      .pipe-stage  { flex:0 0 50%; border-right:none; border-bottom:1px solid var(--border); }
-      .pipe-stage:nth-child(odd) { border-right:1px solid var(--border); }
-      .pipe-stage:last-child { border-bottom:none; }
-      .vnum-grid   { grid-template-columns:1fr 1fr; }
-      .case-stats  { gap:20px; }
-      .offer-grid      { grid-template-columns:1fr; }
-      .lifecycle-grid  { grid-template-columns:1fr; }
+      .flow-grid        { grid-template-columns:1fr 1fr; }
+      .pipeline         { flex-wrap:wrap; }
+      .pipe-stage       { flex:0 0 50%; border-right:none; border-bottom:1px solid var(--border); }
+      .pipe-stage:nth-child(odd)  { border-right:1px solid var(--border); }
+      .pipe-stage:nth-child(5)    { border-bottom:1px solid var(--border); }
+      .pipe-stage:last-child      { border-bottom:none; }
+      .case-stats       { gap:20px; }
+      .offer-grid       { grid-template-columns:1fr; }
+      .lifecycle-grid   { grid-template-columns:1fr; }
+      /* hide hero right card on mobile — flow section covers it */
+      .hero-right       { display:none; }
+      /* value table — stack to 2 columns on tablet */
+      .val-table-header { display:none; }
+      .val-row          { grid-template-columns:1fr auto !important; }
+      .val-total        { grid-template-columns:1fr !important; gap:6px; }
     }
     @media (max-width:600px) {
-      .flow-grid  { grid-template-columns:1fr; }
-      .flow-arrow { display:none; }
-      .vnum-grid  { grid-template-columns:1fr; }
-      .case-study { padding:24px 20px; }
+      .flow-grid    { grid-template-columns:1fr; }
+      .flow-arrow   { display:none; }
+      .case-study   { padding:24px 20px; }
+      /* case study logo centered on mobile */
+      .case-identity { flex-direction:column; align-items:center; text-align:center; }
+      .case-identity img { height:110px; }
     }
   </style>
 </head>
@@ -502,7 +510,7 @@
       <div class="case-tag">✓ Live deployment · Construction & Trades · Rhode Island</div>
 
       <!-- company identity -->
-      <div style="display:flex;align-items:center;gap:20px;margin-bottom:20px;flex-wrap:wrap">
+      <div class="case-identity" style="display:flex;align-items:center;gap:20px;margin-bottom:20px;flex-wrap:wrap">
         <img src="https://assets.cdn.filesafe.space/jD3rvaWtP7z9FUt4o7dZ/media/69d6a8aea5d3efc6dedd3ce0.png"
           alt="857 For Hire Construction Crews"
           style="height:80px;width:auto;object-fit:contain;mix-blend-mode:screen">
@@ -554,67 +562,65 @@
     </div>
 
     <!-- Replacement table -->
-    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:16px;border:1px solid var(--border);margin-bottom:44px">
-    <div style="min-width:600px">
+    <div class="val-table" style="border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:44px">
 
-      <!-- header row -->
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--card);border-bottom:1px solid var(--border);padding:14px 24px">
+      <!-- header row — hidden on mobile via CSS -->
+      <div class="val-table-header" style="display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--card);border-bottom:1px solid var(--border);padding:14px 24px">
         <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--muted);letter-spacing:.1em">What you'd need</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--muted);letter-spacing:.1em">Monthly cost if hired separately</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--green);letter-spacing:.1em;text-align:right">Included in Digital Office</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--green);letter-spacing:.1em;text-align:right">Included</div>
       </div>
 
       <!-- rows -->
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center">
+      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center">
         <div style="font-size:16px;color:var(--text);font-weight:600">👤 Front Desk / Receptionist</div>
         <div style="font-size:16px;color:rgba(255,80,60,.8)">$3,200 – $4,500 / mo</div>
-        <div style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
+        <div class="val-check" style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center;background:rgba(255,255,255,.02)">
+      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center;background:rgba(255,255,255,.02)">
         <div style="font-size:16px;color:var(--text);font-weight:600">📞 24/7 Answering Service</div>
         <div style="font-size:16px;color:rgba(255,80,60,.8)">$400 – $1,200 / mo</div>
-        <div style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
+        <div class="val-check" style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center">
+      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center">
         <div style="font-size:16px;color:var(--text);font-weight:600">🔄 Follow-Up Coordinator</div>
         <div style="font-size:16px;color:rgba(255,80,60,.8)">$2,500 – $3,500 / mo</div>
-        <div style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
+        <div class="val-check" style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center;background:rgba(255,255,255,.02)">
+      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center;background:rgba(255,255,255,.02)">
         <div style="font-size:16px;color:var(--text);font-weight:600">📋 CRM & Pipeline Software</div>
         <div style="font-size:16px;color:rgba(255,80,60,.8)">$300 – $800 / mo</div>
-        <div style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
+        <div class="val-check" style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center">
-        <div style="font-size:16px;color:var(--text);font-weight:600">📲 2-Way SMS & Email Automation</div>
+      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center">
+        <div style="font-size:16px;color:var(--text);font-weight:600">📲 SMS & Email Automation</div>
         <div style="font-size:16px;color:rgba(255,80,60,.8)">$200 – $500 / mo</div>
-        <div style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
+        <div class="val-check" style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center;background:rgba(255,255,255,.02)">
+      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center;background:rgba(255,255,255,.02)">
         <div style="font-size:16px;color:var(--text);font-weight:600">⭐ Reputation Management</div>
         <div style="font-size:16px;color:rgba(255,80,60,.8)">$150 – $300 / mo</div>
-        <div style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
+        <div class="val-check" style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center">
+      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center">
         <div style="font-size:16px;color:var(--text);font-weight:600">📊 Call Tracking & Recording</div>
         <div style="font-size:16px;color:rgba(255,80,60,.8)">$100 – $250 / mo</div>
-        <div style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
+        <div class="val-check" style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;align-items:center;background:rgba(255,255,255,.02)">
+      <div class="val-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center;background:rgba(255,255,255,.02)">
         <div style="font-size:16px;color:var(--text);font-weight:600">🗓️ Booking & Scheduling</div>
         <div style="font-size:16px;color:rgba(255,80,60,.8)">$100 – $300 / mo</div>
-        <div style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
+        <div class="val-check" style="text-align:right"><span style="color:var(--green);font-size:20px">✓</span></div>
       </div>
 
       <!-- total row -->
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:20px 24px;background:rgba(255,80,60,.06);border-top:2px solid rgba(255,80,60,.2);align-items:center">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff">If you hired all of this separately</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:rgba(255,80,60,.9)">$6,750 – $11,350 / mo</div>
-        <div style="text-align:right;font-size:16px;color:var(--muted)">+ setup costs + management time</div>
+      <div class="val-total" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:20px 24px;background:rgba(255,80,60,.06);border-top:2px solid rgba(255,80,60,.2);align-items:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#fff">If you hired all of this separately</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:rgba(255,80,60,.9)">$6,750 – $11,350 / mo</div>
+        <div class="val-check" style="text-align:right;font-size:14px;color:var(--muted)">+ setup + management</div>
       </div>
 
-    </div><!-- end min-width inner -->
-    </div><!-- end overflow-x scroll wrapper -->
+    </div>
 
     <p style="text-align:center;font-size:18px;color:var(--text);font-weight:600;max-width:640px;margin:0 auto;line-height:1.6;padding:28px 0 0">
       This is not a software subscription. This is the operating infrastructure behind your business — built, configured, and managed for you.
@@ -754,7 +760,7 @@
       <p>Choose a time below. This is where system design begins.</p>
     </div>
     <iframe src="https://link.msgsndr.com/widget/booking/qJbe25XqIsy6rIZ9wNUu"
-      style="width:100%;height:900px;border:1px solid var(--border);border-top:none;border-radius:0 0 18px 18px;overflow:hidden;display:block;"
+      style="width:100%;height:900px;border:none;overflow:hidden;display:block;"
       scrolling="no"></iframe>
     <script src="https://link.msgsndr.com/js/form_embed.js"></script>
   </div>
