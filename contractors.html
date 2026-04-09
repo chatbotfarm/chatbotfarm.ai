@@ -208,12 +208,9 @@
     @media (max-width:860px) {
       /* intake diagram */
       .intake-outcomes  { grid-template-columns:1fr; }
-      /* pipeline → vertical centered */
-      .pipeline         { flex-direction:column; }
-      .pipe-stage       { border-right:none; border-bottom:1px solid var(--border); flex:none; padding:20px 24px; display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center; }
-      .pipe-stage:last-child { border-bottom:none; }
-      .pipe-ico         { font-size:28px; }
-      .pipe-arrow-mobile { display:block; }
+      /* pipeline flow stages — stack on mobile */
+      .pipe-flow-stage  { grid-template-columns:40px 1fr !important; }
+      .pipe-flow-stage > div:last-child { display:none; }
       /* lifecycle */
       .lifecycle-grid   { grid-template-columns:1fr !important; }
       .lifecycle-card   { width:100%; text-align:center; }
@@ -328,7 +325,7 @@
         Every request enters<br><span style="color:var(--orange)">one system.</span>
       </h2>
       <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto">
-        Spam is filtered. Real customers are tagged. The right workflow fires automatically — no one on your team touches it manually.
+        Every inbound request enters one system. Spam is filtered. Real customers are tagged. The tag determines the workflow. The workflow fires automatically.
       </p>
     </div>
 
@@ -360,7 +357,7 @@
       <div class="intake-node" style="background:rgba(26,143,255,.08);border:1px solid rgba(26,143,255,.3);">
         <div class="intake-node-eyebrow" style="color:var(--blue)">AI Front Desk</div>
         <div class="intake-node-title">Capture & Qualify</div>
-        <div class="intake-node-sub">Spam filtered · Real customers tagged · Residential or commercial · Job type · Urgency</div>
+        <div class="intake-node-sub">Answers · Logs · Tags instantly</div>
       </div>
 
       <div class="intake-arrow">↓</div>
@@ -369,7 +366,7 @@
       <div class="intake-node" style="background:rgba(255,122,0,.08);border:2px solid rgba(255,122,0,.35);">
         <div class="intake-node-eyebrow" style="color:var(--orange)">CRM Decision Logic</div>
         <div class="intake-node-title">Next Action Triggered</div>
-        <div class="intake-node-sub">Tag determines workflow · Customer notified · Team alerted · Job enters pipeline</div>
+        <div class="intake-node-sub">Tag → workflow selected → actions triggered. No manual decision.</div>
       </div>
 
       <div class="intake-arrow">↓</div>
@@ -397,12 +394,12 @@
       <div style="background:var(--card);border:1px solid rgba(0,232,122,.2);border-radius:14px;padding:22px 20px;text-align:center">
         <div style="font-size:28px;margin-bottom:10px">👷</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#fff;margin-bottom:6px">Your team knows</div>
-        <p style="font-size:16px;color:var(--muted);line-height:1.6">The right person gets notified instantly. Role-based routing — estimator, dispatcher, or owner — based on job type.</p>
+        <p style="font-size:16px;color:var(--muted);line-height:1.6">Tag determines who gets notified. Estimator, dispatcher, or owner — based on job type. Notification fires immediately.</p>
       </div>
       <div style="background:var(--card);border:1px solid rgba(26,143,255,.2);border-radius:14px;padding:22px 20px;text-align:center">
         <div style="font-size:28px;margin-bottom:10px">📱</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#fff;margin-bottom:6px">Customer knows</div>
-        <p style="font-size:16px;color:var(--muted);line-height:1.6">Confirmation sent immediately. They know their request was received and what happens next. No wondering.</p>
+        <p style="font-size:16px;color:var(--muted);line-height:1.6">Confirmation sent on intake. Customer knows the request was received. Next step communicated automatically.</p>
       </div>
     </div>
 
@@ -415,70 +412,137 @@
 
 
 <!-- ══ PIPELINE ═══════════════════════════════════════════ -->
-<div class="divider">Your job pipeline — visible to everyone who needs it</div>
+<div class="divider">Your job pipeline — from first contact to paid invoice</div>
 <section style="background:var(--ink)" class="pcb">
-  <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
-    <div style="text-align:center;margin-bottom:44px">
+  <div style="max-width:860px;margin:0 auto;padding:64px 24px" class="reveal">
+    <div style="text-align:center;margin-bottom:52px">
       <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
-        <div class="eyebrow-dot"></div>From first call to paid invoice
+        <div class="eyebrow-dot"></div>Every job. Every stage. Tracked.
       </div>
       <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:10px">
-        Every stage tracked.<br><span style="color:var(--orange)">Everyone on the same page.</span>
+        No guessing.<br><span style="color:var(--orange)">No dropped jobs. No manual follow-up.</span>
       </h2>
       <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto">
-        Your customer sees where they stand. Your crew sees what to do next. You see every job from your phone.
+        Each stage triggers the next action. Assigned team member notified. Customer updated. No manual follow-up required.
       </p>
     </div>
 
-    <div class="pipeline">
-      <div class="pipe-stage">
-        <div class="pipe-ico">📥</div>
-        <div class="pipe-label">New Lead</div>
-        <div class="pipe-sub">Captured & logged</div>
-        <div class="pipe-notify">Customer notified</div>
+    <!-- vertical pipeline flow -->
+    <div style="display:flex;flex-direction:column;gap:0;max-width:640px;margin:0 auto">
+
+      <!-- stage 1 -->
+      <div class="pipe-flow-stage" style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 24px;display:grid;grid-template-columns:48px 1fr auto;gap:16px;align-items:center">
+        <div style="font-size:28px;text-align:center">📥</div>
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;letter-spacing:.04em;margin-bottom:3px">New Lead</div>
+          <div style="font-size:15px;color:var(--muted)">Request captured. Tagged by type and urgency. Logged automatically.</div>
+        </div>
+        <div style="text-align:right;white-space:nowrap">
+          <div style="font-size:13px;color:var(--blue);font-weight:600">Customer →</div>
+          <div style="font-size:13px;color:var(--blue)">Confirmation sent</div>
+        </div>
       </div>
-      <div class="pipe-arrow-mobile">↓</div>
-      <div class="pipe-stage">
-        <div class="pipe-ico">🔍</div>
-        <div class="pipe-label">Qualified</div>
-        <div class="pipe-sub">Tagged & routed</div>
-        <div class="pipe-notify">Team alerted</div>
+
+      <!-- connector -->
+      <div style="display:flex;align-items:center;gap:12px;padding:6px 24px">
+        <div style="width:48px;text-align:center;color:var(--orange);font-size:18px">↓</div>
+        <div style="flex:1;font-size:14px;color:var(--muted);font-style:italic">Tag assigned → workflow selected → team member notified</div>
       </div>
-      <div class="pipe-arrow-mobile">↓</div>
-      <div class="pipe-stage">
-        <div class="pipe-ico">📋</div>
-        <div class="pipe-label">Estimate</div>
-        <div class="pipe-sub">Auto-triggered</div>
-        <div class="pipe-notify">Sent to customer</div>
+
+      <!-- stage 2 -->
+      <div class="pipe-flow-stage" style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 24px;display:grid;grid-template-columns:48px 1fr auto;gap:16px;align-items:center">
+        <div style="font-size:28px;text-align:center">🔍</div>
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;letter-spacing:.04em;margin-bottom:3px">Qualified</div>
+          <div style="font-size:15px;color:var(--muted)">Job type, location, urgency structured. Routed to the right crew lead.</div>
+        </div>
+        <div style="text-align:right;white-space:nowrap">
+          <div style="font-size:13px;color:var(--orange);font-weight:600">Team →</div>
+          <div style="font-size:13px;color:var(--orange)">Lead alerted</div>
+        </div>
       </div>
-      <div class="pipe-arrow-mobile">↓</div>
-      <div class="pipe-stage">
-        <div class="pipe-ico">🤝</div>
-        <div class="pipe-label">Job Booked</div>
-        <div class="pipe-sub">Confirmed</div>
-        <div class="pipe-notify">Customer confirmed</div>
+
+      <!-- connector -->
+      <div style="display:flex;align-items:center;gap:12px;padding:6px 24px">
+        <div style="width:48px;text-align:center;color:var(--orange);font-size:18px">↓</div>
+        <div style="flex:1;font-size:14px;color:var(--muted);font-style:italic">System prepares estimate request → contractor reviews</div>
       </div>
-      <div class="pipe-arrow-mobile">↓</div>
-      <div class="pipe-stage">
-        <div class="pipe-ico">🔨</div>
-        <div class="pipe-label">In Progress</div>
-        <div class="pipe-sub">Crew on site</div>
-        <div class="pipe-notify">Updates sent</div>
+
+      <!-- stage 3 -->
+      <div class="pipe-flow-stage" style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 24px;display:grid;grid-template-columns:48px 1fr auto;gap:16px;align-items:center">
+        <div style="font-size:28px;text-align:center">📋</div>
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;letter-spacing:.04em;margin-bottom:3px">Estimate</div>
+          <div style="font-size:15px;color:var(--muted)">Contractor reviews and approves. Sent to customer on approval.</div>
+        </div>
+        <div style="text-align:right;white-space:nowrap">
+          <div style="font-size:13px;color:var(--blue);font-weight:600">Customer →</div>
+          <div style="font-size:13px;color:var(--blue)">Estimate received</div>
+        </div>
       </div>
-      <div class="pipe-arrow-mobile">↓</div>
-      <div class="pipe-stage" style="background:rgba(0,232,122,.04);border-color:rgba(0,232,122,.12)">
-        <div class="pipe-ico">💰</div>
-        <div class="pipe-label" style="color:var(--green)">Invoice Paid</div>
-        <div class="pipe-sub">Revenue collected</div>
-        <div class="pipe-notify" style="color:var(--green)">Re-engagement fires</div>
+
+      <!-- connector -->
+      <div style="display:flex;align-items:center;gap:12px;padding:6px 24px">
+        <div style="width:48px;text-align:center;color:var(--orange);font-size:18px">↓</div>
+        <div style="flex:1;font-size:14px;color:var(--muted);font-style:italic">Customer accepts → booking sequence triggers</div>
       </div>
+
+      <!-- stage 4 -->
+      <div class="pipe-flow-stage" style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 24px;display:grid;grid-template-columns:48px 1fr auto;gap:16px;align-items:center">
+        <div style="font-size:28px;text-align:center">🤝</div>
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;letter-spacing:.04em;margin-bottom:3px">Job Booked</div>
+          <div style="font-size:15px;color:var(--muted)">Scheduled and confirmed. Crew briefed. Calendar updated.</div>
+        </div>
+        <div style="text-align:right;white-space:nowrap">
+          <div style="font-size:13px;color:var(--blue);font-weight:600">Customer →</div>
+          <div style="font-size:13px;color:var(--blue)">Booking confirmed</div>
+        </div>
+      </div>
+
+      <!-- connector -->
+      <div style="display:flex;align-items:center;gap:12px;padding:6px 24px">
+        <div style="width:48px;text-align:center;color:var(--orange);font-size:18px">↓</div>
+        <div style="flex:1;font-size:14px;color:var(--muted);font-style:italic">Job dispatched → crew receives details → work begins</div>
+      </div>
+
+      <!-- stage 5 -->
+      <div class="pipe-flow-stage" style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 24px;display:grid;grid-template-columns:48px 1fr auto;gap:16px;align-items:center">
+        <div style="font-size:28px;text-align:center">🔨</div>
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;letter-spacing:.04em;margin-bottom:3px">In Progress</div>
+          <div style="font-size:15px;color:var(--muted)">Crew on site. Job status visible to owner in real time.</div>
+        </div>
+        <div style="text-align:right;white-space:nowrap">
+          <div style="font-size:13px;color:var(--blue);font-weight:600">Customer →</div>
+          <div style="font-size:13px;color:var(--blue)">Status updated</div>
+        </div>
+      </div>
+
+      <!-- connector -->
+      <div style="display:flex;align-items:center;gap:12px;padding:6px 24px">
+        <div style="width:48px;text-align:center;color:var(--orange);font-size:18px">↓</div>
+        <div style="flex:1;font-size:14px;color:var(--muted);font-style:italic">Job complete → invoice triggered → payment collected</div>
+      </div>
+
+      <!-- stage 6 -->
+      <div class="pipe-flow-stage" style="background:rgba(0,232,122,.06);border:1px solid rgba(0,232,122,.25);border-radius:14px;padding:20px 24px;display:grid;grid-template-columns:48px 1fr auto;gap:16px;align-items:center">
+        <div style="font-size:28px;text-align:center">💰</div>
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--green);letter-spacing:.04em;margin-bottom:3px">Invoice Paid</div>
+          <div style="font-size:15px;color:var(--muted)">Revenue collected. Re-engagement sequence fires automatically.</div>
+        </div>
+        <div style="text-align:right;white-space:nowrap">
+          <div style="font-size:13px;color:var(--green);font-weight:600">System →</div>
+          <div style="font-size:13px;color:var(--green)">Review requested</div>
+        </div>
+      </div>
+
     </div>
 
-    <p style="text-align:center;font-size:16px;color:var(--muted);margin-top:20px">
-      Re-engagement kicks in automatically — review requests, referral prompts, repeat booking sequences.
-    </p>
-    <p style="text-align:center;font-size:16px;color:var(--text);margin-top:10px;font-weight:500">
-      This replaces missed calls, delayed responses, and manual follow-up — automatically.
+    <p style="text-align:center;font-size:16px;color:var(--text);margin-top:32px;font-weight:500;max-width:560px;margin-left:auto;margin-right:auto">
+      No receptionist. No manual routing. No dropped communication.
+Every request handled. Every job tracked. Owner stays on the job site.
     </p>
   </div>
 </section>
@@ -502,28 +566,28 @@
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);border-radius:16px 16px 0 0"></div>
         <div style="font-size:28px;margin-bottom:14px">📥</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:8px">Intake</div>
-        <p style="font-size:16px;color:var(--muted);line-height:1.65">Every call, message, and request is captured, qualified, and logged automatically. Nothing enters the system manually.</p>
+        <p style="font-size:16px;color:var(--muted);line-height:1.65">Request enters. System captures, qualifies, and structures the data. Tag assigned. No manual entry.</p>
       </div>
       <div class="lifecycle-arrow">↓</div>
       <div class="lifecycle-card" style="background:var(--card);border:1px solid rgba(255,122,0,.2);border-radius:16px;padding:28px 24px;position:relative">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--orange);border-radius:16px 16px 0 0"></div>
         <div style="font-size:28px;margin-bottom:14px">📋</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:8px">Job Management</div>
-        <p style="font-size:16px;color:var(--muted);line-height:1.65">Job details are structured and pushed into scheduling and dispatch — ready for your crew to act. No re-entry, no lost details.</p>
+        <p style="font-size:16px;color:var(--muted);line-height:1.65">Structured job request pushed to scheduling and dispatch. Crew receives details. No re-entry. No data loss.</p>
       </div>
       <div class="lifecycle-arrow">↓</div>
       <div class="lifecycle-card" style="background:var(--card);border:1px solid rgba(0,232,122,.15);border-radius:16px;padding:28px 24px;position:relative">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--green);border-radius:16px 16px 0 0"></div>
         <div style="font-size:28px;margin-bottom:14px">💰</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:8px">Completion</div>
-        <p style="font-size:16px;color:var(--muted);line-height:1.65">The system tracks the job through completion, follow-up, and payment — with full visibility at every stage.</p>
+        <p style="font-size:16px;color:var(--muted);line-height:1.65">Job tracked through completion, invoice, and payment. Follow-up triggers automatically. Every stage recorded.</p>
       </div>
     </div>
 
     <div style="margin-top:36px;padding:24px 28px;background:rgba(255,122,0,.06);border:1px solid rgba(255,122,0,.2);border-radius:14px;text-align:center;max-width:700px;margin-left:auto;margin-right:auto">
       <p style="font-size:18px;color:var(--text);font-weight:600;line-height:1.6;margin:0">
-        You handle billable work.<br>
-        <span style="color:var(--orange)">The system handles everything that happens before, between, and after.</span>
+        You stay on billable work.<br>
+        <span style="color:var(--orange)">The system runs intake, routing, follow-up, scheduling, and re-engagement.</span>
       </p>
     </div>
 
