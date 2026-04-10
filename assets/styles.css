@@ -1071,3 +1071,67 @@ footer { background:var(--ink); border-top:1px solid var(--border); }
   color: var(--muted);
   line-height: 1.65;
 }
+
+/* ── DEPARTMENT MAP ── */
+.dept-map-wrap {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+.dept-map-card {
+  background: #0d1520;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 20px;
+  padding: 28px 24px;
+}
+.dept-map-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  color: var(--orange);
+  letter-spacing: .22em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.dept-map-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.dept-win {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 16px 14px;
+}
+.dept-win.blue   { border: 1px solid rgba(26,143,255,.25); }
+.dept-win.orange { border: 1px solid rgba(255,122,0,.25); }
+.dept-win.amber  { border: 1px solid rgba(255,170,0,.25); }
+.dept-win.lblue  { border: 1px solid rgba(106,184,255,.25); }
+.dept-win-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px;
+  letter-spacing: .16em;
+  margin-bottom: 6px;
+}
+.dept-win.blue   .dept-win-num { color: var(--blue); }
+.dept-win.orange .dept-win-num { color: var(--orange); }
+.dept-win.amber  .dept-win-num { color: var(--amber); }
+.dept-win.lblue  .dept-win-num { color: #6ab8ff; }
+.dept-win-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.1;
+}
+.dept-map-arrow {
+  text-align: center;
+  font-size: 22px;
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+.dept-map-copy {
+  text-align: center;
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.65;
+}
