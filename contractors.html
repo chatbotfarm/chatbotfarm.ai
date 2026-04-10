@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!-- contractors.html · v1.1 · 2026-04-09
-     Changes: visual job flow diagram replaces text phase panels,
-     Phase 2 workflows removed, 3-phase visual structure,
-     workflow bridge added before case study.
+<!-- contractors.html · v1.4 · 2026-04-09
+     Changes: job flow split into 3 separate full-width sections —
+     Sales Department, Project Management, Customer Relationship —
+     each with own h2 heading, eyebrow, subtext, and diagram card.
 -->
 <html lang="en">
 <head>
@@ -380,23 +380,36 @@
       </p>
     </div>
 
+  </div>
+</section>
 
-    <!-- ══ JOB FLOW DIAGRAM ══ -->
-    <div style="max-width:460px;margin:48px auto 0" class="reveal">
+
+<!-- ══ SALES DEPARTMENT ═══════════════════════════════════ -->
+<section style="background:var(--panel)" class="pcb">
+  <div style="max-width:720px;margin:0 auto;padding:64px 24px">
+
+    <div style="text-align:center;margin-bottom:44px" class="reveal">
+      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
+        <div class="eyebrow-dot"></div>Sales Department
+      </div>
+      <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:14px">
+        From first contact<br><span style="color:var(--orange)">to signed contract.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto;line-height:1.7">
+        Once the lead is qualified, the Digital Office moves it into the sales funnel. Your team handles the site visit and closes the deal. The system manages everything in between.
+      </p>
+    </div>
+
+    <div style="max-width:460px;margin:0 auto" class="reveal">
       <div style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:0">
 
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--orange);letter-spacing:.22em;margin-bottom:20px;text-align:center">HOW EVERY JOB MOVES FORWARD</div>
-
-        <!-- ── PHASE LABEL: SALES FUNNEL ── -->
-        <div style="display:flex;align-items:center;gap:10px;width:100%;margin-bottom:14px">
-          <div style="flex:1;height:1px;background:rgba(255,122,0,.3)"></div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:11px;color:var(--orange);letter-spacing:.18em;white-space:nowrap">SALES FUNNEL</div>
-          <div style="flex:1;height:1px;background:rgba(255,122,0,.3)"></div>
+        <div style="display:flex;align-items:center;gap:10px;width:100%;margin-bottom:16px">
+          <div style="flex:1;height:1px;background:rgba(255,122,0,.35)"></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:11px;color:var(--orange);letter-spacing:.18em;white-space:nowrap">SALES DEPARTMENT</div>
+          <div style="flex:1;height:1px;background:rgba(255,122,0,.35)"></div>
         </div>
 
-        <!-- Sales funnel stages -->
         <div style="width:100%;display:flex;flex-direction:column;gap:8px">
-
           <div style="background:#1c1000;border:1px solid rgba(255,122,0,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
             <div style="font-size:20px;flex-shrink:0">🏠</div>
             <div>
@@ -404,9 +417,7 @@
               <div style="font-size:12px;color:var(--muted);margin-top:2px">Completed · Scope confirmed</div>
             </div>
           </div>
-
-          <div style="text-align:center;padding:2px 0;font-size:14px;color:var(--orange)">↓</div>
-
+          <div style="text-align:center;font-size:14px;color:var(--orange)">↓</div>
           <div style="background:#1c1000;border:1px solid rgba(255,122,0,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
             <div style="font-size:20px;flex-shrink:0">📋</div>
             <div>
@@ -414,9 +425,7 @@
               <div style="font-size:12px;color:var(--muted);margin-top:2px">Reviewed by owner · Approved · Delivered to customer</div>
             </div>
           </div>
-
-          <div style="text-align:center;padding:2px 0;font-size:14px;color:var(--orange)">↓</div>
-
+          <div style="text-align:center;font-size:14px;color:var(--orange)">↓</div>
           <div style="background:#1c1000;border:1px solid rgba(255,122,0,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
             <div style="font-size:20px;flex-shrink:0">✍️</div>
             <div>
@@ -424,21 +433,45 @@
               <div style="font-size:12px;color:var(--muted);margin-top:2px">Job committed · Project manager handed off</div>
             </div>
           </div>
-
         </div>
 
-        <div style="font-size:20px;color:var(--amber);padding:14px 0;line-height:1">↓</div>
+        <div style="width:100%;margin-top:16px;padding:12px 16px;background:rgba(255,170,0,.06);border:1px solid rgba(255,170,0,.2);border-radius:10px;text-align:center">
+          <div style="font-size:12px;color:var(--amber);line-height:1.6">Once the sale is closed, Digital Office processes customer data and hands the job off to the Project Manager.</div>
+        </div>
 
-        <!-- ── PHASE LABEL: PROJECT MANAGEMENT ── -->
-        <div style="display:flex;align-items:center;gap:10px;width:100%;margin-bottom:14px">
-          <div style="flex:1;height:1px;background:rgba(255,170,0,.3)"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══ PROJECT MANAGEMENT ═════════════════════════════════ -->
+<section style="background:var(--ink)" class="pcb">
+  <div style="max-width:720px;margin:0 auto;padding:64px 24px">
+
+    <div style="text-align:center;margin-bottom:44px" class="reveal">
+      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
+        <div class="eyebrow-dot" style="background:var(--amber)"></div>Project Management
+      </div>
+      <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:14px">
+        From job booked<br><span style="color:var(--amber)">to payment received.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto;line-height:1.7">
+        Job is booked. The system runs execution from here. Crew briefed without a call. Customer updated without a text from you. Every stage tracked in real time.
+      </p>
+    </div>
+
+    <div style="max-width:460px;margin:0 auto" class="reveal">
+      <div style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:0">
+
+        <div style="display:flex;align-items:center;gap:10px;width:100%;margin-bottom:16px">
+          <div style="flex:1;height:1px;background:rgba(255,170,0,.35)"></div>
           <div style="font-family:'Bebas Neue',sans-serif;font-size:11px;color:var(--amber);letter-spacing:.18em;white-space:nowrap">PROJECT MANAGEMENT</div>
-          <div style="flex:1;height:1px;background:rgba(255,170,0,.3)"></div>
+          <div style="flex:1;height:1px;background:rgba(255,170,0,.35)"></div>
         </div>
 
-        <!-- PM stages -->
         <div style="width:100%;display:flex;flex-direction:column;gap:8px">
-
           <div style="background:#1a1200;border:1px solid rgba(255,170,0,.25);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
             <div style="font-size:20px;flex-shrink:0">🤝</div>
             <div>
@@ -446,9 +479,7 @@
               <div style="font-size:12px;color:var(--muted);margin-top:2px">Scheduled · Crew briefed · Calendar updated</div>
             </div>
           </div>
-
-          <div style="text-align:center;padding:2px 0;font-size:14px;color:var(--amber)">↓</div>
-
+          <div style="text-align:center;font-size:14px;color:var(--amber)">↓</div>
           <div style="background:#1a1200;border:1px solid rgba(255,170,0,.25);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
             <div style="font-size:20px;flex-shrink:0">🚚</div>
             <div>
@@ -456,9 +487,7 @@
               <div style="font-size:12px;color:var(--muted);margin-top:2px">Details pushed · Customer arrival notification sent</div>
             </div>
           </div>
-
-          <div style="text-align:center;padding:2px 0;font-size:14px;color:var(--amber)">↓</div>
-
+          <div style="text-align:center;font-size:14px;color:var(--amber)">↓</div>
           <div style="background:#1a1200;border:1px solid rgba(255,170,0,.25);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
             <div style="font-size:20px;flex-shrink:0">🔨</div>
             <div>
@@ -466,9 +495,7 @@
               <div style="font-size:12px;color:var(--muted);margin-top:2px">Live pipeline status · Team aligned · Customer updated</div>
             </div>
           </div>
-
-          <div style="text-align:center;padding:2px 0;font-size:14px;color:var(--amber)">↓</div>
-
+          <div style="text-align:center;font-size:14px;color:var(--amber)">↓</div>
           <div style="background:#1a1200;border:1px solid rgba(255,170,0,.25);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
             <div style="font-size:20px;flex-shrink:0">✅</div>
             <div>
@@ -476,9 +503,7 @@
               <div style="font-size:12px;color:var(--muted);margin-top:2px">Owner confirms · Job closed · Invoice queued</div>
             </div>
           </div>
-
-          <div style="text-align:center;padding:2px 0;font-size:14px;color:var(--amber)">↓</div>
-
+          <div style="text-align:center;font-size:14px;color:var(--amber)">↓</div>
           <div style="background:#0a1e10;border:1px solid rgba(0,232,122,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
             <div style="font-size:20px;flex-shrink:0">💰</div>
             <div>
@@ -486,54 +511,72 @@
               <div style="font-size:12px;color:var(--muted);margin-top:2px">Revenue recorded · Job closed · Sequence activates</div>
             </div>
           </div>
-
         </div>
 
-        <div style="font-size:20px;color:var(--green);padding:14px 0;line-height:1">↓</div>
-
-        <!-- ── PHASE LABEL: POST-JOB SEQUENCE ── -->
-        <div style="display:flex;align-items:center;gap:10px;width:100%;margin-bottom:14px">
-          <div style="flex:1;height:1px;background:rgba(26,143,255,.3)"></div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:11px;color:#6ab8ff;letter-spacing:.18em;white-space:nowrap">POST-JOB SEQUENCE</div>
-          <div style="flex:1;height:1px;background:rgba(26,143,255,.3)"></div>
+        <div style="width:100%;margin-top:16px;padding:12px 16px;background:rgba(26,143,255,.05);border:1px solid rgba(26,143,255,.2);border-radius:10px;text-align:center">
+          <div style="font-size:12px;color:#6ab8ff;line-height:1.6">Once the job is done, Digital Office moves customer data to the Marketing Team for Customer Relationship and Long-Term Nurturing.</div>
         </div>
 
-        <!-- Post-job stages -->
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══ CUSTOMER RELATIONSHIP ══════════════════════════════ -->
+<section style="background:var(--panel)" class="pcb">
+  <div style="max-width:720px;margin:0 auto;padding:64px 24px">
+
+    <div style="text-align:center;margin-bottom:44px" class="reveal">
+      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
+        <div class="eyebrow-dot" style="background:#6ab8ff"></div>Customer Relationship
+      </div>
+      <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:14px">
+        Job closed.<br><span style="color:#6ab8ff">System doesn't stop.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto;line-height:1.7">
+        Every closed job enters a long-term sequence automatically. No one has to remember to follow up. The customer stays engaged — reducing your marketing budget while building repeat business.
+      </p>
+    </div>
+
+    <div style="max-width:460px;margin:0 auto" class="reveal">
+      <div style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:0">
+
+        <div style="display:flex;align-items:center;gap:10px;width:100%;margin-bottom:16px">
+          <div style="flex:1;height:1px;background:rgba(26,143,255,.35)"></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:11px;color:#6ab8ff;letter-spacing:.18em;white-space:nowrap">CUSTOMER RELATIONSHIP</div>
+          <div style="flex:1;height:1px;background:rgba(26,143,255,.35)"></div>
+        </div>
+
         <div style="width:100%;display:flex;flex-direction:column;gap:8px">
-
           <div style="background:#071426;border:1px solid rgba(26,143,255,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
             <div style="font-size:20px;flex-shrink:0">⭐</div>
             <div>
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Review Sequence Sent</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:2px">Feedback requested · Review prompt delivered</div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Review Requested</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px">To improve feedback rating</div>
             </div>
           </div>
-
-          <div style="text-align:center;padding:2px 0;font-size:14px;color:#6ab8ff">↓</div>
-
+          <div style="text-align:center;font-size:14px;color:#6ab8ff">↓</div>
           <div style="background:#071426;border:1px solid rgba(26,143,255,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
             <div style="font-size:20px;flex-shrink:0">🛡️</div>
             <div>
               <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Warranty Reminder Scheduled</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:2px">Timed follow-up · No manual tracking needed</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px">Timed follow-up to show that we care</div>
             </div>
           </div>
-
-          <div style="text-align:center;padding:2px 0;font-size:14px;color:#6ab8ff">↓</div>
-
+          <div style="text-align:center;font-size:14px;color:#6ab8ff">↓</div>
           <div style="background:#071426;border:1px solid rgba(26,143,255,.4);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
             <div style="font-size:20px;flex-shrink:0">🔁</div>
             <div>
               <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#6ab8ff;letter-spacing:.04em">Added to Seasonal Newsletter</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:2px">Long-term nurture active · Customer stays engaged</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px">Long-term nurture active · Reducing marketing budget</div>
             </div>
           </div>
-
         </div>
 
-        <!-- closing line inside diagram -->
-        <div style="margin-top:20px;padding:14px 16px;background:rgba(255,122,0,.07);border:1px solid rgba(255,122,0,.2);border-radius:10px;width:100%;text-align:center">
-          <div style="font-size:14px;color:var(--text);line-height:1.65">
+        <div style="width:100%;margin-top:16px;padding:14px 16px;background:rgba(255,122,0,.07);border:1px solid rgba(255,122,0,.2);border-radius:10px;text-align:center">
+          <div style="font-size:13px;color:var(--text);line-height:1.65">
             You stay on billable work.<br>
             <span style="color:var(--orange);font-weight:600">Digital Office monitors communication, tags customers, and triggers workflows — so your team stays on the same page and your customer stays engaged.</span>
           </div>
@@ -545,24 +588,6 @@
   </div>
 </section>
 
-
-<!-- ══ WORKFLOW BRIDGE ════════════════════════════════════ -->
-<section style="background:var(--panel)" class="pcb">
-  <div style="max-width:720px;margin:0 auto;padding:48px 24px" class="reveal">
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 32px">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--orange);letter-spacing:.18em;margin-bottom:14px">HOW THE SYSTEM WORKS BETWEEN STAGES</div>
-      <p style="font-size:17px;color:var(--text);line-height:1.75;margin:0 0 12px">
-        Between every stage, internal workflows do the heavy lifting — estimates, booking sequences, scheduling, reminders, routing. The system handles it based on your business logic.
-      </p>
-      <p style="font-size:16px;color:var(--muted);line-height:1.7;margin:0 0 12px">
-        Your team sees where every client is in the pipeline. Your customer knows what happens next. Nobody is guessing. Nobody is chasing.
-      </p>
-      <p style="font-size:16px;color:var(--muted);line-height:1.7;margin:0">
-        How we map and configure those workflows for your specific operation — that's what the planning session is for.
-      </p>
-    </div>
-  </div>
-</section>
 
 
 <!-- ══ CASE STUDY ═════════════════════════════════════════ -->
