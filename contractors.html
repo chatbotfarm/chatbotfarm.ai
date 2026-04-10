@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!-- contractors.html · v1.1 · 2026-04-09
+     Changes: visual job flow diagram replaces text phase panels,
+     Phase 2 workflows removed, 3-phase visual structure,
+     workflow bridge added before case study.
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -376,174 +381,165 @@
     </div>
 
 
-    <!-- ══════════════════════════════════════
-         PHASE 2 — JOB MANAGEMENT
-    ══════════════════════════════════════ -->
-    <div class="phase-sep reveal">
-      <div class="phase-sep-line" style="background:rgba(255,170,0,.35)"></div>
-      <div class="phase-sep-label" style="color:var(--amber)">PHASE 2 — JOB MANAGEMENT</div>
-      <div class="phase-sep-line" style="background:rgba(255,170,0,.35)"></div>
-    </div>
+    <!-- ══ JOB FLOW DIAGRAM ══ -->
+    <div style="max-width:460px;margin:48px auto 0" class="reveal">
+      <div style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:0">
 
-    <p class="phase-bridge reveal">
-      Job is booked. System runs execution from here. Crew briefed without a call. Customer updated without a text from you. You see every job from your phone without being the middleman.
-    </p>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--orange);letter-spacing:.22em;margin-bottom:20px;text-align:center">HOW EVERY JOB MOVES FORWARD</div>
 
-    <!-- Stage: Crew Dispatched -->
-    <div class="stage-card reveal">
-      <div class="stage-header">
-        <div class="stage-ico">🚚</div>
-        <div class="stage-title">Crew Dispatched</div>
-      </div>
-      <div class="stage-panel panel-system">
-        <div class="stage-panel-label">System</div>
-        <div class="stage-panel-body">Full job details pushed to crew. Arrival time confirmed. Pipeline advances to dispatched automatically.</div>
-      </div>
-      <div class="stage-panel panel-team">
-        <div class="stage-panel-label">Team</div>
-        <div class="stage-panel-body">Everyone sees crew is dispatched. Owner monitors status from phone. No internal calls needed.</div>
-      </div>
-      <div class="stage-panel panel-customer">
-        <div class="stage-panel-label">Customer</div>
-        <div class="stage-panel-body">Arrival notification sent. Customer knows crew is on the way without calling to check.</div>
-      </div>
-      <div class="stage-panel panel-removed">
-        <div class="stage-panel-label">No longer your job</div>
-        <div class="stage-panel-body">Calling crew with job details · "Where are we going?" · Customer arrival calls · Coordinating timing manually</div>
-      </div>
-    </div>
+        <!-- ── PHASE LABEL: SALES FUNNEL ── -->
+        <div style="display:flex;align-items:center;gap:10px;width:100%;margin-bottom:14px">
+          <div style="flex:1;height:1px;background:rgba(255,122,0,.3)"></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:11px;color:var(--orange);letter-spacing:.18em;white-space:nowrap">SALES FUNNEL</div>
+          <div style="flex:1;height:1px;background:rgba(255,122,0,.3)"></div>
+        </div>
 
-    <div class="connector reveal">
-      <div class="connector-arrow">↓</div>
-      <div class="connector-text">Pipeline advances → status visible to entire team → next workflow triggered without manual input</div>
-    </div>
+        <!-- Sales funnel stages -->
+        <div style="width:100%;display:flex;flex-direction:column;gap:8px">
 
-    <!-- Stage: Work In Progress -->
-    <div class="stage-card reveal">
-      <div class="stage-header">
-        <div class="stage-ico">🔨</div>
-        <div class="stage-title">Work In Progress</div>
-      </div>
-      <div class="stage-panel panel-system">
-        <div class="stage-panel-label">System</div>
-        <div class="stage-panel-body">Job status live in pipeline. Every team member sees the same view in real time.</div>
-      </div>
-      <div class="stage-panel panel-team">
-        <div class="stage-panel-label">Team</div>
-        <div class="stage-panel-body">No internal calls needed. Pipeline shows stage. Owner sees everything from the job site — same view as the office.</div>
-      </div>
-      <div class="stage-panel panel-customer">
-        <div class="stage-panel-label">Customer</div>
-        <div class="stage-panel-body">Progress updates sent automatically. No "are you coming?" texts. No silence during the job.</div>
-      </div>
-      <div class="stage-panel panel-removed">
-        <div class="stage-panel-label">No longer your job</div>
-        <div class="stage-panel-body">Customer status calls · Manual progress updates · "Where are we on this?" · Internal status check-ins</div>
-      </div>
-    </div>
+          <div style="background:#1c1000;border:1px solid rgba(255,122,0,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+            <div style="font-size:20px;flex-shrink:0">🏠</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Job Site Visit</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px">Completed · Scope confirmed</div>
+            </div>
+          </div>
 
-    <div class="connector reveal">
-      <div class="connector-arrow">↓</div>
-      <div class="connector-text">Pipeline moves to "Completion" → inspection workflow triggered → invoice sequence queued → no manual handoff required</div>
-    </div>
+          <div style="text-align:center;padding:2px 0;font-size:14px;color:var(--orange)">↓</div>
 
-    <!-- Stage: Final Inspection -->
-    <div class="stage-card reveal">
-      <div class="stage-header">
-        <div class="stage-ico">✅</div>
-        <div class="stage-title">Final Inspection</div>
-      </div>
-      <div class="stage-panel panel-system">
-        <div class="stage-panel-label">System</div>
-        <div class="stage-panel-body">Inspection checklist triggered. Owner confirms completion. Job marked closed in pipeline. Invoice sequence queued.</div>
-      </div>
-      <div class="stage-panel panel-team">
-        <div class="stage-panel-label">Team</div>
-        <div class="stage-panel-body">Pipeline reflects completion. No manual handoff. Invoice fires next. Everyone sees job is closing.</div>
-      </div>
-      <div class="stage-panel panel-customer">
-        <div class="stage-panel-label">Customer</div>
-        <div class="stage-panel-body">Completion notification sent. Invoice on the way. Expectation set without a phone call.</div>
-      </div>
-      <div class="stage-panel panel-removed">
-        <div class="stage-panel-label">No longer your job</div>
-        <div class="stage-panel-body">Manual closeout steps · Forgotten inspection items · Inconsistent completion process · Delayed invoicing</div>
-      </div>
-    </div>
+          <div style="background:#1c1000;border:1px solid rgba(255,122,0,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+            <div style="font-size:20px;flex-shrink:0">📋</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Estimate Sent</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px">Reviewed by owner · Approved · Delivered to customer</div>
+            </div>
+          </div>
 
-    <div class="connector reveal">
-      <div class="connector-arrow">↓</div>
-      <div class="connector-text">Pipeline moves to "Payment" → invoice sent → reminders automated → payment tracked → job closed without manual follow-up</div>
-    </div>
+          <div style="text-align:center;padding:2px 0;font-size:14px;color:var(--orange)">↓</div>
 
-    <!-- Stage: Payment Received -->
-    <div class="stage-card reveal" style="border-color:rgba(0,232,122,.25);background:rgba(0,232,122,.04)">
-      <div class="stage-header" style="border-bottom-color:rgba(0,232,122,.15)">
-        <div class="stage-ico">💰</div>
-        <div class="stage-title" style="color:var(--green)">Payment Received</div>
-      </div>
-      <div class="stage-panel panel-system">
-        <div class="stage-panel-label">System</div>
-        <div class="stage-panel-body">Payment collected. Revenue recorded. Customer file updated. Job closed in pipeline. Long-term sequence queued.</div>
-      </div>
-      <div class="stage-panel panel-team">
-        <div class="stage-panel-label">Team</div>
-        <div class="stage-panel-body">Pipeline shows paid. Revenue tracked. No manual reconciliation needed.</div>
-      </div>
-      <div class="stage-panel panel-customer">
-        <div class="stage-panel-label">Customer</div>
-        <div class="stage-panel-body">Receipt sent. Payment acknowledged. Relationship continues — not abandoned after the job closes.</div>
-      </div>
-      <div class="stage-panel panel-removed">
-        <div class="stage-panel-label">No longer your job</div>
-        <div class="stage-panel-body">Chasing invoices · Manual payment reminders · Delayed collections · Forgetting to follow up</div>
-      </div>
-    </div>
+          <div style="background:#1c1000;border:1px solid rgba(255,122,0,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+            <div style="font-size:20px;flex-shrink:0">✍️</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Contract Signed · Deposit Received</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px">Job committed · Project manager handed off</div>
+            </div>
+          </div>
 
+        </div>
 
-    <!-- ══════════════════════════════════════
-         PHASE 3 — LONG-TERM NURTURE
-    ══════════════════════════════════════ -->
-    <div class="phase-sep reveal">
-      <div class="phase-sep-line" style="background:rgba(26,143,255,.35)"></div>
-      <div class="phase-sep-label" style="color:#6ab8ff">PHASE 3 — LONG-TERM NURTURE</div>
-      <div class="phase-sep-line" style="background:rgba(26,143,255,.35)"></div>
-    </div>
+        <div style="font-size:20px;color:var(--amber);padding:14px 0;line-height:1">↓</div>
 
-    <p class="phase-bridge reveal">
-      Job closed. System doesn't stop. Every customer becomes a long-term asset. No one has to remember to follow up — the sequence fires automatically.
-    </p>
+        <!-- ── PHASE LABEL: PROJECT MANAGEMENT ── -->
+        <div style="display:flex;align-items:center;gap:10px;width:100%;margin-bottom:14px">
+          <div style="flex:1;height:1px;background:rgba(255,170,0,.3)"></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:11px;color:var(--amber);letter-spacing:.18em;white-space:nowrap">PROJECT MANAGEMENT</div>
+          <div style="flex:1;height:1px;background:rgba(255,170,0,.3)"></div>
+        </div>
 
-    <!-- Stage: Long-Term Sequence -->
-    <div class="stage-card reveal" style="border-color:rgba(26,143,255,.3);background:rgba(26,143,255,.04)">
-      <div class="stage-header" style="border-bottom-color:rgba(26,143,255,.15)">
-        <div class="stage-ico">🔁</div>
-        <div class="stage-title" style="color:#6ab8ff">Long-Term Sequence Active</div>
-      </div>
-      <div class="stage-panel panel-system">
-        <div class="stage-panel-label">System</div>
-        <div class="stage-panel-body">Feedback request sent · Review sequence triggered · Warranty follow-up scheduled · Referral prompt delivered · Re-engagement nurture activated</div>
-      </div>
-      <div class="stage-panel panel-team">
-        <div class="stage-panel-label">Team</div>
-        <div class="stage-panel-body">Customer remains in pipeline as a long-term asset. Visible, tracked, and re-engageable at any time.</div>
-      </div>
-      <div class="stage-panel panel-customer">
-        <div class="stage-panel-label">Customer</div>
-        <div class="stage-panel-body">Feels remembered. Receives value after the job ends. More likely to refer, return, and leave a review.</div>
-      </div>
-      <div class="stage-panel panel-removed">
-        <div class="stage-panel-label">No longer your job</div>
-        <div class="stage-panel-body">Remembering past customers · Missing referrals · No repeat business system · Forgotten warranty calls</div>
-      </div>
-    </div>
+        <!-- PM stages -->
+        <div style="width:100%;display:flex;flex-direction:column;gap:8px">
 
-    <!-- Closing statement -->
-    <div style="margin-top:44px;padding:24px 28px;background:rgba(255,122,0,.06);border:1px solid rgba(255,122,0,.2);border-radius:14px;text-align:center" class="reveal">
-      <p style="font-size:18px;color:var(--text);font-weight:600;line-height:1.7;margin:0">
-        You stay on billable work.<br>
-        <span style="color:var(--orange)">The system runs every step before, during, and after the job.</span>
-      </p>
+          <div style="background:#1a1200;border:1px solid rgba(255,170,0,.25);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+            <div style="font-size:20px;flex-shrink:0">🤝</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Job Booked</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px">Scheduled · Crew briefed · Calendar updated</div>
+            </div>
+          </div>
+
+          <div style="text-align:center;padding:2px 0;font-size:14px;color:var(--amber)">↓</div>
+
+          <div style="background:#1a1200;border:1px solid rgba(255,170,0,.25);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+            <div style="font-size:20px;flex-shrink:0">🚚</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Crew Dispatched</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px">Details pushed · Customer arrival notification sent</div>
+            </div>
+          </div>
+
+          <div style="text-align:center;padding:2px 0;font-size:14px;color:var(--amber)">↓</div>
+
+          <div style="background:#1a1200;border:1px solid rgba(255,170,0,.25);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+            <div style="font-size:20px;flex-shrink:0">🔨</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Work In Progress</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px">Live pipeline status · Team aligned · Customer updated</div>
+            </div>
+          </div>
+
+          <div style="text-align:center;padding:2px 0;font-size:14px;color:var(--amber)">↓</div>
+
+          <div style="background:#1a1200;border:1px solid rgba(255,170,0,.25);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+            <div style="font-size:20px;flex-shrink:0">✅</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Final Inspection</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px">Owner confirms · Job closed · Invoice queued</div>
+            </div>
+          </div>
+
+          <div style="text-align:center;padding:2px 0;font-size:14px;color:var(--amber)">↓</div>
+
+          <div style="background:#0a1e10;border:1px solid rgba(0,232,122,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+            <div style="font-size:20px;flex-shrink:0">💰</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--green);letter-spacing:.04em">Payment Received</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px">Revenue recorded · Job closed · Sequence activates</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="font-size:20px;color:var(--green);padding:14px 0;line-height:1">↓</div>
+
+        <!-- ── PHASE LABEL: POST-JOB SEQUENCE ── -->
+        <div style="display:flex;align-items:center;gap:10px;width:100%;margin-bottom:14px">
+          <div style="flex:1;height:1px;background:rgba(26,143,255,.3)"></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:11px;color:#6ab8ff;letter-spacing:.18em;white-space:nowrap">POST-JOB SEQUENCE</div>
+          <div style="flex:1;height:1px;background:rgba(26,143,255,.3)"></div>
+        </div>
+
+        <!-- Post-job stages -->
+        <div style="width:100%;display:flex;flex-direction:column;gap:8px">
+
+          <div style="background:#071426;border:1px solid rgba(26,143,255,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+            <div style="font-size:20px;flex-shrink:0">⭐</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Review Sequence Sent</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px">Feedback requested · Review prompt delivered</div>
+            </div>
+          </div>
+
+          <div style="text-align:center;padding:2px 0;font-size:14px;color:#6ab8ff">↓</div>
+
+          <div style="background:#071426;border:1px solid rgba(26,143,255,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+            <div style="font-size:20px;flex-shrink:0">🛡️</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Warranty Reminder Scheduled</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px">Timed follow-up · No manual tracking needed</div>
+            </div>
+          </div>
+
+          <div style="text-align:center;padding:2px 0;font-size:14px;color:#6ab8ff">↓</div>
+
+          <div style="background:#071426;border:1px solid rgba(26,143,255,.4);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+            <div style="font-size:20px;flex-shrink:0">🔁</div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#6ab8ff;letter-spacing:.04em">Added to Seasonal Newsletter</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px">Long-term nurture active · Customer stays engaged</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- closing line inside diagram -->
+        <div style="margin-top:20px;padding:14px 16px;background:rgba(255,122,0,.07);border:1px solid rgba(255,122,0,.2);border-radius:10px;width:100%;text-align:center">
+          <div style="font-size:14px;color:var(--text);line-height:1.65">
+            You stay on billable work.<br>
+            <span style="color:var(--orange);font-weight:600">Digital Office monitors communication, tags customers, and triggers workflows — so your team stays on the same page and your customer stays engaged.</span>
+          </div>
+        </div>
+
+      </div>
     </div>
 
   </div>
