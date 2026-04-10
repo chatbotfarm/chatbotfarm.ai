@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <!-- contractors_v6.html · 2026-04-10
-     Layering fix: hero right column removed, mechanism block removed,
-     department map section inserted between hero and Phase 1 —
-     4 cards (Lead Handling, Sales, PM, Customer Relationship)
-     give visitor orientation before deep-dive sections.
-     Flow: headline → sub → trust → [dept map] → Phase 1 → Sales → PM → CR
+     Department map: single card, 2×2 grid (01-04), arrow, one closing
+     line. Hero timeline removed. Mechanism block removed.
 -->
 <html lang="en">
 <head>
@@ -58,49 +55,38 @@
 
 <!-- ══ DEPARTMENT MAP ══════════════════════════════════════ -->
 <section style="background:var(--panel)" class="pcb">
-  <div style="max-width:1140px;margin:0 auto;padding:64px 24px">
+  <div class="dept-map-wrap">
+    <div class="dept-map-card reveal">
 
-    <div style="text-align:center;margin-bottom:44px" class="reveal">
-      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
-        <div class="eyebrow-dot"></div>Four parts. One system.
-      </div>
-      <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:14px">
-        The Digital Office runs<br><span style="color:var(--orange)">every part of your business.</span>
-      </h2>
-    </div>
+      <div class="dept-map-title">FOUR PARTS. ONE SYSTEM.</div>
 
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px" class="reveal dept-grid">
-
-      <div style="background:var(--card);border:1px solid rgba(26,143,255,.2);border-radius:16px;padding:24px 20px;border-top:3px solid var(--blue)">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:var(--blue);letter-spacing:.18em;margin-bottom:10px">01 — LEAD HANDLING</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;margin-bottom:10px;line-height:1.1">Every request captured and routed</div>
-        <div style="font-size:15px;color:var(--muted);line-height:1.65">Every request is captured, understood, and routed automatically. No missed calls. No manual intake.</div>
-      </div>
-
-      <div style="background:var(--card);border:1px solid rgba(255,122,0,.2);border-radius:16px;padding:24px 20px;border-top:3px solid var(--orange)">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:var(--orange);letter-spacing:.18em;margin-bottom:10px">02 — SALES DEPARTMENT</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;margin-bottom:10px;line-height:1.1">From qualified lead to signed contract</div>
-        <div style="font-size:15px;color:var(--muted);line-height:1.65">Leads are qualified, followed up, and progressed to contract. Your team handles the site visit. The system handles everything around it.</div>
-      </div>
-
-      <div style="background:var(--card);border:1px solid rgba(255,170,0,.2);border-radius:16px;padding:24px 20px;border-top:3px solid var(--amber)">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:var(--amber);letter-spacing:.18em;margin-bottom:10px">03 — PROJECT MANAGEMENT</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;margin-bottom:10px;line-height:1.1">From job booked to payment received</div>
-        <div style="font-size:15px;color:var(--muted);line-height:1.65">Jobs are scheduled, dispatched, tracked, and completed. The entire team sees the same pipeline — no coordination required.</div>
+      <div class="dept-map-grid">
+        <div class="dept-win blue">
+          <div class="dept-win-num">01</div>
+          <div class="dept-win-name">Lead Handling</div>
+        </div>
+        <div class="dept-win orange">
+          <div class="dept-win-num">02</div>
+          <div class="dept-win-name">Sales Department</div>
+        </div>
+        <div class="dept-win amber">
+          <div class="dept-win-num">03</div>
+          <div class="dept-win-name">Project Management</div>
+        </div>
+        <div class="dept-win lblue">
+          <div class="dept-win-num">04</div>
+          <div class="dept-win-name">Customer Relationship</div>
+        </div>
       </div>
 
-      <div style="background:var(--card);border:1px solid rgba(26,143,255,.2);border-radius:16px;padding:24px 20px;border-top:3px solid #6ab8ff">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:#6ab8ff;letter-spacing:.18em;margin-bottom:10px">04 — CUSTOMER RELATIONSHIP</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;margin-bottom:10px;line-height:1.1">Every closed job continues automatically</div>
-        <div style="font-size:15px;color:var(--muted);line-height:1.65">Reviews, follow-ups, and re-engagement happen without anyone remembering. The relationship outlasts the job.</div>
+      <div class="dept-map-arrow">↓</div>
+
+      <div class="dept-map-copy">
+        Every stage removes coordination from your plate —<br>
+        your team sees the same pipeline, your customer is never left wondering.
       </div>
 
     </div>
-
-    <div style="text-align:center" class="reveal">
-      <p style="font-size:16px;color:var(--muted);font-style:italic">The same system runs all four — continuously.</p>
-    </div>
-
   </div>
 </section>
 
