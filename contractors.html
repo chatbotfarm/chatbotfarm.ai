@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<!-- contractors.html · v1.4 · 2026-04-09
-     Changes: job flow split into 3 separate full-width sections —
-     Sales Department, Project Management, Customer Relationship —
-     each with own h2 heading, eyebrow, subtext, and diagram card.
+<!-- contractors_v6.html · 2026-04-10
+     Layering fix: hero right column removed, mechanism block removed,
+     department map section inserted between hero and Phase 1 —
+     4 cards (Lead Handling, Sales, PM, Customer Relationship)
+     give visitor orientation before deep-dive sections.
+     Flow: headline → sub → trust → [dept map] → Phase 1 → Sales → PM → CR
 -->
 <html lang="en">
 <head>
@@ -13,128 +15,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/styles.css">
-  <style>
-
-    /* ── PHASE SEPARATOR ── */
-    .phase-sep {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin: 48px 0 28px;
-    }
-    .phase-sep-line { flex: 1; height: 1px; }
-    .phase-sep-label {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 13px;
-      letter-spacing: .2em;
-      white-space: nowrap;
-    }
-    .phase-bridge {
-      font-size: 16px;
-      color: var(--muted);
-      line-height: 1.7;
-      margin: 0 0 24px;
-    }
-
-    /* ── STAGE CARD ── */
-    .stage-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-    .stage-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 18px 22px;
-      border-bottom: 1px solid var(--border);
-    }
-    .stage-ico   { font-size: 24px; flex-shrink: 0; }
-    .stage-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px;
-      color: #fff;
-      letter-spacing: .04em;
-    }
-    .stage-panel {
-      padding: 14px 22px;
-      border-bottom: 1px solid rgba(255,255,255,.05);
-    }
-    .stage-panel:last-child { border-bottom: none; }
-    .stage-panel-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      margin-bottom: 5px;
-    }
-    .stage-panel-body { font-size: 15px; color: var(--text); line-height: 1.6; }
-    .panel-system  .stage-panel-label { color: var(--orange); }
-    .panel-team    .stage-panel-label { color: var(--blue); }
-    .panel-customer .stage-panel-label { color: var(--green); }
-    .panel-removed {
-      background: rgba(255,70,50,.04);
-      border-top: 1px solid rgba(255,70,50,.1) !important;
-    }
-    .panel-removed .stage-panel-label { color: rgba(255,100,80,.85); }
-    .panel-removed .stage-panel-body  { color: var(--muted); }
-
-    /* ── CONNECTOR ── */
-    .connector {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 10px 22px;
-    }
-    .connector-arrow { font-size: 16px; color: var(--orange); flex-shrink: 0; margin-top: 2px; }
-    .connector-text  { font-size: 13px; color: var(--muted); font-style: italic; line-height: 1.5; }
-
-    /* ── VALUE TABLE ── */
-    .val-name  { font-size:16px; color:var(--text); font-weight:600; }
-    .val-price { font-size:16px; color:rgba(255,80,60,.8); text-align:right; }
-
-    /* ── CASE STUDY ── */
-    .case-study {
-      background: var(--card);
-      border: 1px solid rgba(0,232,122,.18);
-      border-radius: 20px;
-      padding: 36px 32px;
-      position: relative;
-      overflow: hidden;
-    }
-    .case-study::before {
-      content:'';
-      position:absolute;
-      top:0;left:0;right:0;
-      height:3px;
-      background:linear-gradient(90deg,var(--green),var(--blue));
-    }
-    .case-tag   { font-size:16px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--green); margin-bottom:12px; }
-    .case-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(28px,4vw,48px); color:#fff; line-height:.92; margin-bottom:16px; }
-    .case-body  { font-size:17px; color:var(--muted); line-height:1.7; max-width:600px; margin-bottom:24px; }
-    .case-stats { display:flex; gap:32px; flex-wrap:wrap; }
-    .case-stat-num   { font-family:'Bebas Neue',sans-serif; font-size:44px; color:var(--green); line-height:1; margin-bottom:4px; }
-    .case-stat-label { font-size:16px; color:var(--text); line-height:1.45; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width:860px) {
-      .hero-right     { display:none; }
-      .offer-grid     { grid-template-columns:1fr !important; }
-      .offer-card-pad { padding:24px 20px !important; }
-      .case-study     { padding:24px 20px; }
-      .case-stats     { gap:20px; }
-      .case-identity  { flex-direction:column; align-items:center; text-align:center; }
-      .case-identity img { height:110px; }
-      .val-table-header { display:none; }
-      .val-row        { grid-template-columns:1fr !important; padding:14px 20px !important; }
-      .val-price      { margin-top:4px; text-align:left !important; }
-      .val-total      { grid-template-columns:1fr !important; gap:6px; padding:16px 20px !important; }
-    }
-    @media (max-width:600px) {
-      .phase-sep { margin:36px 0 20px; }
-    }
-  </style>
 </head>
 <body>
 
@@ -158,7 +38,7 @@
         <span class="acc">We run the<br>office behind it.</span>
       </h1>
       <p class="hero-sub">
-        The Digital Office captures every lead, qualifies intent, routes to the right person, and tracks the job through every stage — so your team always knows where the customer is, and the customer always knows what happens next.
+        The Digital Office captures every request, understands the job, decides what happens next, and moves it forward automatically.
       </p>
       <div class="trust-row">
         <div class="trust-chip">Every lead captured</div>
@@ -169,163 +49,121 @@
         <button class="btn-p" style="font-size:18px;padding:13px 28px" onclick="document.querySelector('.cal-wrap').scrollIntoView({behavior:'smooth'})">
           Plan Your System →
         </button>
-        <a href="tel:+12542683276" class="btn-s" style="font-size:16px;padding:11px 22px">
-          📞 (254) BOT-FARM
-        </a>
       </div>
     </div>
 
-    <div class="hero-right">
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px 24px">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--orange);letter-spacing:.14em;margin-bottom:20px">From first call to long-term customer</div>
-        <div style="display:flex;flex-direction:column;gap:0">
-
-          <div style="display:flex;gap:0;align-items:stretch">
-            <div style="display:flex;flex-direction:column;align-items:center;margin-right:16px">
-              <div style="width:10px;height:10px;border-radius:50%;background:var(--blue);margin-top:5px;flex-shrink:0"></div>
-              <div style="width:1px;flex:1;background:rgba(255,255,255,.1);margin:5px 0"></div>
-            </div>
-            <div style="padding-bottom:18px">
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#fff;margin-bottom:3px">Lead Captured & Qualified</div>
-              <div style="font-size:14px;color:var(--muted)">System answers, tags, routes. Team notified. Customer confirmed.</div>
-            </div>
-          </div>
-
-          <div style="display:flex;gap:0;align-items:stretch">
-            <div style="display:flex;flex-direction:column;align-items:center;margin-right:16px">
-              <div style="width:10px;height:10px;border-radius:50%;background:var(--orange);margin-top:5px;flex-shrink:0"></div>
-              <div style="width:1px;flex:1;background:rgba(255,255,255,.1);margin:5px 0"></div>
-            </div>
-            <div style="padding-bottom:18px">
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#fff;margin-bottom:3px">Internal Workflows Fire</div>
-              <div style="font-size:14px;color:var(--muted)">Estimates, booking, scheduling — system handles it. We map it to your business on the call.</div>
-            </div>
-          </div>
-
-          <div style="display:flex;gap:0;align-items:stretch">
-            <div style="display:flex;flex-direction:column;align-items:center;margin-right:16px">
-              <div style="width:10px;height:10px;border-radius:50%;background:var(--amber);margin-top:5px;flex-shrink:0"></div>
-              <div style="width:1px;flex:1;background:rgba(255,255,255,.1);margin:5px 0"></div>
-            </div>
-            <div style="padding-bottom:18px">
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#fff;margin-bottom:3px">Job Managed Start to Finish</div>
-              <div style="font-size:14px;color:var(--muted)">Dispatch, progress, inspection, invoice — all tracked automatically.</div>
-            </div>
-          </div>
-
-          <div style="display:flex;gap:0;align-items:flex-start">
-            <div style="display:flex;flex-direction:column;align-items:center;margin-right:16px">
-              <div style="width:10px;height:10px;border-radius:50%;background:var(--green);margin-top:5px;flex-shrink:0"></div>
-            </div>
-            <div>
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#fff;margin-bottom:3px">Long-Term Nurture Activated</div>
-              <div style="font-size:14px;color:var(--muted)">Review, warranty, referral, re-engagement — system runs it all.</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
 
-<!-- ══ JOB FLOW — 4 PHASES ════════════════════════════════ -->
-<section style="background:var(--ink)" class="pcb">
-  <div style="max-width:720px;margin:0 auto;padding:64px 24px">
+<!-- ══ DEPARTMENT MAP ══════════════════════════════════════ -->
+<section style="background:var(--panel)" class="pcb">
+  <div style="max-width:1140px;margin:0 auto;padding:64px 24px">
 
-    <div style="text-align:center;margin-bottom:52px" class="reveal">
+    <div style="text-align:center;margin-bottom:44px" class="reveal">
+      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
+        <div class="eyebrow-dot"></div>Four parts. One system.
+      </div>
       <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:14px">
-        Every job moves forward.<br><span style="color:var(--orange)">The system runs every step.</span>
+        The Digital Office runs<br><span style="color:var(--orange)">every part of your business.</span>
       </h2>
-      <p style="font-size:17px;color:var(--muted);max-width:500px;margin:0 auto;line-height:1.7">
-        Inquiry enters. Long-term customer exits. Every stage removes coordination from your plate — your team sees the same pipeline, your customer is never left wondering.
-      </p>
     </div>
 
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px" class="reveal dept-grid">
 
-    <!-- ══════════════════════════════════════
-         PHASE 1 — LEAD HANDLING
-    ══════════════════════════════════════ -->
+      <div style="background:var(--card);border:1px solid rgba(26,143,255,.2);border-radius:16px;padding:24px 20px;border-top:3px solid var(--blue)">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:var(--blue);letter-spacing:.18em;margin-bottom:10px">01 — LEAD HANDLING</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;margin-bottom:10px;line-height:1.1">Every request captured and routed</div>
+        <div style="font-size:15px;color:var(--muted);line-height:1.65">Every request is captured, understood, and routed automatically. No missed calls. No manual intake.</div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid rgba(255,122,0,.2);border-radius:16px;padding:24px 20px;border-top:3px solid var(--orange)">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:var(--orange);letter-spacing:.18em;margin-bottom:10px">02 — SALES DEPARTMENT</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;margin-bottom:10px;line-height:1.1">From qualified lead to signed contract</div>
+        <div style="font-size:15px;color:var(--muted);line-height:1.65">Leads are qualified, followed up, and progressed to contract. Your team handles the site visit. The system handles everything around it.</div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid rgba(255,170,0,.2);border-radius:16px;padding:24px 20px;border-top:3px solid var(--amber)">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:var(--amber);letter-spacing:.18em;margin-bottom:10px">03 — PROJECT MANAGEMENT</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;margin-bottom:10px;line-height:1.1">From job booked to payment received</div>
+        <div style="font-size:15px;color:var(--muted);line-height:1.65">Jobs are scheduled, dispatched, tracked, and completed. The entire team sees the same pipeline — no coordination required.</div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid rgba(26,143,255,.2);border-radius:16px;padding:24px 20px;border-top:3px solid #6ab8ff">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:#6ab8ff;letter-spacing:.18em;margin-bottom:10px">04 — CUSTOMER RELATIONSHIP</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;margin-bottom:10px;line-height:1.1">Every closed job continues automatically</div>
+        <div style="font-size:15px;color:var(--muted);line-height:1.65">Reviews, follow-ups, and re-engagement happen without anyone remembering. The relationship outlasts the job.</div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center" class="reveal">
+      <p style="font-size:16px;color:var(--muted);font-style:italic">The same system runs all four — continuously.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══ PHASE 1 — LEAD HANDLING ════════════════════════════ -->
+<section style="background:var(--ink)" class="pcb">
+  <div class="vp-section">
+
+    <!-- MECHANISM BLOCK REMOVED v6 -->
+
     <div class="phase-sep reveal">
       <div class="phase-sep-line" style="background:rgba(26,143,255,.35)"></div>
       <div class="phase-sep-label" style="color:var(--blue)">PHASE 1 — LEAD HANDLING</div>
       <div class="phase-sep-line" style="background:rgba(26,143,255,.35)"></div>
     </div>
 
-    <!-- INTAKE DIAGRAM inside Phase 1 -->
-    <div style="max-width:460px;margin:0 auto 28px" class="reveal">
-      <div style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:28px 20px;display:flex;flex-direction:column;align-items:center">
+    <!-- INTAKE DIAGRAM -->
+    <div class="intake-diag reveal">
+      <div class="intake-diag-inner">
 
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--orange);letter-spacing:.22em;margin-bottom:20px;text-align:center">HOW EVERY LEAD GETS HANDLED</div>
+        <div class="intake-diag-title">HOW EVERY REQUEST IS ROUTED</div>
 
-        <!-- channels 2×2 -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%">
-          <div style="background:#0a1626;border:1px solid rgba(26,143,255,.4);border-radius:14px;padding:20px 12px;text-align:center">
-            <div style="font-size:28px;margin-bottom:8px">📞</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--blue);letter-spacing:.14em">CALL</div>
-          </div>
-          <div style="background:#0a1626;border:1px solid rgba(26,143,255,.4);border-radius:14px;padding:20px 12px;text-align:center">
-            <div style="font-size:28px;margin-bottom:8px">💬</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--blue);letter-spacing:.14em">SMS</div>
-          </div>
-          <div style="background:#0a1626;border:1px solid rgba(26,143,255,.4);border-radius:14px;padding:20px 12px;text-align:center">
-            <div style="font-size:28px;margin-bottom:8px">✉️</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--blue);letter-spacing:.14em">EMAIL</div>
-          </div>
-          <div style="background:#0a1626;border:1px solid rgba(26,143,255,.4);border-radius:14px;padding:20px 12px;text-align:center">
-            <div style="font-size:28px;margin-bottom:8px">📲</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--blue);letter-spacing:.14em">WEB/DM</div>
-          </div>
+        <div class="intake-channels">
+          <div class="intake-ch"><div class="intake-ch-ico">📞</div><div class="intake-ch-lbl">CALL</div></div>
+          <div class="intake-ch"><div class="intake-ch-ico">💬</div><div class="intake-ch-lbl">SMS</div></div>
+          <div class="intake-ch"><div class="intake-ch-ico">✉️</div><div class="intake-ch-lbl">EMAIL</div></div>
+          <div class="intake-ch"><div class="intake-ch-ico">📲</div><div class="intake-ch-lbl">WEB/DM</div></div>
         </div>
 
-        <div style="font-size:20px;color:var(--orange);padding:12px 0;line-height:1">↓</div>
+        <div class="intake-arrow">↓</div>
 
-        <!-- AI Front Desk -->
-        <div style="width:100%;background:#0a1626;border:1px solid rgba(26,143,255,.5);border-radius:14px;padding:22px 20px;text-align:center">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:var(--blue);letter-spacing:.22em;margin-bottom:8px">AI FRONT DESK</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:#fff;margin-bottom:6px">CAPTURE & QUALIFY</div>
-          <div style="font-size:14px;color:var(--muted)">Understands intent · Tags job type · Filters spam</div>
+        <div class="intake-frontdesk">
+          <div class="intake-frontdesk-tag">AI FRONT DESK</div>
+          <div class="intake-frontdesk-title">CAPTURE & QUALIFY</div>
+          <div class="intake-frontdesk-note">Understands intent · Tags job type · Filters spam</div>
         </div>
 
-        <div style="font-size:20px;color:var(--orange);padding:12px 0;line-height:1">↓</div>
+        <div class="intake-arrow">↓</div>
 
-        <!-- CRM Decision -->
-        <div style="width:100%;background:#1c0e00;border:2px solid rgba(255,140,0,.65);border-radius:14px;padding:22px 20px;text-align:center">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:var(--orange);letter-spacing:.22em;margin-bottom:8px">CRM DECISION LOGIC</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:#fff">NEXT ACTION TRIGGERED</div>
+        <div class="intake-crm">
+          <div class="intake-crm-tag">CRM DECISION LOGIC</div>
+          <div class="intake-crm-title">NEXT ACTION TRIGGERED</div>
         </div>
 
-        <!-- split outcomes -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;padding-top:12px">
-          <div style="background:#0a1626;border:1px solid rgba(0,232,122,.25);border-radius:10px;padding:14px 12px;text-align:center">
-            <div style="font-size:20px;margin-bottom:4px">👷</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:var(--green);letter-spacing:.1em;margin-bottom:4px">TEAM NOTIFIED</div>
-            <div style="font-size:12px;color:var(--muted)">Right person alerted based on job tag</div>
+        <div class="intake-outcomes">
+          <div class="intake-out team">
+            <div class="intake-out-ico">👷</div>
+            <div class="intake-out-lbl">TEAM NOTIFIED</div>
+            <div class="intake-out-note">Right person alerted based on job tag</div>
           </div>
-          <div style="background:#0a1626;border:1px solid rgba(26,143,255,.25);border-radius:10px;padding:14px 12px;text-align:center">
-            <div style="font-size:20px;margin-bottom:4px">📱</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:var(--blue);letter-spacing:.1em;margin-bottom:4px">CUSTOMER CONFIRMED</div>
-            <div style="font-size:12px;color:var(--muted)">Request received · Next steps sent</div>
+          <div class="intake-out customer">
+            <div class="intake-out-ico">📱</div>
+            <div class="intake-out-lbl">CUSTOMER CONFIRMED</div>
+            <div class="intake-out-note">Request received · Next steps sent</div>
           </div>
         </div>
 
       </div>
     </div>
 
-    <p class="phase-bridge reveal">
-      No missed calls. No manual sorting. Every lead enters the system, gets tagged, and triggers the right workflow. Your team is notified instantly. Your customer knows what happens next.
-    </p>
-
-   
-
-    <!-- Owner callout — end of Phase 1 -->
-    <div style="margin:32px 0 0;padding:20px 24px;background:rgba(255,122,0,.05);border:1px solid rgba(255,122,0,.18);border-radius:12px" class="reveal">
-      <p style="font-size:16px;color:var(--text);line-height:1.75;margin:0">
-        You are no longer coordinating between customer, estimator, and crew.<br>
-        The system handles communication, routing, and timing automatically.<br>
-        <strong style="color:var(--orange)">You stay on the job site. The system runs the office.</strong>
-      </p>
+    <div class="transition-callout reveal">
+      <p>You are no longer monitoring phones or coordinating responses.<br>
+      The system handles communication, routing, and timing automatically.</p>
     </div>
 
   </div>
@@ -334,60 +172,62 @@
 
 <!-- ══ SALES DEPARTMENT ═══════════════════════════════════ -->
 <section style="background:var(--panel)" class="pcb">
-  <div style="max-width:720px;margin:0 auto;padding:64px 24px">
+  <div class="vp-section">
 
-    <div style="text-align:center;margin-bottom:44px" class="reveal">
+    <div class="vp-section-head reveal">
       <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
         <div class="eyebrow-dot"></div>Sales Department
       </div>
-      <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:14px">
-        From first contact<br><span style="color:var(--orange)">to signed contract.</span>
-      </h2>
-      <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto;line-height:1.7">
-        Once the lead is qualified, the Digital Office moves it into the sales funnel. Your team handles the site visit and closes the deal. The system manages everything in between.
-      </p>
+      <h2 class="disp">From first contact<br><span style="color:var(--orange)">to signed contract.</span></h2>
+      <p>Once the lead is qualified, the Digital Office advances it into the sales funnel.<br>
+      Your team handles the site visit.<br>
+      The system handles everything before and after — qualification, follow-up, and progression to contract.</p>
     </div>
 
-    <div style="max-width:460px;margin:0 auto" class="reveal">
-      <div style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:0">
+    <div class="wf-diag reveal">
+      <div class="wf-diag-inner">
 
-        <div style="display:flex;align-items:center;gap:10px;width:100%;margin-bottom:16px">
-          <div style="flex:1;height:1px;background:rgba(255,122,0,.35)"></div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:11px;color:var(--orange);letter-spacing:.18em;white-space:nowrap">SALES DEPARTMENT</div>
-          <div style="flex:1;height:1px;background:rgba(255,122,0,.35)"></div>
+        <div class="wf-phase-label orange">
+          <div class="wf-phase-label-line"></div>
+          <div class="wf-phase-label-text">SALES DEPARTMENT</div>
+          <div class="wf-phase-label-line"></div>
         </div>
 
-        <div style="width:100%;display:flex;flex-direction:column;gap:8px">
-          <div style="background:#1c1000;border:1px solid rgba(255,122,0,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
-            <div style="font-size:20px;flex-shrink:0">🏠</div>
+        <div class="wf-stages">
+          <div class="wf-stage orange">
+            <div class="wf-stage-ico">🏠</div>
             <div>
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Job Site Visit</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:2px">Completed · Scope confirmed</div>
+              <div class="wf-stage-name">Job Site Visit</div>
+              <div class="wf-stage-desc">Completed · Scope confirmed</div>
+              <div class="wf-stage-trigger">→ system prepares estimate request</div>
             </div>
           </div>
-          <div style="text-align:center;font-size:14px;color:var(--orange)">↓</div>
-          <div style="background:#1c1000;border:1px solid rgba(255,122,0,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
-            <div style="font-size:20px;flex-shrink:0">📋</div>
+          <div class="wf-arrow orange">↓</div>
+          <div class="wf-stage orange">
+            <div class="wf-stage-ico">📋</div>
             <div>
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Estimate Sent</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:2px">Reviewed by owner · Approved · Delivered to customer</div>
+              <div class="wf-stage-name">Estimate Sent</div>
+              <div class="wf-stage-desc">Reviewed by owner · Approved · Delivered to customer</div>
+              <div class="wf-stage-trigger">→ follow-up sequence activates if no response</div>
             </div>
           </div>
-          <div style="text-align:center;font-size:14px;color:var(--orange)">↓</div>
-          <div style="background:#1c1000;border:1px solid rgba(255,122,0,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
-            <div style="font-size:20px;flex-shrink:0">✍️</div>
+          <div class="wf-arrow orange">↓</div>
+          <div class="wf-stage orange">
+            <div class="wf-stage-ico">✍️</div>
             <div>
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Contract Signed · Deposit Received</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:2px">Job committed · Project manager handed off</div>
+              <div class="wf-stage-name">Contract Signed · Deposit Received</div>
+              <div class="wf-stage-desc">Job committed · system updates state</div>
+              <div class="wf-stage-trigger">→ project phase activates automatically</div>
             </div>
           </div>
-        </div>
-
-        <div style="width:100%;margin-top:16px;padding:12px 16px;background:rgba(255,170,0,.06);border:1px solid rgba(255,170,0,.2);border-radius:10px;text-align:center">
-          <div style="font-size:12px;color:var(--amber);line-height:1.6">Once the sale is closed, Digital Office processes customer data and hands the job off to the Project Manager.</div>
         </div>
 
       </div>
+    </div>
+
+    <div class="transition-callout reveal">
+      <p>Sale closes → system updates job state → pipeline advances → project phase activates automatically.<br>
+      No manual handoff.</p>
     </div>
 
   </div>
@@ -396,76 +236,79 @@
 
 <!-- ══ PROJECT MANAGEMENT ═════════════════════════════════ -->
 <section style="background:var(--ink)" class="pcb">
-  <div style="max-width:720px;margin:0 auto;padding:64px 24px">
+  <div class="vp-section">
 
-    <div style="text-align:center;margin-bottom:44px" class="reveal">
+    <div class="vp-section-head reveal">
       <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
         <div class="eyebrow-dot" style="background:var(--amber)"></div>Project Management
       </div>
-      <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:14px">
-        From job booked<br><span style="color:var(--amber)">to payment received.</span>
-      </h2>
-      <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto;line-height:1.7">
-        Job is booked. The system runs execution from here. Crew briefed without a call. Customer updated without a text from you. Every stage tracked in real time.
-      </p>
+      <h2 class="disp">From job booked<br><span style="color:var(--amber)">to payment received.</span></h2>
+      <p>Job is booked → system controls execution from this point forward.<br>
+      Crew receives job details automatically. No calls required. Customer updated at every stage. Every stage updates the pipeline — visible to the entire team in real time.</p>
     </div>
 
-    <div style="max-width:460px;margin:0 auto" class="reveal">
-      <div style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:0">
+    <div class="wf-diag reveal">
+      <div class="wf-diag-inner">
 
-        <div style="display:flex;align-items:center;gap:10px;width:100%;margin-bottom:16px">
-          <div style="flex:1;height:1px;background:rgba(255,170,0,.35)"></div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:11px;color:var(--amber);letter-spacing:.18em;white-space:nowrap">PROJECT MANAGEMENT</div>
-          <div style="flex:1;height:1px;background:rgba(255,170,0,.35)"></div>
+        <div class="wf-phase-label amber">
+          <div class="wf-phase-label-line"></div>
+          <div class="wf-phase-label-text">PROJECT MANAGEMENT</div>
+          <div class="wf-phase-label-line"></div>
         </div>
 
-        <div style="width:100%;display:flex;flex-direction:column;gap:8px">
-          <div style="background:#1a1200;border:1px solid rgba(255,170,0,.25);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
-            <div style="font-size:20px;flex-shrink:0">🤝</div>
+        <div class="wf-stages">
+          <div class="wf-stage amber">
+            <div class="wf-stage-ico">🤝</div>
             <div>
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Job Booked</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:2px">Scheduled · Crew briefed · Calendar updated</div>
+              <div class="wf-stage-name">Job Booked</div>
+              <div class="wf-stage-desc">Scheduled · Crew briefed · Calendar updated</div>
+              <div class="wf-stage-trigger">→ dispatch sequence triggers automatically</div>
             </div>
           </div>
-          <div style="text-align:center;font-size:14px;color:var(--amber)">↓</div>
-          <div style="background:#1a1200;border:1px solid rgba(255,170,0,.25);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
-            <div style="font-size:20px;flex-shrink:0">🚚</div>
+          <div class="wf-arrow amber">↓</div>
+          <div class="wf-stage amber">
+            <div class="wf-stage-ico">🚚</div>
             <div>
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Crew Dispatched</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:2px">Details pushed · Customer arrival notification sent</div>
+              <div class="wf-stage-name">Crew Dispatched</div>
+              <div class="wf-stage-desc">Details pushed · Customer arrival notification sent</div>
+              <div class="wf-stage-trigger">→ pipeline advances · status visible to entire team</div>
             </div>
           </div>
-          <div style="text-align:center;font-size:14px;color:var(--amber)">↓</div>
-          <div style="background:#1a1200;border:1px solid rgba(255,170,0,.25);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
-            <div style="font-size:20px;flex-shrink:0">🔨</div>
+          <div class="wf-arrow amber">↓</div>
+          <div class="wf-stage amber">
+            <div class="wf-stage-ico">🔨</div>
             <div>
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Work In Progress</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:2px">Live pipeline status · Team aligned · Customer updated</div>
+              <div class="wf-stage-name">Work In Progress</div>
+              <div class="wf-stage-desc">Live pipeline status · Team aligned · Customer updated</div>
+              <div class="wf-stage-trigger">→ no calls between team members</div>
             </div>
           </div>
-          <div style="text-align:center;font-size:14px;color:var(--amber)">↓</div>
-          <div style="background:#1a1200;border:1px solid rgba(255,170,0,.25);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
-            <div style="font-size:20px;flex-shrink:0">✅</div>
+          <div class="wf-arrow amber">↓</div>
+          <div class="wf-stage amber">
+            <div class="wf-stage-ico">✅</div>
             <div>
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Final Inspection</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:2px">Owner confirms · Job closed · Invoice queued</div>
+              <div class="wf-stage-name">Final Inspection</div>
+              <div class="wf-stage-desc">Owner confirms · Job closed · Invoice queued</div>
+              <div class="wf-stage-trigger">→ invoice sequence triggers without manual input</div>
             </div>
           </div>
-          <div style="text-align:center;font-size:14px;color:var(--amber)">↓</div>
-          <div style="background:#0a1e10;border:1px solid rgba(0,232,122,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
-            <div style="font-size:20px;flex-shrink:0">💰</div>
+          <div class="wf-arrow amber">↓</div>
+          <div class="wf-stage green">
+            <div class="wf-stage-ico">💰</div>
             <div>
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--green);letter-spacing:.04em">Payment Received</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:2px">Revenue recorded · Job closed · Sequence activates</div>
+              <div class="wf-stage-name green">Payment Received</div>
+              <div class="wf-stage-desc">Revenue recorded · Job closed · Sequence activates</div>
+              <div class="wf-stage-trigger">→ customer lifecycle state updates · nurture begins</div>
             </div>
           </div>
-        </div>
-
-        <div style="width:100%;margin-top:16px;padding:12px 16px;background:rgba(26,143,255,.05);border:1px solid rgba(26,143,255,.2);border-radius:10px;text-align:center">
-          <div style="font-size:12px;color:#6ab8ff;line-height:1.6">Once the job is done, Digital Office moves customer data to the Marketing Team for Customer Relationship and Long-Term Nurturing.</div>
         </div>
 
       </div>
+    </div>
+
+    <div class="transition-callout reveal">
+      <p>Job closes → relationship does not. System transitions customer into long-term lifecycle automatically.<br>
+      Same job, next step of customer journey.</p>
     </div>
 
   </div>
@@ -474,68 +317,62 @@
 
 <!-- ══ CUSTOMER RELATIONSHIP ══════════════════════════════ -->
 <section style="background:var(--panel)" class="pcb">
-  <div style="max-width:720px;margin:0 auto;padding:64px 24px">
+  <div class="vp-section">
 
-    <div style="text-align:center;margin-bottom:44px" class="reveal">
+    <div class="vp-section-head reveal">
       <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
         <div class="eyebrow-dot" style="background:#6ab8ff"></div>Customer Relationship
       </div>
-      <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#fff;line-height:.92;margin-bottom:14px">
-        Job closed.<br><span style="color:#6ab8ff">System doesn't stop.</span>
-      </h2>
-      <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto;line-height:1.7">
-        Every closed job enters a long-term sequence automatically. No one has to remember to follow up. The customer stays engaged — reducing your marketing budget while building repeat business.
-      </p>
+      <h2 class="disp">Job closed.<br><span style="color:#6ab8ff">System continues automatically.</span></h2>
+      <p>Every finished job enters a long-term sequence automatically. No one has to remember to follow up. The customer stays engaged — reducing your marketing budget while building repeat business.</p>
     </div>
 
-    <div style="max-width:460px;margin:0 auto" class="reveal">
-      <div style="background:#0d1520;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:0">
+    <div class="wf-diag reveal">
+      <div class="wf-diag-inner">
 
-        <div style="display:flex;align-items:center;gap:10px;width:100%;margin-bottom:16px">
-          <div style="flex:1;height:1px;background:rgba(26,143,255,.35)"></div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:11px;color:#6ab8ff;letter-spacing:.18em;white-space:nowrap">CUSTOMER RELATIONSHIP</div>
-          <div style="flex:1;height:1px;background:rgba(26,143,255,.35)"></div>
+        <div class="wf-phase-label blue">
+          <div class="wf-phase-label-line"></div>
+          <div class="wf-phase-label-text">CUSTOMER RELATIONSHIP</div>
+          <div class="wf-phase-label-line"></div>
         </div>
 
-        <div style="width:100%;display:flex;flex-direction:column;gap:8px">
-          <div style="background:#071426;border:1px solid rgba(26,143,255,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
-            <div style="font-size:20px;flex-shrink:0">⭐</div>
+        <div class="wf-stages">
+          <div class="wf-stage blue">
+            <div class="wf-stage-ico">⭐</div>
             <div>
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Review Requested</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:2px">To improve feedback rating</div>
+              <div class="wf-stage-name">Review Requested</div>
+              <div class="wf-stage-desc">Automatically requested after job completion</div>
             </div>
           </div>
-          <div style="text-align:center;font-size:14px;color:#6ab8ff">↓</div>
-          <div style="background:#071426;border:1px solid rgba(26,143,255,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
-            <div style="font-size:20px;flex-shrink:0">🛡️</div>
+          <div class="wf-arrow blue">↓</div>
+          <div class="wf-stage blue">
+            <div class="wf-stage-ico">🛡️</div>
             <div>
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#fff;letter-spacing:.04em">Warranty Reminder Scheduled</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:2px">Timed follow-up to show that we care</div>
+              <div class="wf-stage-name">Warranty Reminder Scheduled</div>
+              <div class="wf-stage-desc">Timed follow-up to show that we care</div>
             </div>
           </div>
-          <div style="text-align:center;font-size:14px;color:#6ab8ff">↓</div>
-          <div style="background:#071426;border:1px solid rgba(26,143,255,.4);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
-            <div style="font-size:20px;flex-shrink:0">🔁</div>
+          <div class="wf-arrow blue">↓</div>
+          <div class="wf-stage blue">
+            <div class="wf-stage-ico">🔁</div>
             <div>
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#6ab8ff;letter-spacing:.04em">Added to Seasonal Newsletter</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:2px">Long-term nurture active · Reducing marketing budget</div>
+              <div class="wf-stage-name blue">Added to Seasonal Newsletter</div>
+              <div class="wf-stage-desc">Long-term nurture active · Reducing marketing budget</div>
             </div>
-          </div>
-        </div>
-
-        <div style="width:100%;margin-top:16px;padding:14px 16px;background:rgba(255,122,0,.07);border:1px solid rgba(255,122,0,.2);border-radius:10px;text-align:center">
-          <div style="font-size:13px;color:var(--text);line-height:1.65">
-            You stay on billable work.<br>
-            <span style="color:var(--orange);font-weight:600">Digital Office monitors communication, tags customers, and triggers workflows — so your team stays on the same page and your customer stays engaged.</span>
           </div>
         </div>
 
       </div>
+    </div>
+
+    <div class="system-spine reveal">
+      <p>Digital Office unifies customer journey and project lifecycle into one operating system.<br>
+      Every stage is connected. Every action is triggered. Every update is shared.<br>
+      The system reads the job, updates its state, decides what happens next, and triggers the next action automatically.</p>
     </div>
 
   </div>
 </section>
-
 
 
 <!-- ══ CASE STUDY ═════════════════════════════════════════ -->
