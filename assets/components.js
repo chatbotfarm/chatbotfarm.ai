@@ -24,6 +24,8 @@
       <a href="/contractors" style="color:var(--text);text-decoration:none;font-size:16px">Contractors</a>
       <a href="/medspas" style="color:var(--text);text-decoration:none;font-size:16px">Med Spas</a>
       <a href="/ghost-kitchens" style="color:var(--text);text-decoration:none;font-size:16px">Ghost Kitchens</a>
+      <a href="/property-management" style="color:var(--text);text-decoration:none;font-size:16px">Property</a>
+      <a href="/professional-services" style="color:var(--text);text-decoration:none;font-size:16px">Professional</a>
       <div class="nav-cta-wrap">
         <a href="#book" class="nav-cta">Plan Your System →</a>
       </div>
@@ -49,6 +51,26 @@
         style="height:120px;width:auto;display:block;object-fit:contain;margin-bottom:8px"
         onerror="this.remove()">
       <p>Connecting Business To The Grid ®</p>
+    </div>
+    <div style="display:flex;gap:32px;flex-wrap:wrap">
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--orange);letter-spacing:.14em;margin-bottom:10px">INDUSTRIES</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <a href="/contractors" style="font-size:15px;color:var(--muted);text-decoration:none">Contractors & Trades</a>
+          <a href="/medspas" style="font-size:15px;color:var(--muted);text-decoration:none">Med Spas & Wellness</a>
+          <a href="/ghost-kitchens" style="font-size:15px;color:var(--muted);text-decoration:none">Ghost Kitchens</a>
+          <a href="/property-management" style="font-size:15px;color:var(--muted);text-decoration:none">Property Management</a>
+          <a href="/professional-services" style="font-size:15px;color:var(--muted);text-decoration:none">Professional Services</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--orange);letter-spacing:.14em;margin-bottom:10px">COMPANY</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <a href="/" style="font-size:15px;color:var(--muted);text-decoration:none">Home</a>
+          <a href="/#book" style="font-size:15px;color:var(--muted);text-decoration:none">Plan Your System</a>
+          <a href="tel:+12542683276" style="font-size:15px;color:var(--muted);text-decoration:none">📞 (254) BOT-FARM</a>
+        </div>
+      </div>
     </div>
     <div class="fr">
       <div>© <span class="cbf-year"></span> chatbotfarm.ai</div>
