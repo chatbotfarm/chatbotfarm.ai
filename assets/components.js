@@ -46,7 +46,7 @@
     <div class="fb">
       <img src="https://assets.cdn.filesafe.space/jD3rvaWtP7z9FUt4o7dZ/media/696baae65e05d44fc069c0d9.png"
         alt="ChatbotFarm.ai"
-        style="height:120px;width:auto;display:block;object-fit:contain;mix-blend-mode:screen;margin-bottom:8px"
+        style="height:120px;width:auto;display:block;object-fit:contain;margin-bottom:8px"
         onerror="this.remove()">
       <p>Connecting Business To The Grid ®</p>
     </div>
