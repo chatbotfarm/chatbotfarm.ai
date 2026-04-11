@@ -1216,3 +1216,19 @@ footer { background:var(--ink); border-top:1px solid var(--border); }
 .foot-badge img {
   filter: drop-shadow(0 0 8px rgba(255,200,0,.14)) !important;
 }
+
+/* ── SYSTEM HANDLES GRID (light section) ── */
+.sys-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 600px) {
+  .sys-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .sys-grid > div[style*="grid-column"] {
+    grid-column: auto !important;
+    max-width: 100% !important;
+  }
+}
