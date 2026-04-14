@@ -40,7 +40,6 @@
         alt="ChatbotFarm.ai"
         style="height:120px;width:auto;display:block;object-fit:contain;margin-bottom:8px"
         onerror="this.remove()">
-      <p>Connecting Business To The Grid ®</p>
     </div>
     <div style="display:flex;gap:32px;flex-wrap:wrap">
       <div>
