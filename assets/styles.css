@@ -1,7 +1,6 @@
 /* ============================================================
-   ChatbotFarm.ai — Shared Stylesheet v9
-   3-color accent system: blue=explain, green=proof, orange=act
-   Light mode: stronger surface separation for rhythm.
+   ChatbotFarm.ai — Shared Stylesheet v10
+   Light-mode blue more visible. Hamburger thicker.
    ============================================================ */
    PCB traces in green. No glow effects.
    ============================================================ */
@@ -27,7 +26,7 @@
   --green:  #4A7A3D;
   --orange: #9E6310;
   --amber:  #9E6310;  /* merged into orange */
-  --blue:   #1B4B6B;
+  --blue:   #1A6FA0;
   --success:#2E7D32;
 
   /* nav */
@@ -37,11 +36,11 @@
 
   /* diagram — neutral surfaces, colored borders only */
   --diag-bg:    #e6ebf2;
-  --diag-ch-bg: rgba(27,75,107,.06);
-  --diag-ch-bd: rgba(27,75,107,.25);
+  --diag-ch-bg: rgba(26,111,160,.06);
+  --diag-ch-bd: rgba(26,111,160,.25);
   --diag-ch-tx: #1B4B6B;
-  --diag-intake-bg: rgba(27,75,107,.04);
-  --diag-intake-bd: rgba(27,75,107,.25);
+  --diag-intake-bg: rgba(26,111,160,.04);
+  --diag-intake-bd: rgba(26,111,160,.25);
   --diag-logic-bg:  var(--card);
   --diag-logic-bd:  rgba(158,99,16,.25);
   --diag-out-bg:    var(--card);
@@ -54,7 +53,7 @@
   /* vertical page diagrams */
   --vp-diag-bg:  #e2e8f0;
   --vp-diag-bd:  rgba(0,0,0,.06);
-  --vp-ch-bg:    rgba(27,75,107,.03);
+  --vp-ch-bg:    rgba(26,111,160,.03);
 
   /* pills */
   --pill-no-bd:  rgba(200,50,40,.25);
@@ -65,13 +64,13 @@
   --pill-yes-bg: rgba(74,122,61,.04);
 
   /* trust chip — blue frame, green text */
-  --chip-bd: rgba(27,75,107,.18);
-  --chip-bg: rgba(27,75,107,.04);
+  --chip-bd: rgba(26,111,160,.18);
+  --chip-bg: rgba(26,111,160,.04);
   --chip-tx: #2E7D32;
 
   /* eyebrow — blue */
-  --eye-bd: rgba(27,75,107,.22);
-  --eye-bg: rgba(27,75,107,.06);
+  --eye-bd: rgba(26,111,160,.22);
+  --eye-bg: rgba(26,111,160,.06);
 
   /* wf stages — neutral surfaces, colored borders only */
   --wf-orange-bg: var(--card);
@@ -79,7 +78,7 @@
   --wf-amber-bg:  var(--card);        /* alias to orange */
   --wf-amber-bd:  rgba(158,99,16,.2); /* alias to orange */
   --wf-blue-bg:   var(--card);
-  --wf-blue-bd:   rgba(27,75,107,.25);
+  --wf-blue-bd:   rgba(26,111,160,.25);
   --wf-green-bg:  var(--card);
   --wf-green-bd:  rgba(74,122,61,.18);
 
@@ -229,9 +228,9 @@ p:last-child { margin-bottom: 0; }
 /* ── ANIMATIONS ── */
 @keyframes pulse-dot  { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(1.4)} }
 @keyframes arrow-flow {
-  0%   { color: rgba(27,75,107,.25); text-shadow: none; }
+  0%   { color: rgba(26,111,160,.25); text-shadow: none; }
   50%  { color: var(--blue); }
-  100% { color: rgba(27,75,107,.25); text-shadow: none; }
+  100% { color: rgba(26,111,160,.25); text-shadow: none; }
 }
 @keyframes arrow-flow-green {
   0%   { color: rgba(74,122,61,.25); text-shadow: none; }
@@ -285,8 +284,8 @@ p:last-child { margin-bottom: 0; }
   gap: 5px; cursor: pointer; padding: 8px; border: none; background: none; flex-shrink: 0;
 }
 .nav-hamburger span {
-  display: block; width: 24px; height: 2px;
-  background: var(--text); border-radius: 2px;
+  display: block; width: 24px; height: 3px;
+  background: var(--heading); border-radius: 2px;
   transition: transform .25s, opacity .25s;
 }
 .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -345,7 +344,7 @@ p:last-child { margin-bottom: 0; }
 .hero::after {
   content:''; position:absolute; top:-180px; right:-180px;
   width:500px; height:500px;
-  background:radial-gradient(circle,rgba(27,75,107,.04) 0%,transparent 68%);
+  background:radial-gradient(circle,rgba(26,111,160,.04) 0%,transparent 68%);
   pointer-events:none; z-index:0;
 }
 .hero-svg {
@@ -518,7 +517,7 @@ p:last-child { margin-bottom: 0; }
 .step:last-child { border-bottom:none; }
 .snum {
   width:32px; height:32px; flex-shrink:0; border-radius:50%;
-  background:rgba(27,75,107,.08); border:1px solid rgba(27,75,107,.22);
+  background:rgba(26,111,160,.08); border:1px solid rgba(26,111,160,.22);
   display:flex; align-items:center; justify-content:center;
 }
 .snum span { font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--blue); }
