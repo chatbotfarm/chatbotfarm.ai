@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<!-- medspas-v2.html · 2026-04-11
-     Rebuilt on contractors page skeleton.
-     Four-phase operating model with medspa-specific language.
+<!-- medspas-v3.html · 2026-04-14
+     Inline colors removed. Utility classes. Theme-compatible.
 -->
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,567 +11,305 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/styles.css">
+  <script>(function(){var t=localStorage.getItem('cbf-theme');if(t)document.documentElement.setAttribute('data-theme',t)})();</script>
 </head>
 <body>
 
-<!-- ══ NAV ══════════════════════════════════════════════ -->
 <div id="nav-placeholder"></div>
-
 
 <!-- ══ HERO ══════════════════════════════════════════════ -->
 <section class="hero pcb">
   <svg class="hero-svg" viewBox="0 0 1200 620" preserveAspectRatio="none">
     <path class="trace trace-1" d="M0,100 L220,100 L220,260 L520,260 L520,140 L820,140 L820,300 L1200,300"/>
     <path class="trace trace-2" d="M0,420 L310,420 L310,240 L610,240 L610,380 L920,380 L920,210 L1200,210"/>
-    <path class="trace trace-3" d="M0,60  L160,60  L160,190 L440,190 L440,70  L720,70  L720,290 L1200,290"/>
   </svg>
-
   <div class="hero-inner reveal">
     <div>
       <div class="eyebrow"><div class="eyebrow-dot" style="background:var(--green)"></div>👩‍⚕️ Digital Office for MedSpas & Wellness Practices</div>
-      <h1 class="hero-hed">
-        You focus on<br>the client.<br>
-        <span class="acc" style="color:var(--green)">We run the system<br>behind it.</span>
-      </h1>
-      <p class="hero-sub">
-        The Digital Office captures every inquiry, understands client intent, books consultations, and moves each client through your pipeline automatically.
-      </p>
+      <h1 class="hero-hed">You focus on<br>the client.<br><span class="acc">We run the system<br>behind it.</span></h1>
+      <p class="hero-sub">The Digital Office captures every inquiry, understands client intent, books consultations, and moves each client through your pipeline automatically.</p>
       <div class="trust-row">
         <div class="trust-chip">Every inquiry captured</div>
         <div class="trust-chip">Consultations booked automatically</div>
         <div class="trust-chip">Client always informed</div>
       </div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-        <button class="btn-p" style="font-size:18px;padding:13px 28px" onclick="document.getElementById('book-cal').scrollIntoView({behavior:'smooth'})">
-          Plan Your System →
-        </button>
+        <button class="btn-p" style="font-size:18px;padding:13px 28px" onclick="document.getElementById('book-cal').scrollIntoView({behavior:'smooth'})">Map My Office →</button>
       </div>
     </div>
-
   </div>
 </section>
-
 
 <!-- ══ DEPARTMENT MAP ══════════════════════════════════════ -->
-<section style="background:var(--panel)" class="pcb">
+<section style="background:var(--bg-alt)" class="pcb">
   <div class="dept-map-wrap">
     <div class="dept-map-card reveal">
-
       <div class="dept-map-title">FOUR PHASES. ONE SYSTEM.</div>
-
       <div class="dept-map-grid">
-        <div class="dept-win blue">
-          <div class="dept-win-num">01</div>
-          <div class="dept-win-name">Lead Handling</div>
-        </div>
-        <div class="dept-win orange">
-          <div class="dept-win-num">02</div>
-          <div class="dept-win-name">Consultation to Treatment Plan</div>
-        </div>
-        <div class="dept-win amber">
-          <div class="dept-win-num">03</div>
-          <div class="dept-win-name">Client Management</div>
-        </div>
-        <div class="dept-win lblue">
-          <div class="dept-win-num">04</div>
-          <div class="dept-win-name">Retention & Re-Engagement</div>
-        </div>
+        <div class="dept-win blue"><div class="dept-win-num">01</div><div class="dept-win-name">Lead Handling</div></div>
+        <div class="dept-win orange"><div class="dept-win-num">02</div><div class="dept-win-name">Consultation to Treatment Plan</div></div>
+        <div class="dept-win amber"><div class="dept-win-num">03</div><div class="dept-win-name">Client Management</div></div>
+        <div class="dept-win lblue"><div class="dept-win-num">04</div><div class="dept-win-name">Retention & Re-Engagement</div></div>
       </div>
-
       <div class="dept-map-arrow">↓</div>
-
-      <div class="dept-map-copy">
-        Every stage removes coordination from your plate —<br>
-        your team sees the same pipeline, your client is never left wondering.
-      </div>
-
+      <div class="dept-map-copy">Every stage removes coordination from your plate —<br>your team sees the same pipeline, your client is never left wondering.</div>
     </div>
   </div>
 </section>
 
-
 <!-- ══ PHASE 1 — LEAD HANDLING ════════════════════════════ -->
-<section style="background:var(--ink)" class="pcb">
+<section style="background:var(--bg)" class="pcb">
   <div class="vp-section">
-
     <div class="phase-sep reveal">
-      <div class="phase-sep-line" style="background:rgba(26,143,255,.35)"></div>
-      <div class="phase-sep-label" style="color:var(--blue)">PHASE 1 — LEAD HANDLING</div>
-      <div class="phase-sep-line" style="background:rgba(26,143,255,.35)"></div>
+      <div class="phase-sep-line" style="background:var(--wf-blue-bd)"></div>
+      <div class="phase-sep-label u-blue">PHASE 1 — LEAD HANDLING</div>
+      <div class="phase-sep-line" style="background:var(--wf-blue-bd)"></div>
     </div>
-
-    <!-- INTAKE DIAGRAM -->
     <div class="intake-diag reveal">
       <div class="intake-diag-inner">
-
         <div class="intake-diag-title">HOW EVERY INQUIRY IS ROUTED</div>
-
         <div class="intake-channels">
           <div class="intake-ch"><div class="intake-ch-ico">📞</div><div class="intake-ch-lbl">CALL</div></div>
           <div class="intake-ch"><div class="intake-ch-ico">💬</div><div class="intake-ch-lbl">SMS</div></div>
           <div class="intake-ch"><div class="intake-ch-ico">✉️</div><div class="intake-ch-lbl">EMAIL</div></div>
           <div class="intake-ch"><div class="intake-ch-ico">📲</div><div class="intake-ch-lbl">WEB/DM</div></div>
         </div>
-
         <div class="intake-arrow">↓</div>
-
-        <div class="intake-frontdesk">
-          <div class="intake-frontdesk-tag">AI FRONT DESK</div>
-          <div class="intake-frontdesk-title">CAPTURE & QUALIFY</div>
-          <div class="intake-frontdesk-note">Understands intent · Tags service type · Filters spam</div>
-        </div>
-
+        <div class="intake-frontdesk"><div class="intake-frontdesk-tag">AI FRONT DESK</div><div class="intake-frontdesk-title">CAPTURE & QUALIFY</div><div class="intake-frontdesk-note">Understands intent · Tags service type · Filters spam</div></div>
         <div class="intake-arrow">↓</div>
-
-        <div class="intake-crm">
-          <div class="intake-crm-tag">CRM DECISION LOGIC</div>
-          <div class="intake-crm-title">NEXT ACTION TRIGGERED</div>
-        </div>
-
+        <div class="intake-crm"><div class="intake-crm-tag">CRM DECISION LOGIC</div><div class="intake-crm-title">NEXT ACTION TRIGGERED</div></div>
         <div class="intake-outcomes">
-          <div class="intake-out team">
-            <div class="intake-out-ico">👩‍⚕️</div>
-            <div class="intake-out-lbl">STAFF NOTIFIED</div>
-            <div class="intake-out-note">Right person alerted based on service type</div>
-          </div>
-          <div class="intake-out customer">
-            <div class="intake-out-ico">📱</div>
-            <div class="intake-out-lbl">CLIENT CONFIRMED</div>
-            <div class="intake-out-note">Inquiry confirmed · Next steps sent</div>
-          </div>
+          <div class="intake-out team"><div class="intake-out-ico">👩‍⚕️</div><div class="intake-out-lbl">STAFF NOTIFIED</div><div class="intake-out-note">Right person alerted based on service type</div></div>
+          <div class="intake-out customer"><div class="intake-out-ico">📱</div><div class="intake-out-lbl">CLIENT CONFIRMED</div><div class="intake-out-note">Inquiry confirmed · Next steps sent</div></div>
         </div>
-
       </div>
     </div>
-
-    <div class="transition-callout reveal">
-      <p>You are no longer monitoring phones or coordinating responses.<br>
-      The system handles communication and routing automatically.</p>
-    </div>
-
+    <div class="transition-callout reveal"><p>You are no longer monitoring phones or coordinating responses.<br>The system handles communication and routing automatically.</p></div>
   </div>
 </section>
-
 
 <!-- ══ CONSULTATION TO TREATMENT PLAN ═════════════════════ -->
-<section style="background:var(--panel)" class="pcb">
+<section style="background:var(--bg-alt)" class="pcb">
   <div class="vp-section">
-
     <div class="vp-section-head reveal">
-      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
-        <div class="eyebrow-dot" style="background:var(--green)"></div>Consultation to Treatment Plan
-      </div>
-      <h2 class="disp">From first inquiry<br><span style="color:var(--green)">to committed client.</span></h2>
-      <p>Once the inquiry is qualified, the system moves it through a defined consultation pipeline.<br>
-      You handle the consultation.<br>
-      The system handles booking, reminders, follow-up, and next actions through treatment plan and deposit.</p>
+      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex"><div class="eyebrow-dot" style="background:var(--green)"></div>Consultation to Treatment Plan</div>
+      <h2 class="disp">From first inquiry<br><span class="u-green">to committed client.</span></h2>
+      <p>Once the inquiry is qualified, the system moves it through a defined consultation pipeline.<br>You handle the consultation.<br>The system handles booking, reminders, follow-up, and next actions through treatment plan and deposit.</p>
     </div>
-
     <div class="wf-diag reveal">
       <div class="wf-diag-inner">
-
-        <div class="wf-phase-label green" style="">
-          <div class="wf-phase-label-line" style="background:rgba(0,232,122,.35)"></div>
-          <div class="wf-phase-label-text" style="color:var(--green)">CONSULTATION TO TREATMENT PLAN</div>
-          <div class="wf-phase-label-line" style="background:rgba(0,232,122,.35)"></div>
-        </div>
-
+        <div class="wf-phase-label green"><div class="wf-phase-label-line" style="background:var(--wf-green-bd)"></div><div class="wf-phase-label-text" class="u-green">CONSULTATION TO TREATMENT PLAN</div><div class="wf-phase-label-line" style="background:var(--wf-green-bd)"></div></div>
         <div class="wf-stages">
-          <div class="wf-stage green">
-            <div class="wf-stage-ico">📅</div>
-            <div>
-              <div class="wf-stage-name">Consultation Booked</div>
-              <div class="wf-stage-desc">Booking link sent · Calendar updated · Confirmation triggered</div>
-              <div class="wf-stage-trigger" style="color:rgba(0,232,122,.5)">→ reminder sequence activates automatically</div>
-            </div>
-          </div>
+          <div class="wf-stage green"><div class="wf-stage-ico">📅</div><div><div class="wf-stage-name">Consultation Booked</div><div class="wf-stage-desc">Booking link sent · Calendar updated · Confirmation triggered</div><div class="wf-stage-trigger">→ reminder sequence activates automatically</div></div></div>
           <div class="wf-arrow" style="color:var(--green)">↓</div>
-          <div class="wf-stage green">
-            <div class="wf-stage-ico">🔔</div>
-            <div>
-              <div class="wf-stage-name">Reminders & Confirmation Sent</div>
-              <div class="wf-stage-desc">SMS + email reminders · No-show rate reduced · Client arrives prepared</div>
-              <div class="wf-stage-trigger" style="color:rgba(0,232,122,.5)">→ follow-up sequence activates if no response</div>
-            </div>
-          </div>
+          <div class="wf-stage green"><div class="wf-stage-ico">🔔</div><div><div class="wf-stage-name">Reminders & Confirmation Sent</div><div class="wf-stage-desc">SMS + email reminders · No-show rate reduced · Client arrives prepared</div><div class="wf-stage-trigger">→ follow-up sequence activates if no response</div></div></div>
           <div class="wf-arrow" style="color:var(--green)">↓</div>
-          <div class="wf-stage green">
-            <div class="wf-stage-ico">🤝</div>
-            <div>
-              <div class="wf-stage-name">Consultation Completed</div>
-              <div class="wf-stage-desc">Service discussed · Treatment plan presented · Client informed</div>
-              <div class="wf-stage-trigger" style="color:rgba(0,232,122,.5)">→ system prepares treatment plan follow-up</div>
-            </div>
-          </div>
+          <div class="wf-stage green"><div class="wf-stage-ico">🤝</div><div><div class="wf-stage-name">Consultation Completed</div><div class="wf-stage-desc">Service discussed · Treatment plan presented · Client informed</div><div class="wf-stage-trigger">→ system prepares treatment plan follow-up</div></div></div>
           <div class="wf-arrow" style="color:var(--green)">↓</div>
-          <div class="wf-stage green">
-            <div class="wf-stage-ico">✍️</div>
-            <div>
-              <div class="wf-stage-name">Client Commits · Deposit Received</div>
-              <div class="wf-stage-desc">Treatment plan accepted · System updates state</div>
-              <div class="wf-stage-trigger" style="color:rgba(0,232,122,.5)">→ client management phase activates automatically</div>
-            </div>
-          </div>
+          <div class="wf-stage green"><div class="wf-stage-ico">✍️</div><div><div class="wf-stage-name">Client Commits · Deposit Received</div><div class="wf-stage-desc">Treatment plan accepted · System updates state</div><div class="wf-stage-trigger">→ client management phase activates automatically</div></div></div>
         </div>
-
       </div>
     </div>
-
-    <div class="transition-callout reveal" style="background:rgba(0,232,122,.05);border-color:rgba(0,232,122,.18)">
-      <p>Consultation converts → system updates client state → pipeline advances → treatment phase activates automatically.<br>
-      No manual handoff.</p>
-    </div>
-
+    <div class="transition-callout reveal" style="background:var(--wf-green-bg);border-color:var(--wf-green-bd)"><p>Consultation converts → system updates client state → pipeline advances → treatment phase activates automatically.<br>No manual handoff.</p></div>
   </div>
 </section>
-
 
 <!-- ══ CLIENT MANAGEMENT ══════════════════════════════════ -->
-<section style="background:var(--ink)" class="pcb">
+<section style="background:var(--bg)" class="pcb">
   <div class="vp-section">
-
     <div class="vp-section-head reveal">
-      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
-        <div class="eyebrow-dot" style="background:var(--amber)"></div>Client Management
-      </div>
-      <h2 class="disp">From treatment booked<br><span style="color:var(--amber)">to payment received.</span></h2>
+      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex"><div class="eyebrow-dot" style="background:var(--amber)"></div>Client Management</div>
+      <h2 class="disp">From treatment booked<br><span class="u-amber">to payment received.</span></h2>
       <p>Once the client commits, the system moves them into active treatment management. The team receives the appointment details, the client is updated at each stage, and the client pipeline stays visible to the entire practice in real time.</p>
     </div>
-
     <div class="wf-diag reveal">
       <div class="wf-diag-inner">
-
-        <div class="wf-phase-label amber">
-          <div class="wf-phase-label-line"></div>
-          <div class="wf-phase-label-text">CLIENT MANAGEMENT</div>
-          <div class="wf-phase-label-line"></div>
-        </div>
-
+        <div class="wf-phase-label amber"><div class="wf-phase-label-line"></div><div class="wf-phase-label-text">CLIENT MANAGEMENT</div><div class="wf-phase-label-line"></div></div>
         <div class="wf-stages">
-          <div class="wf-stage amber">
-            <div class="wf-stage-ico">📋</div>
-            <div>
-              <div class="wf-stage-name">Treatment Scheduled</div>
-              <div class="wf-stage-desc">Appointment set · Staff briefed · Calendar updated</div>
-              <div class="wf-stage-trigger">→ pre-treatment instructions sent automatically</div>
-            </div>
-          </div>
+          <div class="wf-stage amber"><div class="wf-stage-ico">📋</div><div><div class="wf-stage-name">Treatment Scheduled</div><div class="wf-stage-desc">Appointment set · Staff briefed · Calendar updated</div><div class="wf-stage-trigger">→ pre-treatment instructions sent automatically</div></div></div>
           <div class="wf-arrow amber">↓</div>
-          <div class="wf-stage amber">
-            <div class="wf-stage-ico">🔔</div>
-            <div>
-              <div class="wf-stage-name">Reminders Sent · Client Prepared</div>
-              <div class="wf-stage-desc">Confirmation + prep instructions delivered · No-shows reduced</div>
-              <div class="wf-stage-trigger">→ pipeline advances · status visible to entire team</div>
-            </div>
-          </div>
+          <div class="wf-stage amber"><div class="wf-stage-ico">🔔</div><div><div class="wf-stage-name">Reminders Sent · Client Prepared</div><div class="wf-stage-desc">Confirmation + prep instructions delivered · No-shows reduced</div><div class="wf-stage-trigger">→ pipeline advances · status visible to entire team</div></div></div>
           <div class="wf-arrow amber">↓</div>
-          <div class="wf-stage amber">
-            <div class="wf-stage-ico">✨</div>
-            <div>
-              <div class="wf-stage-name">Treatment In Progress</div>
-              <div class="wf-stage-desc">Live pipeline status · Team aligned · Client record updated</div>
-              <div class="wf-stage-trigger">→ post-treatment follow-up queued</div>
-            </div>
-          </div>
+          <div class="wf-stage amber"><div class="wf-stage-ico">✨</div><div><div class="wf-stage-name">Treatment In Progress</div><div class="wf-stage-desc">Live pipeline status · Team aligned · Client record updated</div><div class="wf-stage-trigger">→ post-treatment follow-up queued</div></div></div>
           <div class="wf-arrow amber">↓</div>
-          <div class="wf-stage amber">
-            <div class="wf-stage-ico">✅</div>
-            <div>
-              <div class="wf-stage-name">Treatment Completed</div>
-              <div class="wf-stage-desc">Session closed · Aftercare instructions sent · Invoice queued</div>
-              <div class="wf-stage-trigger">→ payment sequence triggers without manual input</div>
-            </div>
-          </div>
+          <div class="wf-stage amber"><div class="wf-stage-ico">✅</div><div><div class="wf-stage-name">Treatment Completed</div><div class="wf-stage-desc">Session closed · Aftercare instructions sent · Invoice queued</div><div class="wf-stage-trigger">→ payment sequence triggers without manual input</div></div></div>
           <div class="wf-arrow amber">↓</div>
-          <div class="wf-stage green">
-            <div class="wf-stage-ico">💰</div>
-            <div>
-              <div class="wf-stage-name green">Payment Received</div>
-              <div class="wf-stage-desc">Revenue recorded · Session closed · Sequence activates</div>
-              <div class="wf-stage-trigger" style="color:rgba(0,232,122,.5)">→ client lifecycle state updates · nurture begins</div>
-            </div>
-          </div>
+          <div class="wf-stage green"><div class="wf-stage-ico">💰</div><div><div class="wf-stage-name green">Payment Received</div><div class="wf-stage-desc">Revenue recorded · Session closed · Sequence activates</div><div class="wf-stage-trigger">→ client lifecycle state updates · nurture begins</div></div></div>
         </div>
-
       </div>
     </div>
-
-    <div class="transition-callout reveal">
-      <p>Treatment closes → relationship does not. System transitions client into long-term lifecycle automatically.<br>
-      Same client, next step of the journey.</p>
-    </div>
-
+    <div class="transition-callout reveal"><p>Treatment closes → relationship does not. System transitions client into long-term lifecycle automatically.<br>Same client, next step of the journey.</p></div>
   </div>
 </section>
-
 
 <!-- ══ RETENTION & RE-ENGAGEMENT ══════════════════════════ -->
-<section style="background:var(--panel)" class="pcb">
+<section style="background:var(--bg-alt)" class="pcb">
   <div class="vp-section">
-
     <div class="vp-section-head reveal">
-      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex">
-        <div class="eyebrow-dot" style="background:#6ab8ff"></div>Retention & Re-Engagement
-      </div>
-      <h2 class="disp">Treatment complete.<br><span style="color:#6ab8ff">System continues automatically.</span></h2>
+      <div class="eyebrow" style="margin:0 auto 18px;display:inline-flex"><div class="eyebrow-dot" style="background:var(--blue)"></div>Retention & Re-Engagement</div>
+      <h2 class="disp">Treatment complete.<br><span class="u-blue">System continues automatically.</span></h2>
       <p>Every completed treatment automatically enters a post-session sequence. Review requests, rebooking reminders, and long-term follow-up continue without anyone having to remember. That drives repeat bookings and lowers the cost of filling your calendar.</p>
     </div>
-
     <div class="wf-diag reveal">
       <div class="wf-diag-inner">
-
-        <div class="wf-phase-label blue">
-          <div class="wf-phase-label-line"></div>
-          <div class="wf-phase-label-text">RETENTION & RE-ENGAGEMENT</div>
-          <div class="wf-phase-label-line"></div>
-        </div>
-
+        <div class="wf-phase-label blue"><div class="wf-phase-label-line"></div><div class="wf-phase-label-text">RETENTION & RE-ENGAGEMENT</div><div class="wf-phase-label-line"></div></div>
         <div class="wf-stages">
-          <div class="wf-stage blue">
-            <div class="wf-stage-ico">⭐</div>
-            <div>
-              <div class="wf-stage-name">Review Requested</div>
-              <div class="wf-stage-desc">Automatically requested after treatment completion</div>
-            </div>
-          </div>
+          <div class="wf-stage blue"><div class="wf-stage-ico">⭐</div><div><div class="wf-stage-name">Review Requested</div><div class="wf-stage-desc">Automatically requested after treatment completion</div></div></div>
           <div class="wf-arrow blue">↓</div>
-          <div class="wf-stage blue">
-            <div class="wf-stage-ico">🔁</div>
-            <div>
-              <div class="wf-stage-name">Rebooking Reminder Scheduled</div>
-              <div class="wf-stage-desc">Timed follow-up based on treatment cycle</div>
-            </div>
-          </div>
+          <div class="wf-stage blue"><div class="wf-stage-ico">🔁</div><div><div class="wf-stage-name">Rebooking Reminder Scheduled</div><div class="wf-stage-desc">Timed follow-up based on treatment cycle</div></div></div>
           <div class="wf-arrow blue">↓</div>
-          <div class="wf-stage blue">
-            <div class="wf-stage-ico">📬</div>
-            <div>
-              <div class="wf-stage-name blue">Added to Seasonal Campaign</div>
-              <div class="wf-stage-desc">Long-term nurture active · Reducing marketing spend</div>
-            </div>
-          </div>
+          <div class="wf-stage blue"><div class="wf-stage-ico">📬</div><div><div class="wf-stage-name u-blue">Added to Seasonal Campaign</div><div class="wf-stage-desc">Long-term nurture active · Reducing marketing spend</div></div></div>
         </div>
-
       </div>
     </div>
-
-    <div class="system-spine reveal">
-      <p>Digital Office unifies client journey and treatment lifecycle into one operating system.<br>
-      Every stage is connected. Every action is triggered. Every update is shared.<br>
-      The system reads the client, updates their state, decides what happens next, and triggers the next action automatically.</p>
-    </div>
-
+    <div class="system-spine reveal"><p>Digital Office unifies client journey and treatment lifecycle into one operating system.<br>Every stage is connected. Every action is triggered. Every update is shared.<br>The system reads the client, updates their state, decides what happens next, and triggers the next action automatically.</p></div>
   </div>
 </section>
-
 
 <!-- ══ CASE STUDY ═════════════════════════════════════════ -->
 <div class="divider">Live deployment — proof of concept</div>
-<section style="background:var(--ink)" class="pcb">
+<section style="background:var(--bg)" class="pcb">
   <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
     <div class="case-study">
       <div class="case-tag">✓ Live deployment · Wellness Consulting</div>
       <div class="case-identity" style="display:flex;align-items:center;gap:20px;margin-bottom:20px;flex-wrap:wrap">
-        <img src="https://assets.cdn.filesafe.space/jD3rvaWtP7z9FUt4o7dZ/media/69d6a9b7eaae8b1b71def2d8.png"
-          alt="Detox-MD"
-          style="height:80px;width:auto;object-fit:contain">
+        <img src="https://assets.cdn.filesafe.space/jD3rvaWtP7z9FUt4o7dZ/media/69d6a9b7eaae8b1b71def2d8.png" alt="Detox-MD" style="height:80px;width:auto;object-fit:contain">
         <div>
           <h2 class="case-title" style="margin-bottom:4px">Detox-MD<br>Mental Wellness Consulting</h2>
-          <div style="font-size:14px;color:var(--muted);margin-top:4px;letter-spacing:.04em">Powered by ChatbotFarm Digital Office</div>
+          <div style="font-size:16px;letter-spacing:.04em" class="u-muted">Powered by ChatbotFarm Digital Office</div>
         </div>
       </div>
-      <p class="case-body">
-        A wellness consulting practice running all inbound through a dedicated system. Owner focuses on client sessions. System handles intake, booking, and follow-up. Every inquiry captured, qualified, and routed automatically — pipeline visible from their phone. No front desk. No missed consultations.
-      </p>
+      <p class="case-body">A wellness consulting practice running all inbound through a dedicated system. Owner focuses on client sessions. System handles intake, booking, and follow-up. Every inquiry captured, qualified, and routed automatically — pipeline visible from their phone. No front desk. No missed consultations.</p>
       <div class="case-stats">
-        <div>
-          <div class="case-stat-num">100%</div>
-          <div class="case-stat-label">Inquiries captured<br>24/7</div>
-        </div>
-        <div>
-          <div class="case-stat-num">0</div>
-          <div class="case-stat-label">Front desk staff<br>on payroll</div>
-        </div>
-        <div>
-          <div class="case-stat-num">1</div>
-          <div class="case-stat-label">System handling intake,<br>booking, and follow-up</div>
-        </div>
-        <div>
-          <div class="case-stat-num">Every</div>
-          <div class="case-stat-label">Client tracked from first<br>inquiry to completed session</div>
-        </div>
+        <div><div class="case-stat-num">100%</div><div class="case-stat-label">Inquiries captured<br>24/7</div></div>
+        <div><div class="case-stat-num">0</div><div class="case-stat-label">Front desk staff<br>on payroll</div></div>
+        <div><div class="case-stat-num">1</div><div class="case-stat-label">System handling intake,<br>booking, and follow-up</div></div>
+        <div><div class="case-stat-num">Every</div><div class="case-stat-label">Client tracked from first<br>inquiry to completed session</div></div>
       </div>
     </div>
   </div>
 </section>
-
 
 <!-- ══ VALUE STACK ════════════════════════════════════════ -->
 <div class="divider">What the Digital Office replaces</div>
-<section class="light-section">
+<section style="background:var(--bg-alt)">
   <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
     <div style="text-align:center;margin-bottom:48px">
-      <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:#111;line-height:.92;margin-bottom:12px">
-        What it would take<br><span style="color:var(--green)">to build this yourself.</span>
-      </h2>
-      <p style="font-size:17px;color:#555;max-width:480px;margin:0 auto">
-        What wellness practices typically pay to assemble this separately.
-      </p>
+      <h2 class="disp" style="font-size:clamp(28px,4vw,52px);line-height:.92;margin-bottom:12px">What it would take<br><span class="u-blue">to build this yourself.</span></h2>
+      <p style="font-size:17px;max-width:480px;margin:0 auto" class="u-muted">What wellness practices typically pay to assemble this separately.</p>
     </div>
-
-    <div class="val-table" style="border:1px solid #e0e0e0;border-radius:16px;overflow:hidden;margin-bottom:28px">
-      <div class="val-row" style="padding:16px 24px;border-bottom:1px solid #eee">
-        <div class="val-name" style="color:#222">👤 Front Desk / Receptionist</div>
-        <div class="val-price" style="color:rgba(200,50,40,.8)">$3,200 – $4,500 / mo</div>
-      </div>
-      <div class="val-row" style="padding:16px 24px;border-bottom:1px solid #eee;background:#fafafa">
-        <div class="val-name" style="color:#222">📅 Booking Coordinator</div>
-        <div class="val-price" style="color:rgba(200,50,40,.8)">$2,500 – $3,500 / mo</div>
-      </div>
-      <div class="val-row" style="padding:16px 24px;border-bottom:1px solid #eee">
-        <div class="val-name" style="color:#222">🔄 Follow-Up Coordinator</div>
-        <div class="val-price" style="color:rgba(200,50,40,.8)">$2,000 – $3,000 / mo</div>
-      </div>
-      <div class="val-row" style="padding:16px 24px;border-bottom:1px solid #eee;background:#fafafa">
-        <div class="val-name" style="color:#222">📋 CRM & Client Management</div>
-        <div class="val-price" style="color:rgba(200,50,40,.8)">$300 – $800 / mo</div>
-      </div>
-      <div class="val-row" style="padding:16px 24px;border-bottom:1px solid #eee">
-        <div class="val-name" style="color:#222">📲 SMS & Email Automation</div>
-        <div class="val-price" style="color:rgba(200,50,40,.8)">$200 – $500 / mo</div>
-      </div>
-      <div class="val-row" style="padding:16px 24px;border-bottom:1px solid #eee;background:#fafafa">
-        <div class="val-name" style="color:#222">⭐ Reputation Management</div>
-        <div class="val-price" style="color:rgba(200,50,40,.8)">$150 – $300 / mo</div>
-      </div>
-      <div class="val-row" style="padding:16px 24px;border-bottom:1px solid #eee">
-        <div class="val-name" style="color:#222">📊 Call Tracking & Recording</div>
-        <div class="val-price" style="color:rgba(200,50,40,.8)">$100 – $250 / mo</div>
-      </div>
-      <div class="val-row" style="padding:16px 24px;border-bottom:1px solid #eee;background:#fafafa">
-        <div class="val-name" style="color:#222">🔁 Re-engagement & Retention</div>
-        <div class="val-price" style="color:rgba(200,50,40,.8)">$200 – $400 / mo</div>
-      </div>
-      <div class="val-total" style="padding:20px 24px;background:#fef5f5;border-top:2px solid rgba(200,50,40,.2)">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#111;margin-bottom:6px">If you hired all of this separately</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:rgba(200,50,40,.9)">$8,650 – $13,250 / mo</div>
+    <div class="val-table" style="border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:28px">
+      <div class="val-row" style="padding:16px 24px;border-bottom:1px solid var(--border)"><div class="val-name">👤 Front Desk / Receptionist</div><div class="val-price" style="color:var(--val-price-tx)">$3,200 – $4,500 / mo</div></div>
+      <div class="val-row" style="padding:16px 24px;border-bottom:1px solid var(--border);background:var(--val-row-alt)"><div class="val-name">📅 Booking Coordinator</div><div class="val-price" style="color:var(--val-price-tx)">$2,500 – $3,500 / mo</div></div>
+      <div class="val-row" style="padding:16px 24px;border-bottom:1px solid var(--border)"><div class="val-name">🔄 Follow-Up Coordinator</div><div class="val-price" style="color:var(--val-price-tx)">$2,000 – $3,000 / mo</div></div>
+      <div class="val-row" style="padding:16px 24px;border-bottom:1px solid var(--border);background:var(--val-row-alt)"><div class="val-name">📋 CRM & Client Management</div><div class="val-price" style="color:var(--val-price-tx)">$300 – $800 / mo</div></div>
+      <div class="val-row" style="padding:16px 24px;border-bottom:1px solid var(--border)"><div class="val-name">📲 SMS & Email Automation</div><div class="val-price" style="color:var(--val-price-tx)">$200 – $500 / mo</div></div>
+      <div class="val-row" style="padding:16px 24px;border-bottom:1px solid var(--border);background:var(--val-row-alt)"><div class="val-name">⭐ Reputation Management</div><div class="val-price" style="color:var(--val-price-tx)">$150 – $300 / mo</div></div>
+      <div class="val-row" style="padding:16px 24px;border-bottom:1px solid var(--border)"><div class="val-name">📊 Call Tracking & Recording</div><div class="val-price" style="color:var(--val-price-tx)">$100 – $250 / mo</div></div>
+      <div class="val-row" style="padding:16px 24px;border-bottom:1px solid var(--border);background:var(--val-row-alt)"><div class="val-name">🔁 Re-engagement & Retention</div><div class="val-price" style="color:var(--val-price-tx)">$200 – $400 / mo</div></div>
+      <div class="val-total" style="padding:20px 24px;background:var(--val-total-bg);border-top:2px solid var(--val-total-bd)">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;margin-bottom:6px" class="u-heading">If you hired all of this separately</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--val-price-tx)">$8,650 – $13,250 / mo</div>
       </div>
     </div>
-
-    <div style="border:1px solid rgba(0,160,80,.3);border-radius:12px;padding:16px 24px;background:rgba(0,180,90,.06);text-align:center;margin-bottom:44px">
-      <span style="color:#0a8a4f;font-size:20px;margin-right:8px">✓</span>
-      <span style="font-size:17px;color:#222;font-weight:600">All of the above is built into the Digital Office. You do not need to hire or buy these separately.</span>
+    <div style="border:1px solid var(--pill-yes-bd);border-radius:12px;padding:16px 24px;background:var(--pill-yes-bg);text-align:center;margin-bottom:44px">
+      <span class="u-success" style="font-size:20px;margin-right:8px">✓</span>
+      <span style="font-size:17px;font-weight:600">All of the above is built into the Digital Office. You do not need to hire or buy these separately.</span>
     </div>
-
-    <p style="text-align:center;font-size:18px;color:#222;font-weight:600;max-width:640px;margin:0 auto;line-height:1.6;padding:28px 0 0">
-      This is the operating infrastructure behind your practice — built, configured, and managed for you.
-    </p>
-    <p style="text-align:center;font-size:16px;color:#555;margin-top:12px">See what it costs to deploy it below.</p>
+    <p style="text-align:center;font-size:18px;font-weight:600;max-width:640px;margin:0 auto;line-height:1.6;padding:28px 0 0">This is the operating infrastructure behind your practice — built, configured, and managed for you.</p>
+    <p style="text-align:center;font-size:16px;margin-top:12px" class="u-muted">See what it costs to deploy it below.</p>
   </div>
 </section>
-
 
 <!-- ══ OFFER STACK ════════════════════════════════════════ -->
-<div class="divider" id="offer">Plan Your System</div>
-<section style="background:var(--ink)" class="pcb">
+<div class="divider" id="offer">Map your office</div>
+<section style="background:var(--bg)" class="pcb">
   <div style="max-width:1140px;margin:0 auto;padding:64px 24px" class="reveal">
     <div style="text-align:center;margin-bottom:44px">
-      <h2 class="disp" style="font-size:clamp(30px,4.5vw,58px);color:#fff;line-height:.92;margin-bottom:12px">Get your Digital Office running.</h2>
-      <p style="font-size:17px;color:var(--muted);max-width:480px;margin:0 auto">Same system. Two ways to deploy it.</p>
+      <h2 class="disp" style="font-size:clamp(30px,4.5vw,58px);line-height:.92;margin-bottom:12px">Get your Digital Office running.</h2>
+      <p style="font-size:17px;max-width:480px;margin:0 auto" class="u-muted">Same system. Two ways to deploy it.</p>
     </div>
-
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px" class="offer-grid">
-
-      <div class="offer-card-pad" style="background:linear-gradient(148deg,rgba(0,232,122,.07) 0%,var(--card) 60%);border:2px solid rgba(0,232,122,.4);border-radius:20px;padding:36px 32px;position:relative;overflow:hidden">
+      <div class="offer-card-pad" style="background:linear-gradient(148deg,var(--wf-green-bg) 0%,var(--card) 60%);border:2px solid var(--wf-green-bd);border-radius:20px;padding:36px 32px;position:relative;overflow:hidden">
         <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--green),var(--blue))"></div>
         <div style="display:inline-block;background:linear-gradient(135deg,var(--green),var(--blue));color:#fff;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.08em;padding:4px 14px;border-radius:4px;margin-bottom:16px">Most Popular</div>
-        <div style="font-size:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:8px">Digital Office — Your Practice</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,44px);color:#fff;line-height:.92;margin-bottom:16px">One system.<br>Every part of your practice.</div>
-        <div style="background:rgba(0,232,122,.08);border:1px solid rgba(0,232,122,.2);border-radius:12px;padding:16px 20px;margin-bottom:24px">
+        <div style="font-size:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px" class="u-green">Digital Office — Your Practice</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,44px);line-height:.92;margin-bottom:16px" class="u-heading">One system.<br>Every part of your practice.</div>
+        <div style="background:var(--wf-green-bg);border:1px solid var(--wf-green-bd);border-radius:12px;padding:16px 20px;margin-bottom:24px">
           <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:4px;flex-wrap:wrap">
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--green);line-height:1">$2,600</div>
-            <div style="font-size:16px;color:var(--muted)">/month</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:42px;line-height:1" class="u-green">$2,600</div>
+            <div style="font-size:16px" class="u-muted">/month</div>
           </div>
-          <div style="font-size:16px;color:var(--muted)">+ $75,000 one-time build</div>
-          <div style="font-size:16px;color:var(--muted);margin-top:6px;font-style:italic">Replaces $8,650–$13,250/mo in staff and tools</div>
+          <div style="font-size:16px" class="u-muted">+ $75,000 one-time build</div>
+          <div style="font-size:16px;margin-top:6px" class="u-muted">Replaces $8,650–$13,250/mo in staff and tools</div>
         </div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--muted);letter-spacing:.08em;margin-bottom:14px">What runs automatically</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.08em;margin-bottom:14px" class="u-muted">What runs automatically</div>
         <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
-          <div style="display:flex;gap:10px;align-items:flex-start;font-size:16px;color:var(--text)"><span style="color:var(--blue);font-size:13px;font-family:'Bebas Neue',sans-serif;letter-spacing:.1em;flex-shrink:0;margin-top:3px">01</span><span>Every inquiry captured, understood, and routed — no missed calls, no manual intake</span></div>
-          <div style="display:flex;gap:10px;align-items:flex-start;font-size:16px;color:var(--text)"><span style="color:var(--green);font-size:13px;font-family:'Bebas Neue',sans-serif;letter-spacing:.1em;flex-shrink:0;margin-top:3px">02</span><span>Consultations booked, confirmed, and followed up — without you coordinating</span></div>
-          <div style="display:flex;gap:10px;align-items:flex-start;font-size:16px;color:var(--text)"><span style="color:var(--amber);font-size:13px;font-family:'Bebas Neue',sans-serif;letter-spacing:.1em;flex-shrink:0;margin-top:3px">03</span><span>Treatments scheduled, tracked, and closed — team sees the same pipeline</span></div>
-          <div style="display:flex;gap:10px;align-items:flex-start;font-size:16px;color:var(--text)"><span style="color:#6ab8ff;font-size:13px;font-family:'Bebas Neue',sans-serif;letter-spacing:.1em;flex-shrink:0;margin-top:3px">04</span><span>Every completed treatment continues — reviews, rebooking, and re-engagement run automatically</span></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:16px"><span class="u-blue" style="font-size:16px;font-family:'Bebas Neue',sans-serif;letter-spacing:.1em;flex-shrink:0;margin-top:3px">01</span><span>Every inquiry captured, understood, and routed — no missed calls, no manual intake</span></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:16px"><span class="u-green" style="font-size:16px;font-family:'Bebas Neue',sans-serif;letter-spacing:.1em;flex-shrink:0;margin-top:3px">02</span><span>Consultations booked, confirmed, and followed up — without you coordinating</span></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:16px"><span class="u-amber" style="font-size:16px;font-family:'Bebas Neue',sans-serif;letter-spacing:.1em;flex-shrink:0;margin-top:3px">03</span><span>Treatments scheduled, tracked, and closed — team sees the same pipeline</span></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:16px"><span class="u-blue" style="font-size:16px;font-family:'Bebas Neue',sans-serif;letter-spacing:.1em;flex-shrink:0;margin-top:3px">04</span><span>Every completed treatment continues — reviews, rebooking, and re-engagement run automatically</span></div>
         </div>
-        <button class="btn-p" style="width:100%;font-size:18px" onclick="document.getElementById('book-cal').scrollIntoView({behavior:'smooth'})">Plan Your System →</button>
-        <div style="display:flex;gap:10px;align-items:flex-start;font-size:16px;color:var(--text);margin-top:12px"><span style="color:var(--green);font-size:18px;flex-shrink:0">✓</span><span>Runs under your brand — you own all data</span></div>
+        <button class="btn-p" style="width:100%;font-size:18px" onclick="document.getElementById('book-cal').scrollIntoView({behavior:'smooth'})">Map My Office →</button>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:16px;margin-top:12px"><span class="u-green" style="font-size:18px;flex-shrink:0">✓</span><span>Runs under your brand — you own all data</span></div>
       </div>
-
       <div class="offer-card-pad" style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px 32px;position:relative;overflow:hidden">
-        <div style="font-size:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:8px">Brand Lease — Ready to Run</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,44px);color:#fff;line-height:.92;margin-bottom:16px">Pre-built system.<br>Launch faster.</div>
-        <div style="background:rgba(26,143,255,.06);border:1px solid rgba(26,143,255,.2);border-radius:12px;padding:16px 20px;margin-bottom:24px">
-          <div style="font-size:18px;color:var(--text);margin-bottom:4px;font-weight:600">Lower upfront cost</div>
-          <div style="font-size:16px;color:var(--muted);margin-bottom:4px">Monthly model — faster to launch</div>
-          <div style="font-size:16px;color:#6ab8ff">A dedicated wellness number for your market included</div>
+        <div style="font-size:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px" class="u-blue">Brand Lease — Ready to Run</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,44px);line-height:.92;margin-bottom:16px" class="u-heading">Pre-built system.<br>Launch faster.</div>
+        <div style="background:var(--wf-blue-bg);border:1px solid var(--wf-blue-bd);border-radius:12px;padding:16px 20px;margin-bottom:24px">
+          <div style="font-size:18px;margin-bottom:4px;font-weight:600">Lower upfront cost</div>
+          <div style="font-size:16px;margin-bottom:4px" class="u-muted">Monthly model — faster to launch</div>
+          <div style="font-size:16px" class="u-blue">A dedicated wellness number for your market included</div>
         </div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--muted);letter-spacing:.08em;margin-bottom:14px">What runs automatically</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.08em;margin-bottom:14px" class="u-muted">What runs automatically</div>
         <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
-          <div style="display:flex;gap:10px;align-items:center;font-size:16px;color:var(--text)"><span style="color:var(--green);font-size:18px;flex-shrink:0">✓</span><span>Same system, already configured</span></div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:16px;color:var(--text)"><span style="color:var(--green);font-size:18px;flex-shrink:0">✓</span><span>Wellness-specific vanity number included</span></div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:16px;color:var(--text)"><span style="color:var(--green);font-size:18px;flex-shrink:0">✓</span><span>System pre-configured for wellness intake</span></div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:16px;color:var(--text)"><span style="color:var(--green);font-size:18px;flex-shrink:0">✓</span><span>Ready to launch in days — not months</span></div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:16px;color:var(--text)"><span style="color:var(--green);font-size:18px;flex-shrink:0">✓</span><span>Numbers available across wellness and aesthetics markets</span></div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:16px"><span class="u-green" style="font-size:18px;flex-shrink:0">✓</span><span>Same system, already configured</span></div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:16px"><span class="u-green" style="font-size:18px;flex-shrink:0">✓</span><span>Wellness-specific vanity number included</span></div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:16px"><span class="u-green" style="font-size:18px;flex-shrink:0">✓</span><span>System pre-configured for wellness intake</span></div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:16px"><span class="u-green" style="font-size:18px;flex-shrink:0">✓</span><span>Ready to launch in days — not months</span></div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:16px"><span class="u-green" style="font-size:18px;flex-shrink:0">✓</span><span>Numbers available across wellness and aesthetics markets</span></div>
         </div>
         <a href="/brand-lease" class="btn-s" style="width:100%;font-size:18px;text-align:center;display:block;box-sizing:border-box;text-decoration:none">Explore Brand Lease →</a>
-        <p style="text-align:center;font-size:16px;color:var(--muted);margin-top:12px">Browse available numbers by specialty and market</p>
+        <p style="text-align:center;font-size:16px;margin-top:12px" class="u-muted">Browse available numbers by specialty and market</p>
       </div>
-
     </div>
-
-    <p style="text-align:center;font-size:16px;color:var(--muted);margin-top:28px;max-width:520px;margin-left:auto;margin-right:auto">
-      Not sure which fits your practice? The 15-minute call is where we walk you through both.
-    </p>
+    <p style="text-align:center;font-size:16px;margin-top:28px;max-width:520px;margin-left:auto;margin-right:auto" class="u-muted">Not sure which fits your practice? The 30-minute call is where we walk you through both.</p>
   </div>
 </section>
-
 
 <!-- ══ FINAL CTA ═══════════════════════════════════════════ -->
 <div class="divider">Get your Digital Office running</div>
-<section class="light-section" id="book">
+<section style="background:var(--bg-alt)" id="book">
   <div class="cta-inner reveal">
-    <h2 class="cta-hed" style="color:#111">You focus on clients.<br><em>We run the system<br>that fills your calendar.</em></h2>
+    <h2 class="cta-hed">You focus on clients.<br><em>We run the system<br>that fills your calendar.</em></h2>
+    <p class="cta-body">30 minutes. We map where your process is breaking and show you what your Digital Office should look like.</p>
     <div class="ss">
-      <div class="ss-item"><span style="color:var(--orange);margin-right:5px">1</span>Book 15-min call</div>
+      <div class="ss-item"><span class="u-blue" style="margin-right:5px">1</span>Select your industry</div>
       <div class="ss-arr">→</div>
-      <div class="ss-item"><span style="color:var(--orange);margin-right:5px">2</span>We map your system</div>
+      <div class="ss-item"><span class="u-blue" style="margin-right:5px">2</span>Book a call</div>
       <div class="ss-arr">→</div>
-      <div class="ss-item last"><span style="color:#0a8a4f;margin-right:5px">3</span>We build and run it</div>
+      <div class="ss-item"><span class="u-blue" style="margin-right:5px">3</span>We listen and propose a solution</div>
+      <div class="ss-arr">→</div>
+      <div class="ss-item last"><span class="u-success" style="margin-right:5px">4</span>You approve the setup</div>
     </div>
-    <div class="cta-btns">
-      <button class="btn-p" onclick="document.getElementById('book-cal').scrollIntoView({behavior:'smooth'})">Plan Your System →</button>
-      <a href="tel:+12542683276" class="btn-s">📞 (254) BOT-FARM</a>
+    <div style="display:flex;justify-content:center;margin-bottom:24px">
+      <button class="btn-p" style="font-size:20px;padding:16px 40px" onclick="document.getElementById('book-cal').scrollIntoView({behavior:'smooth'})">Map My Office →</button>
     </div>
-    <div class="assure">
-      <span>✓</span> No pitch. Just the plan. &nbsp;·&nbsp;
-      <span>✓</span> You own all client data
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+      <div class="ppb yes" style="font-size:16px">✓ No pitch. Just the plan.</div>
+      <div class="ppb yes" style="font-size:16px">✓ No build until architecture approved.</div>
+      <div class="ppb yes" style="font-size:16px">✓ You own all client data.</div>
     </div>
   </div>
 </section>
 
-
 <!-- ══ CALENDAR ══════════════════════════════════════════ -->
-<section id="book-cal" style="background:var(--ink)">
-  <iframe src="https://link.msgsndr.com/widget/booking/qJbe25XqIsy6rIZ9wNUu"
-    style="width:100%;display:block;border:none;"
-    scrolling="no"></iframe>
+<section id="book-cal" style="background:var(--bg)">
+  <iframe src="https://link.msgsndr.com/widget/booking/qJbe25XqIsy6rIZ9wNUu" style="width:100%;display:block;border:none;" scrolling="no"></iframe>
   <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 </section>
 
-
-<!-- ══ FOOTER ════════════════════════════════════════════ -->
 <div id="footer-placeholder"></div>
 <script src="/assets/components.js"></script>
-
 </body>
 </html>
