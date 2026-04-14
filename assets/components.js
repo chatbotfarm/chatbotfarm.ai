@@ -1,6 +1,6 @@
 /* ============================================================
-   ChatbotFarm.ai — Component Loader
-   Injects shared nav and footer into every page.
+   ChatbotFarm.ai — Component Loader v2
+   Theme toggle, full nav, site tree footer.
    ============================================================ */
 
 (function () {
@@ -9,35 +9,25 @@
   const NAV = `
 <nav class="nav" style="position:relative">
   <div class="nav-inner">
-
-    <!-- LOGO -->
     <a href="/" style="display:flex;align-items:center;text-decoration:none;flex-shrink:0">
       <img src="https://assets.cdn.filesafe.space/jD3rvaWtP7z9FUt4o7dZ/media/696baae65e05d44fc069c0d9.png"
-        alt="ChatbotFarm.ai"
-        class="nav-logo"
-        onerror="this.remove()">
+        alt="ChatbotFarm.ai" class="nav-logo" onerror="this.remove()">
     </a>
-
-    <!-- NAV LINKS (desktop) -->
     <div class="nav-links" id="cbf-nav-menu">
-      <a href="/" style="color:var(--text);text-decoration:none;font-size:16px">Home</a>
-      <a href="/contractors" style="color:var(--text);text-decoration:none;font-size:16px">Contractors</a>
-      <a href="/medspas" style="color:var(--text);text-decoration:none;font-size:16px">Med Spas</a>
-      <a href="/ghost-kitchens" style="color:var(--text);text-decoration:none;font-size:16px">Ghost Kitchens</a>
-      <a href="/property-management" style="color:var(--text);text-decoration:none;font-size:16px">Property</a>
-      <a href="/professional-services" style="color:var(--text);text-decoration:none;font-size:16px">Professional</a>
+      <a href="/">Home</a>
+      <a href="/contractors">Contractors</a>
+      <a href="/medspas">Med Spas</a>
+      <a href="/ghost-kitchens">Ghost Kitchens</a>
+      <a href="/property-management">Property</a>
+      <a href="/professional-services">Professional</a>
       <div class="nav-cta-wrap">
         <a href="#book" class="nav-cta">Plan Your System →</a>
       </div>
     </div>
-
-    <!-- HAMBURGER (mobile) -->
+    <button class="theme-toggle" id="cbf-theme-toggle" aria-label="Toggle theme">🌙</button>
     <button class="nav-hamburger" id="cbf-nav-toggle" aria-label="Toggle navigation">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
-
   </div>
 </nav>`;
 
@@ -86,8 +76,21 @@
 
   /* ── INJECT ── */
   function inject(id, html) {
-    const el = document.getElementById(id);
+    var el = document.getElementById(id);
     if (el) el.outerHTML = html;
+  }
+
+  /* ── THEME ── */
+  function getTheme() {
+    var saved = localStorage.getItem('cbf-theme');
+    if (saved) return saved;
+    return 'light';
+  }
+  function setTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    localStorage.setItem('cbf-theme', t);
+    var btn = document.getElementById('cbf-theme-toggle');
+    if (btn) btn.textContent = t === 'dark' ? '☀️' : '🌙';
   }
 
   /* ── INIT ── */
@@ -95,12 +98,21 @@
     inject('nav-placeholder', NAV);
     inject('footer-placeholder', FOOTER);
 
-    /* set current year */
+    /* theme */
+    setTheme(getTheme());
+    var themeBtn = document.getElementById('cbf-theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function () {
+        setTheme(getTheme() === 'dark' ? 'light' : 'dark');
+      });
+    }
+
+    /* year */
     document.querySelectorAll('.cbf-year').forEach(function (el) {
       el.textContent = new Date().getFullYear();
     });
 
-    /* hamburger toggle */
+    /* hamburger */
     var toggle = document.getElementById('cbf-nav-toggle');
     var menu   = document.getElementById('cbf-nav-menu');
     if (toggle && menu) {
@@ -109,7 +121,6 @@
         toggle.classList.toggle('open', isOpen);
         toggle.setAttribute('aria-expanded', isOpen);
       });
-      /* close menu on link click */
       menu.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
           menu.classList.remove('open');
@@ -117,7 +128,6 @@
           toggle.setAttribute('aria-expanded', false);
         });
       });
-      /* close on outside click */
       document.addEventListener('click', function (e) {
         if (!toggle.contains(e.target) && !menu.contains(e.target)) {
           menu.classList.remove('open');
@@ -133,7 +143,6 @@
         if (e.isIntersecting) e.target.classList.add('vis');
       });
     }, { threshold: 0.06 });
-
     document.querySelectorAll('.reveal').forEach(function (el) {
       obs.observe(el);
     });
