@@ -10,7 +10,7 @@
 <nav class="nav" style="position:relative">
   <div class="nav-inner">
     <a href="/" style="display:flex;align-items:center;text-decoration:none;flex-shrink:0">
-      <img src="https://assets.cdn.filesafe.space/jD3rvaWtP7z9FUt4o7dZ/media/696baae65e05d44fc069c0d9.png"
+      <img src="https://assets.cdn.filesafe.space/jD3rvaWtP7z9FUt4o7dZ/media/696bbc2b5e05d40cac72f4e7.png"
         alt="ChatbotFarm.ai" class="nav-logo" onerror="this.remove()">
     </a>
     <div class="nav-links" id="cbf-nav-menu">
