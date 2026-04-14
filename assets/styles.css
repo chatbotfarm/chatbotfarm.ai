@@ -1,6 +1,6 @@
 /* ============================================================
-   ChatbotFarm.ai — Shared Stylesheet v10
-   Light-mode blue more visible. Hamburger thicker.
+   ChatbotFarm.ai — Shared Stylesheet v11
+   Day/Night segmented toggle. Blue more visible in light mode.
    ============================================================ */
    PCB traces in green. No glow effects.
    ============================================================ */
@@ -294,15 +294,24 @@ p:last-child { margin-bottom: 0; }
 .nav-links { display:flex; align-items:center; gap:24px; margin-left:auto; margin-right:20px; }
 .nav-links a { color: var(--text); text-decoration: none; font-size: 16px; }
 
-/* theme toggle */
+/* theme toggle — segmented pill */
 .theme-toggle {
-  background: none; border: 1px solid var(--border);
-  border-radius: 50%; width: 36px; height: 36px;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; font-size: 18px; flex-shrink: 0;
-  transition: border-color .2s;
+  display: flex; align-items: center; flex-shrink: 0;
+  border: 1px solid var(--border); border-radius: 50px;
+  overflow: hidden; background: none;
 }
-.theme-toggle:hover { border-color: var(--orange); }
+.theme-opt {
+  background: none; border: none; cursor: pointer;
+  padding: 6px 12px; font-size: 13px; font-family: 'Inter', sans-serif;
+  color: var(--muted); white-space: nowrap;
+  transition: background .2s, color .2s;
+  line-height: 1;
+}
+.theme-opt.active {
+  background: var(--blue); color: #fff;
+  border-radius: 50px;
+}
+.theme-toggle:hover { border-color: var(--blue); }
 
 /* ── DIVIDER ── */
 .divider {

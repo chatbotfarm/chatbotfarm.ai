@@ -24,7 +24,10 @@
         <a href="#book" class="nav-cta">Map My Office →</a>
       </div>
     </div>
-    <button class="theme-toggle" id="cbf-theme-toggle" aria-label="Toggle theme">🌙</button>
+    <div class="theme-toggle" id="cbf-theme-toggle" role="radiogroup" aria-label="Toggle theme">
+      <button class="theme-opt" data-theme="light" aria-label="Day mode">☀ Day</button>
+      <button class="theme-opt" data-theme="dark" aria-label="Night mode">🌙 Night</button>
+    </div>
     <button class="nav-hamburger" id="cbf-nav-toggle" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
     </button>
@@ -90,8 +93,10 @@
   function setTheme(t) {
     document.documentElement.setAttribute('data-theme', t);
     localStorage.setItem('cbf-theme', t);
-    var btn = document.getElementById('cbf-theme-toggle');
-    if (btn) btn.textContent = t === 'dark' ? '☀️' : '🌙';
+    var btns = document.querySelectorAll('.theme-opt');
+    btns.forEach(function(b) {
+      b.classList.toggle('active', b.getAttribute('data-theme') === t);
+    });
   }
 
   /* ── INIT ── */
@@ -101,10 +106,11 @@
 
     /* theme */
     setTheme(getTheme());
-    var themeBtn = document.getElementById('cbf-theme-toggle');
-    if (themeBtn) {
-      themeBtn.addEventListener('click', function () {
-        setTheme(getTheme() === 'dark' ? 'light' : 'dark');
+    var toggleWrap = document.getElementById('cbf-theme-toggle');
+    if (toggleWrap) {
+      toggleWrap.addEventListener('click', function (e) {
+        var btn = e.target.closest('.theme-opt');
+        if (btn) setTheme(btn.getAttribute('data-theme'));
       });
     }
 
