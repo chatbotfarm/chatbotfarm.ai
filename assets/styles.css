@@ -1,6 +1,7 @@
 /* ============================================================
-   ChatbotFarm.ai — Shared Stylesheet v14
-   Robot head nav logo. Burger 4px. Fullscreen mobile menu.
+   ChatbotFarm.ai — Shared Stylesheet v15
+   Bulletproof: explicit theme overrides for burger, menu, accent.
+   Nav fully opaque. No transparency anywhere in nav system.
    ============================================================ */
    PCB traces in green. No glow effects.
    ============================================================ */
@@ -29,10 +30,10 @@
   --blue:   #1A6FA0;
   --success:#2E7D32;
 
-  /* nav */
-  --nav-bg:   rgba(255,255,255,.96);
+  /* nav — fully opaque */
+  --nav-bg:   #ffffff;
   --nav-text: #183247;
-  --nav-mob:  rgba(255,255,255,.98);
+  --nav-mob:  #ffffff;
 
   /* diagram — neutral surfaces, colored borders only */
   --diag-bg:    #e6ebf2;
@@ -126,9 +127,9 @@
   --trace-op: .05;
   --node-op:  .08;
 
-  --nav-bg:   rgba(17,17,17,.96);
+  --nav-bg:   #111111;
   --nav-text: #ffffff;
-  --nav-mob:  rgba(17,17,17,.98);
+  --nav-mob:  #111111;
 
   /* diagram — neutral surfaces, colored borders */
   --diag-bg:    #1c1c1f;
@@ -285,9 +286,11 @@ p:last-child { margin-bottom: 0; }
 }
 .nav-hamburger span {
   display: block; width: 28px; height: 4px;
-  background: var(--heading); border-radius: 2px;
+  background: var(--heading) !important; border-radius: 2px;
   transition: transform .25s, opacity .25s;
 }
+[data-theme="light"] .nav-hamburger span { background: #183247 !important; }
+[data-theme="dark"] .nav-hamburger span { background: #ffffff !important; }
 .nav-hamburger.open span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
 .nav-hamburger.open span:nth-child(2) { opacity: 0; }
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
@@ -383,6 +386,8 @@ p:last-child { margin-bottom: 0; }
   margin-bottom:22px;
 }
 .hero-hed .acc { color:var(--blue); display:block; }
+[data-theme="light"] .hero-hed .acc { color: #1A6FA0 !important; }
+[data-theme="dark"] .hero-hed .acc { color: #8DC4E8 !important; }
 .hero-sub {
   font-size:18px; color:var(--muted);
   max-width:460px; line-height:1.75; margin-bottom:26px;
@@ -635,11 +640,13 @@ footer a:hover { color: var(--orange) !important; }
   .nav-links.open {
     display:flex;
     position:fixed; top:0; left:0; right:0; bottom:0;
-    background: var(--bg);
+    background: var(--bg); background-color: var(--bg);
     padding:80px 24px 40px; z-index:199;
     overflow-y:auto;
     align-items:center; justify-content:center;
   }
+  [data-theme="light"] .nav-links.open { background: #ffffff !important; }
+  [data-theme="dark"] .nav-links.open { background: #111111 !important; }
   .nav-links a {
     padding:14px 0;
     border-bottom:1px solid var(--border);
