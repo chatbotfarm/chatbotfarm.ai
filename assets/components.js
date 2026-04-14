@@ -189,33 +189,24 @@
       obs.observe(el);
     });
 
-    /* calendar lazy-load — loads iframe when user scrolls near it */
+    /* calendar reliability — retry if iframe fails to load */
     var calSection = document.getElementById('book-cal');
     if (calSection) {
       var calFrame = calSection.querySelector('iframe');
-      if (calFrame && !calFrame.src && calFrame.dataset.src) {
-        var calObs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting && calFrame.dataset.src) {
-              calFrame.src = calFrame.dataset.src;
-              calObs.disconnect();
-            }
-          });
-        }, { rootMargin: '400px 0px' });
-        calObs.observe(calSection);
-      }
-      /* fallback — if iframe has src but didn't load, retry after 4s */
-      if (calFrame && calFrame.src) {
+      if (calFrame) {
+        var calSrc = calFrame.getAttribute('src') || calFrame.dataset.src;
+        /* if using data-src, set src now */
+        if (!calFrame.getAttribute('src') && calFrame.dataset.src) {
+          calFrame.src = calFrame.dataset.src;
+        }
+        /* retry after 5s if iframe appears empty */
         setTimeout(function () {
           try {
-            var doc = calFrame.contentDocument || calFrame.contentWindow.document;
-            if (!doc || !doc.body || doc.body.innerHTML.length < 50) {
-              calFrame.src = calFrame.src;
+            if (calFrame.contentWindow && calFrame.contentWindow.document.body.innerHTML.length < 50) {
+              calFrame.src = calSrc;
             }
-          } catch (e) {
-            /* cross-origin, assume loaded */
-          }
-        }, 4000);
+          } catch (e) { /* cross-origin — assume loaded */ }
+        }, 5000);
       }
     }
 
