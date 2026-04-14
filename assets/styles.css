@@ -1,8 +1,7 @@
 /* ============================================================
-   ChatbotFarm.ai — Shared Stylesheet v8
+   ChatbotFarm.ai — Shared Stylesheet v9
    3-color accent system: blue=explain, green=proof, orange=act
-   Amber merged into orange. Card tints neutralized.
-   Dual theme: light (default) + dark (toggle)
+   Light mode: stronger surface separation for rhythm.
    ============================================================ */
    PCB traces in green. No glow effects.
    ============================================================ */
@@ -11,10 +10,10 @@
 :root,
 [data-theme="light"] {
   --bg:       #ffffff;
-  --bg-alt:   #f5f7fa;
-  --card:     #f0f3f7;
-  --card2:    #e8ecf1;
-  --border:   rgba(0,0,0,0.08);
+  --bg-alt:   #eef2f7;
+  --card:     #e6ebf2;
+  --card2:    #dce3ec;
+  --border:   rgba(0,0,0,0.12);
   --text:     #1A2430;
   --text-inv: #ffffff;
   --heading:  #183247;
@@ -37,12 +36,12 @@
   --nav-mob:  rgba(255,255,255,.98);
 
   /* diagram — neutral surfaces, colored borders only */
-  --diag-bg:    #f0f3f7;
-  --diag-ch-bg: rgba(27,75,107,.04);
-  --diag-ch-bd: rgba(27,75,107,.18);
+  --diag-bg:    #e6ebf2;
+  --diag-ch-bg: rgba(27,75,107,.06);
+  --diag-ch-bd: rgba(27,75,107,.25);
   --diag-ch-tx: #1B4B6B;
-  --diag-intake-bg: rgba(27,75,107,.03);
-  --diag-intake-bd: rgba(27,75,107,.2);
+  --diag-intake-bg: rgba(27,75,107,.04);
+  --diag-intake-bd: rgba(27,75,107,.25);
   --diag-logic-bg:  var(--card);
   --diag-logic-bd:  rgba(158,99,16,.25);
   --diag-out-bg:    var(--card);
@@ -53,7 +52,7 @@
   --diag-result-tx: #2E7D32;
 
   /* vertical page diagrams */
-  --vp-diag-bg:  #eef1f5;
+  --vp-diag-bg:  #e2e8f0;
   --vp-diag-bd:  rgba(0,0,0,.06);
   --vp-ch-bg:    rgba(27,75,107,.03);
 
@@ -80,12 +79,12 @@
   --wf-amber-bg:  var(--card);        /* alias to orange */
   --wf-amber-bd:  rgba(158,99,16,.2); /* alias to orange */
   --wf-blue-bg:   var(--card);
-  --wf-blue-bd:   rgba(27,75,107,.18);
+  --wf-blue-bd:   rgba(27,75,107,.25);
   --wf-green-bg:  var(--card);
   --wf-green-bd:  rgba(74,122,61,.18);
 
   /* dept map */
-  --dept-bg: #edf1f7;
+  --dept-bg: #e2e8f0;
   --dept-bd: rgba(0,0,0,.06);
 
   /* case study */
@@ -93,7 +92,7 @@
   --case-bar: linear-gradient(90deg,#4A7A3D,#1B4B6B);
 
   /* value table */
-  --val-row-alt: #f5f7fa;
+  --val-row-alt: #eef2f7;
   --val-total-bg: #fef5f5;
   --val-total-bd: rgba(200,50,40,.15);
   --val-price-tx: rgba(200,50,40,.8);
