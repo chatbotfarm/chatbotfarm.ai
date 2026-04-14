@@ -7,13 +7,14 @@
 
   /* ── NAV ── */
   const NAV = `
-<nav class="nav" style="position:relative">
+<nav class="nav">
   <div class="nav-inner">
     <a href="/" style="display:flex;align-items:center;text-decoration:none;flex-shrink:0">
       <img src="https://assets.cdn.filesafe.space/jD3rvaWtP7z9FUt4o7dZ/media/696bbc2b5e05d40cac72f4e7.png"
         alt="ChatbotFarm.ai" class="nav-logo" onerror="this.remove()">
     </a>
     <div class="nav-links" id="cbf-nav-menu">
+      <button class="nav-close" id="cbf-nav-close" aria-label="Close menu">✕</button>
       <a href="/">Home</a>
       <a href="/contractors">Contractors</a>
       <a href="/medspas">Med Spas</a>
@@ -34,7 +35,8 @@
       </button>
     </div>
   </div>
-</nav>`;
+</nav>
+<button class="scroll-top" id="cbf-scroll-top" aria-label="Scroll to top">↑</button>`;
 
   /* ── FOOTER ── */
   const FOOTER = `
@@ -124,6 +126,7 @@
     /* hamburger — with body scroll lock */
     var toggle = document.getElementById('cbf-nav-toggle');
     var menu   = document.getElementById('cbf-nav-menu');
+    var closeBtn = document.getElementById('cbf-nav-close');
     function closeMenu() {
       menu.classList.remove('open');
       toggle.classList.remove('open');
@@ -144,6 +147,11 @@
           openMenu();
         }
       });
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+          closeMenu();
+        });
+      }
       menu.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
           closeMenu();
@@ -153,6 +161,21 @@
         if (!toggle.contains(e.target) && !menu.contains(e.target)) {
           closeMenu();
         }
+      });
+    }
+
+    /* scroll-to-top button */
+    var scrollBtn = document.getElementById('cbf-scroll-top');
+    if (scrollBtn) {
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 600) {
+          scrollBtn.classList.add('visible');
+        } else {
+          scrollBtn.classList.remove('visible');
+        }
+      });
+      scrollBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
 
