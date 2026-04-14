@@ -17,7 +17,7 @@
   --text:     #1A2430;
   --text-inv: #ffffff;
   --heading:  #183247;
-  --muted:    #5F6B78;
+  --muted:    #4A5568;
   --trace-c:  #4A7A3D;
   --trace-op: .06;
   --node-op:  .1;
@@ -25,8 +25,8 @@
   /* brand accents */
   --navy:   #1B4B6B;
   --green:  #4A7A3D;
-  --orange: #C97A12;
-  --amber:  #A8650D;
+  --orange: #9E6310;
+  --amber:  #7A4E0A;
   --blue:   #1B4B6B;
   --success:#2E7D32;
 
@@ -38,15 +38,15 @@
   /* diagram specific */
   --diag-bg:    #f0f3f7;
   --diag-ch-bg: rgba(27,75,107,.06);
-  --diag-ch-bd: rgba(27,75,107,.2);
+  --diag-ch-bd: rgba(27,75,107,.22);
   --diag-ch-tx: #1B4B6B;
   --diag-intake-bg: rgba(27,75,107,.05);
-  --diag-intake-bd: rgba(27,75,107,.22);
-  --diag-logic-bg:  rgba(201,122,18,.06);
-  --diag-logic-bd:  rgba(201,122,18,.28);
-  --diag-out-bg:    rgba(168,101,13,.05);
-  --diag-out-bd:    rgba(168,101,13,.2);
-  --diag-out-tx:    #A8650D;
+  --diag-intake-bd: rgba(27,75,107,.25);
+  --diag-logic-bg:  rgba(158,99,16,.06);
+  --diag-logic-bd:  rgba(158,99,16,.3);
+  --diag-out-bg:    rgba(122,78,10,.05);
+  --diag-out-bd:    rgba(122,78,10,.22);
+  --diag-out-tx:    #7A4E0A;
   --diag-result-bg: rgba(74,122,61,.06);
   --diag-result-bd: rgba(74,122,61,.25);
   --diag-result-tx: #2E7D32;
@@ -73,11 +73,11 @@
   --eye-bd: rgba(27,75,107,.22);
   --eye-bg: rgba(27,75,107,.06);
 
-  /* wf stage tints — deeper orange in light */
-  --wf-orange-bg: rgba(201,122,18,.05);
-  --wf-orange-bd: rgba(201,122,18,.22);
-  --wf-amber-bg:  rgba(168,101,13,.05);
-  --wf-amber-bd:  rgba(168,101,13,.2);
+  /* wf stage tints — deeper in light */
+  --wf-orange-bg: rgba(158,99,16,.05);
+  --wf-orange-bd: rgba(158,99,16,.25);
+  --wf-amber-bg:  rgba(122,78,10,.05);
+  --wf-amber-bd:  rgba(122,78,10,.22);
   --wf-blue-bg:   rgba(27,75,107,.05);
   --wf-blue-bd:   rgba(27,75,107,.2);
   --wf-green-bg:  rgba(74,122,61,.05);
@@ -112,10 +112,18 @@
   --card:     #1c1c1f;
   --card2:    #202024;
   --border:   rgba(255,255,255,0.08);
+
+  /* dark mode accent overrides — brighter for visibility */
+  --blue:    #8DC4E8;
+  --navy:    #8DC4E8;
+  --orange:  #F5C462;
+  --amber:   #E0B85A;
+  --green:   #7dd681;
+  --success: #7dd681;
   --text:     #ffffff;
   --text-inv: #111111;
   --heading:  #ffffff;
-  --muted:    #b8bcc6;
+  --muted:    #c4c8d0;
   --trace-op: .05;
   --node-op:  .08;
 
@@ -124,19 +132,19 @@
   --nav-mob:  rgba(17,17,17,.98);
 
   --diag-bg:    #1c1c1f;
-  --diag-ch-bg: rgba(27,75,107,.12);
-  --diag-ch-bd: rgba(27,75,107,.35);
-  --diag-ch-tx: #6ba3cc;
-  --diag-intake-bg: rgba(27,75,107,.1);
-  --diag-intake-bd: rgba(27,75,107,.3);
+  --diag-ch-bg: rgba(27,75,107,.15);
+  --diag-ch-bd: rgba(27,75,107,.4);
+  --diag-ch-tx: #8DC4E8;
+  --diag-intake-bg: rgba(27,75,107,.12);
+  --diag-intake-bd: rgba(27,75,107,.35);
   --diag-logic-bg:  rgba(245,166,35,.1);
   --diag-logic-bd:  rgba(245,166,35,.35);
   --diag-out-bg:    rgba(212,145,26,.08);
-  --diag-out-bd:    rgba(212,145,26,.25);
-  --diag-out-tx:    #F5A623;
-  --diag-result-bg: rgba(74,122,61,.08);
-  --diag-result-bd: rgba(74,122,61,.3);
-  --diag-result-tx: #6fbf73;
+  --diag-out-bd:    rgba(212,145,26,.28);
+  --diag-out-tx:    #F5C462;
+  --diag-result-bg: rgba(74,122,61,.1);
+  --diag-result-bd: rgba(74,122,61,.35);
+  --diag-result-tx: #7dd681;
 
   --vp-diag-bg:  #0d1520;
   --vp-diag-bd:  rgba(255,255,255,.07);
@@ -149,19 +157,19 @@
   --pill-yes-tx: #6fbf73;
   --pill-yes-bg: rgba(74,122,61,.06);
 
-  --chip-bd: rgba(27,75,107,.25);
-  --chip-bg: rgba(27,75,107,.06);
-  --chip-tx: #6fbf73;
+  --chip-bd: rgba(141,196,232,.25);
+  --chip-bg: rgba(141,196,232,.06);
+  --chip-tx: #7dd681;
 
-  --eye-bd: rgba(27,75,107,.35);
-  --eye-bg: rgba(27,75,107,.1);
+  --eye-bd: rgba(141,196,232,.35);
+  --eye-bg: rgba(141,196,232,.1);
 
-  --wf-orange-bg: rgba(245,166,35,.08);
-  --wf-orange-bd: rgba(245,166,35,.3);
-  --wf-amber-bg:  rgba(212,145,26,.08);
-  --wf-amber-bd:  rgba(212,145,26,.25);
-  --wf-blue-bg:   rgba(27,75,107,.12);
-  --wf-blue-bd:   rgba(27,75,107,.3);
+  --wf-orange-bg: rgba(245,196,98,.08);
+  --wf-orange-bd: rgba(245,196,98,.3);
+  --wf-amber-bg:  rgba(212,165,60,.08);
+  --wf-amber-bd:  rgba(212,165,60,.25);
+  --wf-blue-bg:   rgba(141,196,232,.1);
+  --wf-blue-bd:   rgba(141,196,232,.3);
   --wf-green-bg:  rgba(74,122,61,.08);
   --wf-green-bd:  rgba(74,122,61,.3);
 
@@ -771,10 +779,10 @@ footer a:hover { color: var(--orange) !important; }
 .wf-stage-name.blue  { color: var(--blue); }
 .wf-stage-desc { font-size: 17px; color: var(--muted); margin-top: 2px; }
 .wf-stage-trigger { font-size: 17px; font-style: normal; font-weight: 600; margin-top: 4px; }
-.wf-stage.orange .wf-stage-trigger  { color: var(--orange); opacity:.6; }
-.wf-stage.amber  .wf-stage-trigger  { color: var(--amber); opacity:.6; }
-.wf-stage.green  .wf-stage-trigger  { color: var(--green); opacity:.6; }
-.wf-stage.blue   .wf-stage-trigger  { color: var(--blue); opacity:.6; }
+.wf-stage.orange .wf-stage-trigger  { color: var(--orange); }
+.wf-stage.amber  .wf-stage-trigger  { color: var(--amber); }
+.wf-stage.green  .wf-stage-trigger  { color: var(--green); }
+.wf-stage.blue   .wf-stage-trigger  { color: var(--blue); }
 .wf-arrow { text-align: center; font-size: 16px; width: 100%; color: var(--muted); }
 .wf-arrow.orange { color: var(--orange); }
 .wf-arrow.amber  { color: var(--amber); }
@@ -879,6 +887,20 @@ footer a:hover { color: var(--orange) !important; }
 .light-section .btn-s { color: #3a4a5a; border-color: #c5cdd5; }
 .light-section .btn-s:hover { border-color: var(--orange); color: var(--orange); }
 .light-section .assure span { color: #2E7D32; }
+
+/* ── OFFER CARD TEXT FIX — light mode ── */
+/* Prevent white/light text on cream/warm offer cards in light theme */
+[data-theme="light"] .offer-card-pad div[style*="color:#fff"],
+[data-theme="light"] .offer-card-pad div[style*="color: #fff"],
+:root .offer-card-pad div[style*="color:#fff"],
+:root .offer-card-pad div[style*="color: #fff"] {
+  color: var(--heading) !important;
+}
+/* Keep white text on offer cards in dark mode */
+[data-theme="dark"] .offer-card-pad div[style*="color:#fff"],
+[data-theme="dark"] .offer-card-pad div[style*="color: #fff"] {
+  color: #ffffff !important;
+}
 
 /* ── SYSTEM HANDLES GRID ── */
 .sys-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
