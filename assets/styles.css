@@ -1,8 +1,9 @@
 /* ============================================================
-   ChatbotFarm.ai — Shared Stylesheet v2
+   ChatbotFarm.ai — Shared Stylesheet v8
+   3-color accent system: blue=explain, green=proof, orange=act
+   Amber merged into orange. Card tints neutralized.
    Dual theme: light (default) + dark (toggle)
-   Colors derived from logo: navy #1B4B6B, green #4A7A3D,
-   orange #F5A623, near-black #1A1A1A
+   ============================================================ */
    PCB traces in green. No glow effects.
    ============================================================ */
 
@@ -22,11 +23,11 @@
   --trace-op: .06;
   --node-op:  .1;
 
-  /* brand accents */
+  /* 3-color accent system: blue=explain, green=proof, orange=act */
   --navy:   #1B4B6B;
   --green:  #4A7A3D;
   --orange: #9E6310;
-  --amber:  #7A4E0A;
+  --amber:  #9E6310;  /* merged into orange */
   --blue:   #1B4B6B;
   --success:#2E7D32;
 
@@ -35,26 +36,26 @@
   --nav-text: #183247;
   --nav-mob:  rgba(255,255,255,.98);
 
-  /* diagram specific */
+  /* diagram — neutral surfaces, colored borders only */
   --diag-bg:    #f0f3f7;
-  --diag-ch-bg: rgba(27,75,107,.06);
-  --diag-ch-bd: rgba(27,75,107,.22);
+  --diag-ch-bg: rgba(27,75,107,.04);
+  --diag-ch-bd: rgba(27,75,107,.18);
   --diag-ch-tx: #1B4B6B;
-  --diag-intake-bg: rgba(27,75,107,.05);
-  --diag-intake-bd: rgba(27,75,107,.25);
-  --diag-logic-bg:  rgba(158,99,16,.06);
-  --diag-logic-bd:  rgba(158,99,16,.3);
-  --diag-out-bg:    rgba(122,78,10,.05);
-  --diag-out-bd:    rgba(122,78,10,.22);
-  --diag-out-tx:    #7A4E0A;
-  --diag-result-bg: rgba(74,122,61,.06);
-  --diag-result-bd: rgba(74,122,61,.25);
+  --diag-intake-bg: rgba(27,75,107,.03);
+  --diag-intake-bd: rgba(27,75,107,.2);
+  --diag-logic-bg:  var(--card);
+  --diag-logic-bd:  rgba(158,99,16,.25);
+  --diag-out-bg:    var(--card);
+  --diag-out-bd:    rgba(158,99,16,.18);
+  --diag-out-tx:    #9E6310;
+  --diag-result-bg: rgba(74,122,61,.04);
+  --diag-result-bd: rgba(74,122,61,.2);
   --diag-result-tx: #2E7D32;
 
   /* vertical page diagrams */
   --vp-diag-bg:  #eef1f5;
   --vp-diag-bd:  rgba(0,0,0,.06);
-  --vp-ch-bg:    rgba(27,75,107,.05);
+  --vp-ch-bg:    rgba(27,75,107,.03);
 
   /* pills */
   --pill-no-bd:  rgba(200,50,40,.25);
@@ -64,7 +65,7 @@
   --pill-yes-tx: #2E7D32;
   --pill-yes-bg: rgba(74,122,61,.04);
 
-  /* trust chip — blue frame, green text (positive) */
+  /* trust chip — blue frame, green text */
   --chip-bd: rgba(27,75,107,.18);
   --chip-bg: rgba(27,75,107,.04);
   --chip-tx: #2E7D32;
@@ -73,15 +74,15 @@
   --eye-bd: rgba(27,75,107,.22);
   --eye-bg: rgba(27,75,107,.06);
 
-  /* wf stage tints — deeper in light */
-  --wf-orange-bg: rgba(158,99,16,.05);
-  --wf-orange-bd: rgba(158,99,16,.25);
-  --wf-amber-bg:  rgba(122,78,10,.05);
-  --wf-amber-bd:  rgba(122,78,10,.22);
-  --wf-blue-bg:   rgba(27,75,107,.05);
-  --wf-blue-bd:   rgba(27,75,107,.2);
-  --wf-green-bg:  rgba(74,122,61,.05);
-  --wf-green-bd:  rgba(74,122,61,.2);
+  /* wf stages — neutral surfaces, colored borders only */
+  --wf-orange-bg: var(--card);
+  --wf-orange-bd: rgba(158,99,16,.2);
+  --wf-amber-bg:  var(--card);        /* alias to orange */
+  --wf-amber-bd:  rgba(158,99,16,.2); /* alias to orange */
+  --wf-blue-bg:   var(--card);
+  --wf-blue-bd:   rgba(27,75,107,.18);
+  --wf-green-bg:  var(--card);
+  --wf-green-bd:  rgba(74,122,61,.18);
 
   /* dept map */
   --dept-bg: #edf1f7;
@@ -91,15 +92,15 @@
   --case-bd: rgba(74,122,61,.18);
   --case-bar: linear-gradient(90deg,#4A7A3D,#1B4B6B);
 
-  /* value table light */
+  /* value table */
   --val-row-alt: #f5f7fa;
   --val-total-bg: #fef5f5;
   --val-total-bd: rgba(200,50,40,.15);
   --val-price-tx: rgba(200,50,40,.8);
 
   /* offer cards */
-  --offer-feat-bg: rgba(245,166,35,.04);
-  --offer-feat-bd: rgba(245,166,35,.35);
+  --offer-feat-bg: rgba(158,99,16,.03);
+  --offer-feat-bd: rgba(158,99,16,.25);
 
   /* CTA section */
   --cta-box-bg: #f7f7f8;
@@ -113,11 +114,11 @@
   --card2:    #202024;
   --border:   rgba(255,255,255,0.08);
 
-  /* dark mode accent overrides — brighter for visibility */
+  /* 3-color accent system — brighter for dark backgrounds */
   --blue:    #8DC4E8;
   --navy:    #8DC4E8;
   --orange:  #F5C462;
-  --amber:   #E0B85A;
+  --amber:   #F5C462;  /* merged into orange */
   --green:   #7dd681;
   --success: #7dd681;
   --text:     #ffffff;
@@ -131,19 +132,20 @@
   --nav-text: #ffffff;
   --nav-mob:  rgba(17,17,17,.98);
 
+  /* diagram — neutral surfaces, colored borders */
   --diag-bg:    #1c1c1f;
-  --diag-ch-bg: rgba(27,75,107,.15);
-  --diag-ch-bd: rgba(27,75,107,.4);
+  --diag-ch-bg: rgba(141,196,232,.06);
+  --diag-ch-bd: rgba(141,196,232,.25);
   --diag-ch-tx: #8DC4E8;
-  --diag-intake-bg: rgba(27,75,107,.12);
-  --diag-intake-bd: rgba(27,75,107,.35);
-  --diag-logic-bg:  rgba(245,166,35,.1);
-  --diag-logic-bd:  rgba(245,166,35,.35);
-  --diag-out-bg:    rgba(212,145,26,.08);
-  --diag-out-bd:    rgba(212,145,26,.28);
+  --diag-intake-bg: rgba(141,196,232,.05);
+  --diag-intake-bd: rgba(141,196,232,.25);
+  --diag-logic-bg:  var(--card);
+  --diag-logic-bd:  rgba(245,196,98,.25);
+  --diag-out-bg:    var(--card);
+  --diag-out-bd:    rgba(245,196,98,.2);
   --diag-out-tx:    #F5C462;
-  --diag-result-bg: rgba(74,122,61,.1);
-  --diag-result-bd: rgba(74,122,61,.35);
+  --diag-result-bg: rgba(125,214,129,.06);
+  --diag-result-bd: rgba(125,214,129,.25);
   --diag-result-tx: #7dd681;
 
   --vp-diag-bg:  #0d1520;
@@ -153,9 +155,9 @@
   --pill-no-bd:  rgba(255,80,60,.28);
   --pill-no-tx:  rgba(255,140,120,.9);
   --pill-no-bg:  rgba(255,60,40,.05);
-  --pill-yes-bd: rgba(74,122,61,.3);
-  --pill-yes-tx: #6fbf73;
-  --pill-yes-bg: rgba(74,122,61,.06);
+  --pill-yes-bd: rgba(125,214,129,.3);
+  --pill-yes-tx: #7dd681;
+  --pill-yes-bg: rgba(125,214,129,.06);
 
   --chip-bd: rgba(141,196,232,.25);
   --chip-bg: rgba(141,196,232,.06);
@@ -164,27 +166,28 @@
   --eye-bd: rgba(141,196,232,.35);
   --eye-bg: rgba(141,196,232,.1);
 
-  --wf-orange-bg: rgba(245,196,98,.08);
-  --wf-orange-bd: rgba(245,196,98,.3);
-  --wf-amber-bg:  rgba(212,165,60,.08);
-  --wf-amber-bd:  rgba(212,165,60,.25);
-  --wf-blue-bg:   rgba(141,196,232,.1);
-  --wf-blue-bd:   rgba(141,196,232,.3);
-  --wf-green-bg:  rgba(74,122,61,.08);
-  --wf-green-bd:  rgba(74,122,61,.3);
+  /* wf stages — neutral surfaces, colored borders */
+  --wf-orange-bg: var(--card);
+  --wf-orange-bd: rgba(245,196,98,.22);
+  --wf-amber-bg:  var(--card);        /* alias */
+  --wf-amber-bd:  rgba(245,196,98,.22); /* alias */
+  --wf-blue-bg:   var(--card);
+  --wf-blue-bd:   rgba(141,196,232,.22);
+  --wf-green-bg:  var(--card);
+  --wf-green-bd:  rgba(125,214,129,.22);
 
   --dept-bg: #0d1520;
   --dept-bd: rgba(255,255,255,.07);
 
-  --case-bd: rgba(74,122,61,.22);
+  --case-bd: rgba(125,214,129,.22);
 
   --val-row-alt: rgba(255,255,255,.02);
   --val-total-bg: rgba(255,80,60,.06);
   --val-total-bd: rgba(255,80,60,.2);
   --val-price-tx: rgba(255,100,70,.8);
 
-  --offer-feat-bg: rgba(245,166,35,.06);
-  --offer-feat-bd: rgba(245,166,35,.4);
+  --offer-feat-bg: rgba(245,196,98,.04);
+  --offer-feat-bd: rgba(245,196,98,.25);
 
   --cta-box-bg: rgba(255,255,255,.03);
   --cta-box-bd: var(--border);
