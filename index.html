@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!-- index-v21.html · 2026-04-13
-     Hero chip warmer. CTA step 1 tighter.
+<!-- index-v22.html · 2026-04-14
+     Phase 2: inline colors removed, utility classes used, 16px min enforced.
 -->
 <html lang="en" data-theme="light">
 <head>
@@ -95,9 +95,9 @@
 <section style="background:var(--bg)" class="pcb" id="system">
   <div style="max-width:780px;margin:0 auto;padding:64px 24px;text-align:center" class="reveal">
     <h2 class="disp" style="font-size:clamp(28px,4.5vw,52px);line-height:.92;margin-bottom:14px">
-      You tried AI tools.<br><em style="color:var(--orange)">They added work.</em>
+      You tried AI tools.<br><em class="u-blue">They added work.</em>
     </h2>
-    <p style="font-size:18px;color:var(--muted);max-width:540px;margin:0 auto;line-height:1.7">
+    <p style="font-size:18px;max-width:540px;margin:0 auto;line-height:1.7" class="u-muted">
       Tools still need someone to configure, monitor, and manage them. We map your business, build the office behind it, and maintain it for you.
     </p>
   </div>
@@ -109,37 +109,37 @@
   <div style="max-width:860px;margin:0 auto;padding:56px 24px" class="reveal">
     <div style="text-align:center;margin-bottom:28px">
       <h2 class="disp" style="font-size:clamp(26px,4vw,44px);line-height:.92;margin-bottom:10px">
-        Four phases.<br><span style="color:var(--orange)">One managed system.</span>
+        Four phases.<br><span class="u-blue">One managed system.</span>
       </h2>
-      <p style="font-size:16px;color:var(--muted);max-width:480px;margin:0 auto">
+      <p style="font-size:16px;max-width:480px;margin:0 auto" class="u-muted">
         From first contact to follow-up, the office keeps the next step moving without manual coordination.
       </p>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:620px;margin:0 auto" class="ba-grid">
       <div style="background:var(--card);border:1px solid var(--wf-blue-bd);border-radius:14px;padding:20px 18px">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--blue);letter-spacing:.14em;margin-bottom:6px">01</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--heading);margin-bottom:6px">Intake</div>
-        <div style="font-size:15px;color:var(--muted);line-height:1.55">Requests captured, qualified, and routed.</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.10em;margin-bottom:6px" class="u-blue">01</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;margin-bottom:6px" class="u-heading">Intake</div>
+        <div style="font-size:16px;line-height:1.55" class="u-muted">Requests captured, qualified, and routed.</div>
       </div>
       <div style="background:var(--card);border:1px solid var(--wf-orange-bd);border-radius:14px;padding:20px 18px">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--orange);letter-spacing:.14em;margin-bottom:6px">02</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--heading);margin-bottom:6px">Conversion</div>
-        <div style="font-size:15px;color:var(--muted);line-height:1.55">Appointments, estimates, checkout, and approvals moved forward.</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.10em;margin-bottom:6px" class="u-orange">02</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;margin-bottom:6px" class="u-heading">Conversion</div>
+        <div style="font-size:16px;line-height:1.55" class="u-muted">Appointments, estimates, checkout, and approvals moved forward.</div>
       </div>
       <div style="background:var(--card);border:1px solid var(--wf-amber-bd);border-radius:14px;padding:20px 18px">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--amber);letter-spacing:.14em;margin-bottom:6px">03</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--heading);margin-bottom:6px">Delivery</div>
-        <div style="font-size:15px;color:var(--muted);line-height:1.55">Scheduling, execution, updates, and payment coordinated.</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.10em;margin-bottom:6px" class="u-amber">03</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;margin-bottom:6px" class="u-heading">Delivery</div>
+        <div style="font-size:16px;line-height:1.55" class="u-muted">Scheduling, execution, updates, and payment coordinated.</div>
       </div>
       <div style="background:var(--card);border:1px solid var(--wf-blue-bd);border-radius:14px;padding:20px 18px">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--blue);letter-spacing:.14em;margin-bottom:6px">04</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--heading);margin-bottom:6px">Retention</div>
-        <div style="font-size:15px;color:var(--muted);line-height:1.55">Reviews, referrals, renewals, and repeat business triggered.</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.10em;margin-bottom:6px" class="u-blue">04</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;margin-bottom:6px" class="u-heading">Retention</div>
+        <div style="font-size:16px;line-height:1.55" class="u-muted">Reviews, referrals, renewals, and repeat business triggered.</div>
       </div>
     </div>
 
-    <p style="text-align:center;font-size:16px;color:var(--text);margin-top:22px;font-weight:500;max-width:520px;margin-left:auto;margin-right:auto">
+    <p style="text-align:center;font-size:16px;margin-top:22px;font-weight:500;max-width:520px;margin-left:auto;margin-right:auto">
       Every request enters the system, gets structured, and moves into the right operational flow.
     </p>
   </div>
@@ -149,33 +149,33 @@
 <!-- ══ LIVE SYSTEMS ═══════════════════════════════════════ -->
 <section style="background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
   <div style="max-width:1140px;margin:0 auto;padding:48px 24px;text-align:center" class="reveal">
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,44px);color:var(--heading);margin-bottom:6px">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,44px);margin-bottom:6px" class="u-heading">
       Already Running
     </div>
-    <p style="font-size:16px;color:var(--muted);margin-bottom:28px">Not a concept. Not a demo. Running live today.</p>
+    <p style="font-size:16px;margin-bottom:28px" class="u-muted">Not a concept. Not a demo. Running live today.</p>
     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:24px;align-items:center">
       <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 24px">
         <div class="pdot" style="width:13px;height:13px"></div>
         <img src="https://assets.cdn.filesafe.space/jD3rvaWtP7z9FUt4o7dZ/media/69d6a8aea5d3efc6dedd3ce0.png" alt="857 For Hire" style="height:48px;width:auto;object-fit:contain">
         <div style="text-align:left">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--heading);line-height:1.1">857 For Hire</div>
-          <div style="font-size:14px;color:var(--muted)">Construction Crews LLC</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;line-height:1.1" class="u-heading">857 For Hire</div>
+          <div style="font-size:16px" class="u-muted">Construction Crews LLC</div>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 24px">
         <div class="pdot" style="width:13px;height:13px"></div>
         <img src="https://assets.cdn.filesafe.space/jD3rvaWtP7z9FUt4o7dZ/media/69d6a96bebf1a608433f7fa7.png" alt="BnbCohost.Link" style="height:48px;width:auto;object-fit:contain">
         <div style="text-align:left">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--heading);line-height:1.1">BnbCohost.Link</div>
-          <div style="font-size:14px;color:var(--muted)">STR Operator</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;line-height:1.1" class="u-heading">BnbCohost.Link</div>
+          <div style="font-size:16px" class="u-muted">STR Operator</div>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 24px">
         <div class="pdot" style="width:13px;height:13px"></div>
         <img src="https://assets.cdn.filesafe.space/jD3rvaWtP7z9FUt4o7dZ/media/69d6a9b7eaae8b1b71def2d8.png" alt="Detox-MD" style="height:48px;width:auto;object-fit:contain">
         <div style="text-align:left">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--heading);line-height:1.1">Detox-MD</div>
-          <div style="font-size:14px;color:var(--muted)">Mental Wellness Consulting</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;line-height:1.1" class="u-heading">Detox-MD</div>
+          <div style="font-size:16px" class="u-muted">Mental Wellness Consulting</div>
         </div>
       </div>
     </div>
@@ -189,9 +189,9 @@
   <div style="max-width:1140px;margin:0 auto;padding:52px 24px 60px" class="reveal">
     <div style="text-align:center;margin-bottom:28px">
       <h2 class="disp" style="font-size:clamp(28px,4vw,50px);line-height:.92;margin-bottom:10px">
-        Same system.<br><span style="color:var(--orange)">Configured for your business.</span>
+        Same system.<br><span class="u-blue">Configured for your business.</span>
       </h2>
-      <p style="font-size:16px;color:var(--muted);max-width:440px;margin:0 auto">
+      <p style="font-size:16px;max-width:440px;margin:0 auto" class="u-muted">
         Choose the version built for your business.
       </p>
     </div>
@@ -240,13 +240,13 @@
       30 minutes. We map where your process is breaking and show you what your Digital Office should look like.
     </p>
     <div class="ss">
-      <div class="ss-item"><span style="color:var(--orange);margin-right:5px">1</span>Select your industry</div>
+      <div class="ss-item"><span class="u-blue" style="margin-right:5px">1</span>Select your industry</div>
       <div class="ss-arr">→</div>
-      <div class="ss-item"><span style="color:var(--orange);margin-right:5px">2</span>Book a call</div>
+      <div class="ss-item"><span class="u-blue" style="margin-right:5px">2</span>Book a call</div>
       <div class="ss-arr">→</div>
-      <div class="ss-item"><span style="color:var(--orange);margin-right:5px">3</span>We listen and propose a solution</div>
+      <div class="ss-item"><span class="u-blue" style="margin-right:5px">3</span>We listen and propose a solution</div>
       <div class="ss-arr">→</div>
-      <div class="ss-item last"><span style="color:var(--success);margin-right:5px">4</span>You approve the setup</div>
+      <div class="ss-item last"><span class="u-success" style="margin-right:5px">4</span>You approve the setup</div>
     </div>
     <div style="display:flex;justify-content:center;margin-bottom:24px">
       <button class="btn-p" style="font-size:20px;padding:16px 40px" onclick="document.getElementById('book-cal').scrollIntoView({behavior:'smooth'})">
@@ -254,9 +254,9 @@
       </button>
     </div>
     <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-      <div style="font-size:15px;color:var(--pill-yes-tx);background:var(--pill-yes-bg);border:1px solid var(--pill-yes-bd);border-radius:50px;padding:8px 18px">✓ No pitch. Just the plan.</div>
-      <div style="font-size:15px;color:var(--pill-yes-tx);background:var(--pill-yes-bg);border:1px solid var(--pill-yes-bd);border-radius:50px;padding:8px 18px">✓ No build until architecture approved.</div>
-      <div style="font-size:15px;color:var(--pill-yes-tx);background:var(--pill-yes-bg);border:1px solid var(--pill-yes-bd);border-radius:50px;padding:8px 18px">✓ You own all customer data.</div>
+      <div style="font-size:16px;color:var(--pill-yes-tx);background:var(--pill-yes-bg);border:1px solid var(--pill-yes-bd);border-radius:50px;padding:8px 18px">✓ No pitch. Just the plan.</div>
+      <div style="font-size:16px;color:var(--pill-yes-tx);background:var(--pill-yes-bg);border:1px solid var(--pill-yes-bd);border-radius:50px;padding:8px 18px">✓ No build until architecture approved.</div>
+      <div style="font-size:16px;color:var(--pill-yes-tx);background:var(--pill-yes-bg);border:1px solid var(--pill-yes-bd);border-radius:50px;padding:8px 18px">✓ You own all customer data.</div>
     </div>
   </div>
 </section>

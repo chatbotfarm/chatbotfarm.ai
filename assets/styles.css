@@ -875,30 +875,73 @@ footer a:hover { color: var(--orange) !important; }
 .light-section .disp,
 .light-section h2,
 .light-section .cta-hed {
-  color: #183247;
+  color: var(--heading);
 }
 .light-section .cta-hed em { color: var(--blue); }
 .light-section p,
 .light-section .cta-body,
-.light-section .assure { color: #5F6B78; }
-.light-section .ss-item { background: #f0f3f7; border-color: #dde2e8; color: #5F6B78; }
-.light-section .ss-item.last { background: rgba(74,122,61,.08); border-color: rgba(74,122,61,.25); color: #2E7D32; }
-.light-section .ss-arr { color: #8e99a4; }
-.light-section .btn-s { color: #3a4a5a; border-color: #c5cdd5; }
+.light-section .assure { color: var(--muted); }
+.light-section .ss-item { background: var(--card); border-color: var(--border); color: var(--muted); }
+.light-section .ss-item.last { background: var(--pill-yes-bg); border-color: var(--pill-yes-bd); color: var(--pill-yes-tx); }
+.light-section .ss-arr { color: var(--muted); }
+.light-section .btn-s { color: var(--text); border-color: var(--border); }
 .light-section .btn-s:hover { border-color: var(--orange); color: var(--orange); }
-.light-section .assure span { color: #2E7D32; }
+.light-section .assure span { color: var(--success); }
 
-/* ── OFFER CARD TEXT FIX — light mode ── */
-/* Prevent white/light text on cream/warm offer cards in light theme */
-[data-theme="light"] .offer-card-pad div[style*="color:#fff"],
-[data-theme="light"] .offer-card-pad div[style*="color: #fff"],
-:root .offer-card-pad div[style*="color:#fff"],
-:root .offer-card-pad div[style*="color: #fff"] {
+/* ── CARD CONTRAST SYSTEM ── */
+/* Cards inherit text color from theme tokens automatically */
+.offer-card-pad,
+.case-study,
+.dept-map-card,
+.intake-diag-inner,
+.wf-diag-inner,
+.wf-stage,
+.diagram,
+.scard,
+.sel-btn,
+.ppill {
+  color: var(--text);
+}
+
+/* Force headings inside cards to use theme heading color */
+.offer-card-pad .disp,
+.offer-card-pad h2,
+.case-study h2,
+.scard-title {
+  color: var(--heading);
+}
+
+/* ── UTILITY CLASSES — use instead of inline colors ── */
+.u-heading   { color: var(--heading) !important; }
+.u-text      { color: var(--text) !important; }
+.u-muted     { color: var(--muted) !important; }
+.u-blue      { color: var(--blue) !important; }
+.u-orange    { color: var(--orange) !important; }
+.u-amber     { color: var(--amber) !important; }
+.u-green     { color: var(--green) !important; }
+.u-success   { color: var(--success) !important; }
+.u-white     { color: #ffffff !important; }
+
+/* Background utilities */
+.u-bg        { background: var(--bg) !important; }
+.u-bg-alt    { background: var(--bg-alt) !important; }
+.u-bg-card   { background: var(--card) !important; }
+
+/* ── OFFER CARD — light vs dark text ── */
+/* In light mode: cards with warm tint get dark text */
+[data-theme="light"] .offer-card-pad,
+:root .offer-card-pad {
+  color: var(--text);
+}
+[data-theme="light"] .offer-card-pad .u-white,
+:root .offer-card-pad .u-white {
   color: var(--heading) !important;
 }
-/* Keep white text on offer cards in dark mode */
-[data-theme="dark"] .offer-card-pad div[style*="color:#fff"],
-[data-theme="dark"] .offer-card-pad div[style*="color: #fff"] {
+/* In dark mode: offer cards get white text */
+[data-theme="dark"] .offer-card-pad {
+  color: var(--text);
+}
+[data-theme="dark"] .offer-card-pad .u-white {
   color: #ffffff !important;
 }
 
@@ -907,4 +950,81 @@ footer a:hover { color: var(--orange) !important; }
 @media (max-width: 600px) {
   .sys-grid { grid-template-columns: 1fr !important; }
   .sys-grid > div[style*="grid-column"] { grid-column: auto !important; max-width: 100% !important; }
+}
+
+/* ══════════════════════════════════════════
+   INLINE COLOR SAFETY NET
+   Catches hardcoded inline colors that fight
+   the theme until HTML is fully cleaned up.
+══════════════════════════════════════════ */
+
+/* Light mode: override inline white text on any themed surface */
+[data-theme="light"] [style*="color:#fff"],
+[data-theme="light"] [style*="color: #fff"],
+[data-theme="light"] [style*="color:#ffffff"],
+:root [style*="color:#fff"],
+:root [style*="color: #fff"],
+:root [style*="color:#ffffff"] {
+  color: var(--heading) !important;
+}
+/* Except CTA buttons which need white text always */
+[data-theme="light"] .btn-p,
+[data-theme="light"] .nav-cta,
+[data-theme="light"] .vcta.solid,
+:root .btn-p,
+:root .nav-cta,
+:root .vcta.solid {
+  color: #ffffff !important;
+}
+
+/* Dark mode: override inline dark text on any themed surface */
+[data-theme="dark"] [style*="color:#111"],
+[data-theme="dark"] [style*="color: #111"],
+[data-theme="dark"] [style*="color:#222"],
+[data-theme="dark"] [style*="color:#183247"],
+[data-theme="dark"] [style*="color:#555"] {
+  color: var(--text) !important;
+}
+
+/* Both modes: override inline hardcoded grays */
+[data-theme="light"] [style*="color:#555"],
+:root [style*="color:#555"] {
+  color: var(--muted) !important;
+}
+[data-theme="light"] [style*="color:#666"],
+:root [style*="color:#666"] {
+  color: var(--muted) !important;
+}
+[data-theme="light"] [style*="color:#222"],
+:root [style*="color:#222"] {
+  color: var(--text) !important;
+}
+
+/* Override inline backgrounds that clash with theme */
+[data-theme="dark"] [style*="background:#fef5f5"],
+[data-theme="dark"] [style*="background:#fafafa"],
+[data-theme="dark"] [style*="background:#f7f7f8"],
+[data-theme="dark"] [style*="background:#f0f3f7"] {
+  background: var(--card) !important;
+}
+[data-theme="dark"] [style*="border:1px solid #e"],
+[data-theme="dark"] [style*="border:1px solid #d"],
+[data-theme="dark"] [style*="border:2px solid rgba(0,160,80"] {
+  border-color: var(--border) !important;
+}
+[data-theme="dark"] [style*="border-bottom:1px solid #eee"],
+[data-theme="dark"] [style*="border-bottom:1px solid #e"] {
+  border-bottom-color: var(--border) !important;
+}
+[data-theme="dark"] [style*="border-top:2px solid rgba(200,50,40"] {
+  border-top-color: var(--border) !important;
+}
+
+/* Dark mode: fix value table total row */
+[data-theme="dark"] .val-total {
+  background: var(--card) !important;
+  border-top-color: var(--border) !important;
+}
+[data-theme="dark"] .val-total div {
+  color: var(--text) !important;
 }
