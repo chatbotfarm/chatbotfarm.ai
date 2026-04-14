@@ -21,7 +21,7 @@
       <a href="/property-management">Property</a>
       <a href="/professional-services">Professional</a>
       <div class="nav-cta-wrap">
-        <a href="#book" class="nav-cta">Plan Your System →</a>
+        <a href="#book" class="nav-cta">Map My Office →</a>
       </div>
     </div>
     <button class="theme-toggle" id="cbf-theme-toggle" aria-label="Toggle theme">🌙</button>

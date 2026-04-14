@@ -10,43 +10,43 @@
 :root,
 [data-theme="light"] {
   --bg:       #ffffff;
-  --bg-alt:   #f5f6f8;
-  --card:     #f0f1f3;
-  --card2:    #e8e9ec;
+  --bg-alt:   #f5f7fa;
+  --card:     #f0f3f7;
+  --card2:    #e8ecf1;
   --border:   rgba(0,0,0,0.08);
-  --text:     #111111;
+  --text:     #1A2430;
   --text-inv: #ffffff;
-  --heading:  #111111;
-  --muted:    #555555;
+  --heading:  #183247;
+  --muted:    #5F6B78;
   --trace-c:  #4A7A3D;
   --trace-op: .06;
   --node-op:  .1;
 
-  /* brand accents (same both themes) */
+  /* brand accents */
   --navy:   #1B4B6B;
   --green:  #4A7A3D;
-  --orange: #F5A623;
-  --amber:  #D4911A;
+  --orange: #C97A12;
+  --amber:  #A8650D;
   --blue:   #1B4B6B;
   --success:#2E7D32;
 
   /* nav */
   --nav-bg:   rgba(255,255,255,.96);
-  --nav-text: #111111;
+  --nav-text: #183247;
   --nav-mob:  rgba(255,255,255,.98);
 
   /* diagram specific */
-  --diag-bg:    #f0f1f3;
+  --diag-bg:    #f0f3f7;
   --diag-ch-bg: rgba(27,75,107,.06);
   --diag-ch-bd: rgba(27,75,107,.2);
   --diag-ch-tx: #1B4B6B;
   --diag-intake-bg: rgba(27,75,107,.05);
   --diag-intake-bd: rgba(27,75,107,.22);
-  --diag-logic-bg:  rgba(245,166,35,.06);
-  --diag-logic-bd:  rgba(245,166,35,.3);
-  --diag-out-bg:    rgba(212,145,26,.05);
-  --diag-out-bd:    rgba(212,145,26,.2);
-  --diag-out-tx:    #D4911A;
+  --diag-logic-bg:  rgba(201,122,18,.06);
+  --diag-logic-bd:  rgba(201,122,18,.28);
+  --diag-out-bg:    rgba(168,101,13,.05);
+  --diag-out-bd:    rgba(168,101,13,.2);
+  --diag-out-tx:    #A8650D;
   --diag-result-bg: rgba(74,122,61,.06);
   --diag-result-bd: rgba(74,122,61,.25);
   --diag-result-tx: #2E7D32;
@@ -64,27 +64,27 @@
   --pill-yes-tx: #2E7D32;
   --pill-yes-bg: rgba(74,122,61,.04);
 
-  /* trust chip */
-  --chip-bd: rgba(74,122,61,.2);
-  --chip-bg: rgba(74,122,61,.05);
-  --chip-tx: #2E7D32;
+  /* trust chip — blue-tinted */
+  --chip-bd: rgba(27,75,107,.2);
+  --chip-bg: rgba(27,75,107,.05);
+  --chip-tx: #1B4B6B;
 
-  /* eyebrow */
-  --eye-bd: rgba(245,166,35,.25);
-  --eye-bg: rgba(245,166,35,.06);
+  /* eyebrow — blue */
+  --eye-bd: rgba(27,75,107,.22);
+  --eye-bg: rgba(27,75,107,.06);
 
-  /* wf stage tints */
-  --wf-orange-bg: rgba(245,166,35,.05);
-  --wf-orange-bd: rgba(245,166,35,.22);
-  --wf-amber-bg:  rgba(212,145,26,.05);
-  --wf-amber-bd:  rgba(212,145,26,.2);
+  /* wf stage tints — deeper orange in light */
+  --wf-orange-bg: rgba(201,122,18,.05);
+  --wf-orange-bd: rgba(201,122,18,.22);
+  --wf-amber-bg:  rgba(168,101,13,.05);
+  --wf-amber-bd:  rgba(168,101,13,.2);
   --wf-blue-bg:   rgba(27,75,107,.05);
   --wf-blue-bd:   rgba(27,75,107,.2);
   --wf-green-bg:  rgba(74,122,61,.05);
   --wf-green-bd:  rgba(74,122,61,.2);
 
   /* dept map */
-  --dept-bg: #eef1f5;
+  --dept-bg: #edf1f7;
   --dept-bd: rgba(0,0,0,.06);
 
   /* case study */
@@ -92,7 +92,7 @@
   --case-bar: linear-gradient(90deg,#4A7A3D,#1B4B6B);
 
   /* value table light */
-  --val-row-alt: #fafafa;
+  --val-row-alt: #f5f7fa;
   --val-total-bg: #fef5f5;
   --val-total-bd: rgba(200,50,40,.15);
   --val-price-tx: rgba(200,50,40,.8);
@@ -149,12 +149,12 @@
   --pill-yes-tx: #6fbf73;
   --pill-yes-bg: rgba(74,122,61,.06);
 
-  --chip-bd: rgba(74,122,61,.25);
-  --chip-bg: rgba(74,122,61,.06);
-  --chip-tx: #6fbf73;
+  --chip-bd: rgba(27,75,107,.3);
+  --chip-bg: rgba(27,75,107,.08);
+  --chip-tx: #6ba3cc;
 
-  --eye-bd: rgba(245,166,35,.3);
-  --eye-bg: rgba(245,166,35,.08);
+  --eye-bd: rgba(27,75,107,.35);
+  --eye-bg: rgba(27,75,107,.1);
 
   --wf-orange-bg: rgba(245,166,35,.08);
   --wf-orange-bd: rgba(245,166,35,.3);
@@ -300,7 +300,7 @@ p:last-child { margin-bottom: 0; }
   border-top:1px solid var(--border); border-bottom:1px solid var(--border);
   padding:12px 24px; text-align:center;
   font-family:'Bebas Neue',sans-serif; font-size:16px; letter-spacing:.18em;
-  color:var(--orange); text-transform:uppercase;
+  color:var(--blue); text-transform:uppercase;
 }
 
 /* ── REVEAL ── */
@@ -310,7 +310,7 @@ p:last-child { margin-bottom: 0; }
 /* ── EYEBROW ── */
 .eyebrow {
   display:inline-flex; align-items:center; gap:8px;
-  font-size:16px; color:var(--orange);
+  font-size:16px; color:var(--blue);
   letter-spacing:.16em; text-transform:uppercase;
   font-family:'Bebas Neue',sans-serif;
   border:1px solid var(--eye-bd);
@@ -385,7 +385,7 @@ p:last-child { margin-bottom: 0; }
   position:relative; overflow:hidden;
 }
 .diag-lbl {
-  font-size:14px; color:var(--orange); letter-spacing:.16em;
+  font-size:14px; color:var(--blue); letter-spacing:.16em;
   text-transform:uppercase; font-family:'Bebas Neue',sans-serif;
   text-align:center; margin-bottom:14px;
 }
@@ -676,7 +676,7 @@ footer a:hover { color: var(--orange) !important; }
   display: flex; flex-direction: column; align-items: center;
 }
 .intake-diag-title {
-  font-family: 'Bebas Neue', sans-serif; font-size: 13px; color: var(--orange);
+  font-family: 'Bebas Neue', sans-serif; font-size: 13px; color: var(--blue);
   letter-spacing: .22em; margin-bottom: 20px; text-align: center;
 }
 .intake-channels { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
@@ -690,7 +690,7 @@ footer a:hover { color: var(--orange) !important; }
   color: var(--blue); letter-spacing: .14em;
 }
 .intake-arrow {
-  font-size: 20px; color: var(--orange); padding: 12px 0; line-height: 1; text-align: center;
+  font-size: 20px; color: var(--blue); padding: 12px 0; line-height: 1; text-align: center;
 }
 .intake-frontdesk {
   width: 100%; background: var(--vp-ch-bg);
@@ -799,7 +799,7 @@ footer a:hover { color: var(--orange) !important; }
   border-radius: 20px; padding: 28px 24px;
 }
 .dept-map-title {
-  font-family: 'Bebas Neue', sans-serif; font-size: 13px; color: var(--orange);
+  font-family: 'Bebas Neue', sans-serif; font-size: 13px; color: var(--blue);
   letter-spacing: .22em; margin-bottom: 20px; text-align: center;
 }
 .dept-map-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
@@ -814,7 +814,7 @@ footer a:hover { color: var(--orange) !important; }
 .dept-win.amber  .dept-win-num { color: var(--amber); }
 .dept-win.lblue  .dept-win-num { color: var(--blue); }
 .dept-win-name { font-family: 'Bebas Neue', sans-serif; font-size: 16px; color: var(--heading); line-height: 1.1; }
-.dept-map-arrow { text-align: center; font-size: 22px; color: var(--orange); margin-bottom: 16px; }
+.dept-map-arrow { text-align: center; font-size: 22px; color: var(--blue); margin-bottom: 16px; }
 .dept-map-copy { text-align: center; font-size: 15px; color: var(--muted); line-height: 1.65; }
 
 /* verticals responsive */
@@ -843,16 +843,16 @@ footer a:hover { color: var(--orange) !important; }
 .light-section .disp,
 .light-section h2,
 .light-section .cta-hed {
-  color: #111;
+  color: #183247;
 }
 .light-section .cta-hed em { color: var(--orange); }
 .light-section p,
 .light-section .cta-body,
-.light-section .assure { color: #555; }
-.light-section .ss-item { background: #f2f2f4; border-color: #ddd; color: #555; }
+.light-section .assure { color: #5F6B78; }
+.light-section .ss-item { background: #f0f3f7; border-color: #dde2e8; color: #5F6B78; }
 .light-section .ss-item.last { background: rgba(74,122,61,.08); border-color: rgba(74,122,61,.25); color: #2E7D32; }
-.light-section .ss-arr { color: #999; }
-.light-section .btn-s { color: #333; border-color: #ccc; }
+.light-section .ss-arr { color: #8e99a4; }
+.light-section .btn-s { color: #3a4a5a; border-color: #c5cdd5; }
 .light-section .btn-s:hover { border-color: var(--orange); color: var(--orange); }
 .light-section .assure span { color: #2E7D32; }
 
