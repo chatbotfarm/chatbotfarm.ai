@@ -58,13 +58,15 @@
         <div style="display:flex;flex-direction:column;gap:6px">
           <a href="/" style="font-size:16px;color:var(--muted);text-decoration:none">Home</a>
           <a href="/#book" style="font-size:16px;color:var(--muted);text-decoration:none">Map My Office</a>
+          <a href="https://www.youtube.com/@chatbotfarm" target="_blank" rel="noopener" style="font-size:16px;color:var(--muted);text-decoration:none">▶ YouTube</a>
           <a href="tel:+12542683276" style="font-size:16px;color:var(--muted);text-decoration:none">📞 (254) BOT-FARM</a>
+          <a href="/privacy-policy" style="font-size:16px;color:var(--muted);text-decoration:none">Privacy Policy</a>
+          <a href="/terms-of-use" style="font-size:16px;color:var(--muted);text-decoration:none">Terms of Use</a>
         </div>
       </div>
     </div>
     <div class="fr">
       <div>© <span class="cbf-year"></span> chatbotfarm.ai</div>
-      <div style="margin-top:4px">You close jobs. We run the office.</div>
     </div>
   </div>
   <div class="foot-badge">
