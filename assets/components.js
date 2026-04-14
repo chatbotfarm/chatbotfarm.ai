@@ -24,13 +24,15 @@
         <a href="#book" class="nav-cta">Map My Office →</a>
       </div>
     </div>
-    <div class="theme-toggle" id="cbf-theme-toggle" role="radiogroup" aria-label="Toggle theme">
-      <button class="theme-opt" data-theme="light" aria-label="Day mode">☀ Day</button>
-      <button class="theme-opt" data-theme="dark" aria-label="Night mode">🌙 Night</button>
+    <div class="nav-controls">
+      <div class="theme-toggle" id="cbf-theme-toggle" role="radiogroup" aria-label="Toggle theme">
+        <button class="theme-opt" data-theme="light" aria-label="Day mode">☀ Day</button>
+        <button class="theme-opt" data-theme="dark" aria-label="Night mode">🌙 Night</button>
+      </div>
+      <button class="nav-hamburger" id="cbf-nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <button class="nav-hamburger" id="cbf-nav-toggle" aria-label="Toggle navigation">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 </nav>`;
 
