@@ -1,7 +1,7 @@
 /* ============================================================
-   ChatbotFarm.ai — Shared Stylesheet v15
-   Bulletproof: explicit theme overrides for burger, menu, accent.
-   Nav fully opaque. No transparency anywhere in nav system.
+   ChatbotFarm.ai — Shared Stylesheet (Final Deploy)
+   Sticky nav z:10000. Mobile menu z:9999 fullscreen 100dvh.
+   3-color system. Bulletproof theme overrides.
    ============================================================ */
    PCB traces in green. No glow effects.
    ============================================================ */
@@ -256,9 +256,8 @@ p:last-child { margin-bottom: 0; }
 
 /* ── NAV ── */
 .nav {
-  position: relative; top:0; z-index:300;
+  position: sticky; top:0; z-index:10000;
   background: var(--nav-bg);
-  backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
   transition: background .3s;
 }
@@ -639,22 +638,28 @@ footer a:hover { color: var(--orange) !important; }
   .nav-links { display:none; flex-direction:column; gap:0; }
   .nav-links.open {
     display:flex;
-    position:fixed; top:0; left:0; right:0; bottom:0;
-    background: var(--bg); background-color: var(--bg);
-    padding:80px 24px 40px; z-index:199;
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:flex-start;
+    position:fixed;
+    top:0; left:0; right:0; bottom:0;
+    width:100%; height:100vh; height:100dvh;
+    background:#ffffff;
+    padding:100px 24px 40px;
+    z-index:9999;
     overflow-y:auto;
-    align-items:center; justify-content:center;
+    -webkit-overflow-scrolling:touch;
   }
-  [data-theme="light"] .nav-links.open { background: #ffffff !important; }
-  [data-theme="dark"] .nav-links.open { background: #111111 !important; }
+  [data-theme="dark"] .nav-links.open { background:#111111; }
   .nav-links a {
-    padding:14px 0;
+    padding:16px 0;
     border-bottom:1px solid var(--border);
-    font-size:18px;
+    font-size:20px;
+    text-align:center;
   }
   .nav-links a:last-child { border-bottom:none; }
-  .nav-cta-wrap { padding:16px 0 0; }
-  .nav-cta-wrap .nav-cta { width:100%; text-align:center; display:block; }
+  .nav-cta-wrap { padding:20px 0 0; }
+  .nav-cta-wrap .nav-cta { width:100%; text-align:center; display:block; font-size:22px; padding:16px 28px; }
   .nav-hamburger { display:flex !important; }
   .nav-logo  { height:40px; width:40px; }
 }
