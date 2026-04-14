@@ -1,6 +1,6 @@
 /* ============================================================
-   ChatbotFarm.ai — Shared Stylesheet v12
-   Nav restructured: controls right, toggle bigger, menu opaque.
+   ChatbotFarm.ai — Shared Stylesheet v13
+   Toggle high-contrast (heading bg). Nav tightened for desktop fit.
    ============================================================ */
    PCB traces in green. No glow effects.
    ============================================================ */
@@ -267,7 +267,7 @@ p:last-child { margin-bottom: 0; }
   display:flex; justify-content:space-between; align-items:center; gap:16px;
 }
 .nav-logo {
-  height:100px; width:auto; display:block; object-fit:contain;
+  height:80px; width:auto; display:block; object-fit:contain;
 }
 .nav-cta {
   background: linear-gradient(135deg,var(--orange),var(--amber));
@@ -291,8 +291,8 @@ p:last-child { margin-bottom: 0; }
 .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-hamburger.open span:nth-child(2) { opacity: 0; }
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-.nav-links { display:flex; align-items:center; gap:24px; margin-left:auto; margin-right:20px; }
-.nav-links a { color: var(--text); text-decoration: none; font-size: 16px; }
+.nav-links { display:flex; align-items:center; gap:18px; margin-left:auto; margin-right:12px; }
+.nav-links a { color: var(--text); text-decoration: none; font-size: 15px; }
 
 /* nav controls — toggle + burger grouped right */
 .nav-controls {
@@ -302,19 +302,19 @@ p:last-child { margin-bottom: 0; }
 /* theme toggle — segmented pill */
 .theme-toggle {
   display: flex; align-items: center; flex-shrink: 0;
-  border: 2px solid var(--border); border-radius: 50px;
-  overflow: hidden; background: var(--card);
+  border: 2px solid var(--heading); border-radius: 50px;
+  overflow: visible; background: var(--bg-alt);
+  padding: 3px;
 }
 .theme-opt {
   background: none; border: none; cursor: pointer;
-  padding: 8px 14px; font-size: 14px; font-family: 'Inter', sans-serif; font-weight: 500;
+  padding: 10px 16px; font-size: 15px; font-family: 'Inter', sans-serif; font-weight: 600;
   color: var(--muted); white-space: nowrap;
   transition: background .2s, color .2s;
-  line-height: 1;
+  line-height: 1; border-radius: 50px;
 }
 .theme-opt.active {
-  background: var(--blue); color: #fff;
-  border-radius: 50px;
+  background: var(--heading); color: var(--bg);
 }
 .theme-toggle:hover { border-color: var(--blue); }
 
