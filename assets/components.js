@@ -121,27 +121,37 @@
       el.textContent = new Date().getFullYear();
     });
 
-    /* hamburger */
+    /* hamburger — with body scroll lock */
     var toggle = document.getElementById('cbf-nav-toggle');
     var menu   = document.getElementById('cbf-nav-menu');
+    function closeMenu() {
+      menu.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', false);
+      document.body.style.overflow = '';
+    }
+    function openMenu() {
+      menu.classList.add('open');
+      toggle.classList.add('open');
+      toggle.setAttribute('aria-expanded', true);
+      document.body.style.overflow = 'hidden';
+    }
     if (toggle && menu) {
       toggle.addEventListener('click', function () {
-        var isOpen = menu.classList.toggle('open');
-        toggle.classList.toggle('open', isOpen);
-        toggle.setAttribute('aria-expanded', isOpen);
+        if (menu.classList.contains('open')) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
       });
       menu.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
-          menu.classList.remove('open');
-          toggle.classList.remove('open');
-          toggle.setAttribute('aria-expanded', false);
+          closeMenu();
         });
       });
       document.addEventListener('click', function (e) {
         if (!toggle.contains(e.target) && !menu.contains(e.target)) {
-          menu.classList.remove('open');
-          toggle.classList.remove('open');
-          toggle.setAttribute('aria-expanded', false);
+          closeMenu();
         }
       });
     }
@@ -154,6 +164,50 @@
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(function (el) {
       obs.observe(el);
+    });
+
+    /* calendar lazy-load — loads iframe when user scrolls near it */
+    var calSection = document.getElementById('book-cal');
+    if (calSection) {
+      var calFrame = calSection.querySelector('iframe');
+      if (calFrame && !calFrame.src && calFrame.dataset.src) {
+        var calObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting && calFrame.dataset.src) {
+              calFrame.src = calFrame.dataset.src;
+              calObs.disconnect();
+            }
+          });
+        }, { rootMargin: '400px 0px' });
+        calObs.observe(calSection);
+      }
+      /* fallback — if iframe has src but didn't load, retry after 4s */
+      if (calFrame && calFrame.src) {
+        setTimeout(function () {
+          try {
+            var doc = calFrame.contentDocument || calFrame.contentWindow.document;
+            if (!doc || !doc.body || doc.body.innerHTML.length < 50) {
+              calFrame.src = calFrame.src;
+            }
+          } catch (e) {
+            /* cross-origin, assume loaded */
+          }
+        }, 4000);
+      }
+    }
+
+    /* pageshow — reload calendar if restored from bfcache */
+    window.addEventListener('pageshow', function (e) {
+      if (e.persisted) {
+        var calSection2 = document.getElementById('book-cal');
+        if (calSection2) {
+          var frame2 = calSection2.querySelector('iframe');
+          if (frame2) {
+            var url = frame2.dataset.src || frame2.src;
+            if (url) frame2.src = url;
+          }
+        }
+      }
     });
   }
 
