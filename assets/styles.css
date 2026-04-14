@@ -256,7 +256,7 @@ p:last-child { margin-bottom: 0; }
 
 /* ── NAV ── */
 .nav {
-  position: sticky; top:0; z-index:10000;
+  position: relative; top:0; z-index:10000;
   background: var(--nav-bg);
   border-bottom: 1px solid var(--border);
   transition: background .3s;
