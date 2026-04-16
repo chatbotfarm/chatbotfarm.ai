@@ -11,7 +11,7 @@
   <div class="nav-inner">
     <a href="/" style="display:flex;align-items:center;text-decoration:none;flex-shrink:0">
       <img src="https://assets.cdn.filesafe.space/jD3rvaWtP7z9FUt4o7dZ/media/696bbc2b5e05d40cac72f4e7.png"
-        alt="ChatbotFarm.ai" class="nav-logo" onerror="this.remove()">
+        alt="ChatbotFarm.ai" class="nav-logo">
     </a>
     <div class="nav-links" id="cbf-nav-menu">
       <button class="nav-close" id="cbf-nav-close" aria-label="Close menu">✕</button>
@@ -46,7 +46,7 @@
       <img src="https://assets.cdn.filesafe.space/jD3rvaWtP7z9FUt4o7dZ/media/696baae65e05d44fc069c0d9.png"
         alt="ChatbotFarm.ai"
         style="height:120px;width:auto;display:block;object-fit:contain;margin-bottom:8px"
-        onerror="this.remove()">
+>
     </div>
     <div style="display:flex;gap:32px;flex-wrap:wrap">
       <div>
@@ -78,7 +78,7 @@
   <div class="foot-badge">
     <img src="https://assets.cdn.filesafe.space/jD3rvaWtP7z9FUt4o7dZ/media/69c14c9d3b3a58b998fe8a18.png"
       alt="Connecting Business To The Grid ®"
-      onerror="this.style.display='none'">
+>
   </div>
 </footer>`;
 
@@ -107,6 +107,14 @@
   function init() {
     inject('nav-placeholder', NAV);
     inject('footer-placeholder', FOOTER);
+
+    /* graceful fallback for broken images */
+    document.querySelectorAll('.nav-logo').forEach(function (img) {
+      img.addEventListener('error', function () { img.remove(); });
+    });
+    document.querySelectorAll('.fb img, .foot-badge img').forEach(function (img) {
+      img.addEventListener('error', function () { img.style.display = 'none'; });
+    });
 
     /* theme */
     setTheme(getTheme());
@@ -187,6 +195,15 @@
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(function (el) {
       obs.observe(el);
+    });
+
+    /* smooth-scroll buttons via data-scroll-to attribute */
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-scroll-to]');
+      if (btn) {
+        var target = document.getElementById(btn.dataset.scrollTo);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      }
     });
 
     /* pageshow — reload calendar if restored from bfcache */
