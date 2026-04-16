@@ -91,7 +91,7 @@
   /* ── THEME ── */
   function getTheme() {
     var saved = localStorage.getItem('cbf-theme');
-    if (saved) return saved;
+    if (saved === 'light' || saved === 'dark') return saved;
     return 'light';
   }
   function setTheme(t) {
