@@ -189,27 +189,6 @@
       obs.observe(el);
     });
 
-    /* calendar reliability — retry if iframe fails to load */
-    var calSection = document.getElementById('book-cal');
-    if (calSection) {
-      var calFrame = calSection.querySelector('iframe');
-      if (calFrame) {
-        var calSrc = calFrame.getAttribute('src') || calFrame.dataset.src;
-        /* if using data-src, set src now */
-        if (!calFrame.getAttribute('src') && calFrame.dataset.src) {
-          calFrame.src = calFrame.dataset.src;
-        }
-        /* retry after 5s if iframe appears empty */
-        setTimeout(function () {
-          try {
-            if (calFrame.contentWindow && calFrame.contentWindow.document.body.innerHTML.length < 50) {
-              calFrame.src = calSrc;
-            }
-          } catch (e) { /* cross-origin — assume loaded */ }
-        }, 5000);
-      }
-    }
-
     /* pageshow — reload calendar if restored from bfcache */
     window.addEventListener('pageshow', function (e) {
       if (e.persisted) {
